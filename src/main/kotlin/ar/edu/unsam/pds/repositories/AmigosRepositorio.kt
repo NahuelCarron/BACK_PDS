@@ -3,7 +3,6 @@ package ar.edu.unsam.pds.repositories
 import ar.edu.unsam.pds.controller.dto.AmigoDTO
 import ar.edu.unsam.pds.controller.dto.PosibleAmigo
 import ar.edu.unsam.pds.domains.RelacionAmigo
-import ar.edu.unsam.pds.domains.Usuario
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository

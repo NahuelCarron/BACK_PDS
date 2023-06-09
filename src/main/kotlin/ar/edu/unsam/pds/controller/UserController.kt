@@ -5,8 +5,6 @@ import ar.edu.unsam.pds.controller.dto.HospedajeUsuarioDTO
 import ar.edu.unsam.pds.controller.dto.PosibleAmigo
 import ar.edu.unsam.pds.controller.dto.ReservaUsuarioDTO
 import ar.edu.unsam.pds.domains.ComentarioHospedaje
-import ar.edu.unsam.pds.domains.Hospedaje
-import ar.edu.unsam.pds.domains.Reserva
 import ar.edu.unsam.pds.domains.Usuario
 import ar.edu.unsam.pds.services.UserService
 import com.fasterxml.jackson.databind.MapperFeature

@@ -1,8 +1,6 @@
 package ar.edu.unsam.pds.controller
 
-import ar.edu.unsam.pds.controller.dto.FiltroHospedaje
 import ar.edu.unsam.pds.controller.dto.HospedajeDTO
-import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.repositories.HospedajeRepositorio
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.BeforeEach
@@ -17,9 +15,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.jayway.jsonpath.internal.path.PathCompiler.fail
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Assertions.assertEquals
 
 @SpringBootTest
 @AutoConfigureMockMvc

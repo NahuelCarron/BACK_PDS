@@ -2,7 +2,8 @@ version: '1.0'
 services:
   db:
     image: postgres:15-alpine
-    container_name: airphm_sql
+    container_name: espacios_coin
+
     restart: always
     environment:
       - POSTGRES_USER=postgres
@@ -15,7 +16,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin4_container_airphm
+    container_name: pgadmin4_container_espacios_coin
     restart: always
     ports:
       - "5050:80"

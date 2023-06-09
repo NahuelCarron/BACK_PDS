@@ -1,13 +1,10 @@
 package ar.edu.unsam.pds.repositories
 
-import ar.edu.unsam.pds.controller.dto.ReservaDTO
 import ar.edu.unsam.pds.controller.dto.ReservaUsuarioDTO
-import ar.edu.unsam.pds.domains.Hospedaje
 import ar.edu.unsam.pds.domains.Reserva
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
-import java.time.LocalDate
 
 @Repository
 interface ReservasRepositorio: CrudRepository<Reserva, Long> {

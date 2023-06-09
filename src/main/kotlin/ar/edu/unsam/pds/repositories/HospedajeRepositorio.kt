@@ -1,7 +1,5 @@
 package ar.edu.unsam.pds.repositories
-import ar.edu.unsam.pds.controller.dto.HospedajeUsuarioDTO
 import ar.edu.unsam.pds.domains.Hospedaje
-import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository

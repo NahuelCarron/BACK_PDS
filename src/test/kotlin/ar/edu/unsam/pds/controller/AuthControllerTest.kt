@@ -1,12 +1,10 @@
 package ar.edu.unsam.pds.controller
 
 import ar.edu.unsam.pds.domains.Usuario
-import ar.edu.unsam.pds.exceptions.UsuarioInvalido
 import ar.edu.unsam.pds.repositories.UsuarioRepositorio
 import ar.edu.unsam.pds.services.AuthService
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.kotest.matchers.comparables.shouldBeGreaterThan
-import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.DisplayName

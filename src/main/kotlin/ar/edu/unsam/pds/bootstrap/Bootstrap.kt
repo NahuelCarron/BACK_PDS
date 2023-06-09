@@ -5,7 +5,6 @@ import ar.edu.unsam.pds.repositories.*
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.time.LocalDate
 
 @Service
 class Bootstrap: InitializingBean {
