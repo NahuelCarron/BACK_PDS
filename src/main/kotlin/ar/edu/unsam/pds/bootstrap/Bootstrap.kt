@@ -2,6 +2,7 @@ package ar.edu.unsam.pds.bootstrap
 
 import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.repositories.*
+import ar.edu.unsam.pds.services.AudioService
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -24,11 +25,17 @@ class Bootstrap: InitializingBean {
     @Autowired
     private lateinit var comentarioRepositoryCrud: ComentarioRepositorio
 
+    @Autowired
+    lateinit var audioService: AudioService
+
+
+
     fun iniciarUsuarios() {
         usuariosRepository.save(eminem)
         usuariosRepository.save(solari)
         usuariosRepository.save(michaelJackson)
         usuariosRepository.save(karolg)
+        audioService.audio_voz()
     }
 
     fun iniciarHospedajes() {

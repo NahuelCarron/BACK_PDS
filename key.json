@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "rock-strength-390117",
+  "private_key_id": "19784d1e86dd343c4a7262d50a0c75f85414bdec",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCXhuuLake+GRc/\n+ErZ8r7SfgxpfgwCZ1msHSL8IUHdyY68y9PWdPo3Huu5Pg56jAXtAh4VglRMAyk4\nikd0WPDBqSvYS56BO6MJxidxBqRws6IhEv63lDSCfnlR3Zyh0lcrj5ip4XFDLaRo\nb7rPU+fqR5W0ntkllhChok/5Vngj5DCzyDpTQccD8CSsTVJPRvYWo4/dfa8pNxqn\nCu1DjKp/GKsSb0vhBtwZ6lXCqP7jA7QWOBgkOtAD58K9B8uC6MCQVpS7M0Na6zHH\nIwtjZqOCHan5cTKcIU8gQdeuCTJIZR+GlUvkgtDeVzr6d+Vc70tt6A0OiFbVDXRw\n9+bc0kptAgMBAAECggEAPhFhGJlvS7oBYQ22s3IQoi5JrUiZaL6m566Drx18Wnn+\ngu1HF7iQ6dU7n4SA78e9gaj1Y8AgAYbl8qgJvunTrLA8KnxHMA6aqR1G+LBM2XFr\nfvrF5bLKk4106ojJaSu80zYdxbB38ZmXl8P0lIp9G+U4uGS88/11UJApDCxUR/bF\n982olFKCYWjfJjnC8gKnB/gkUa4hReRDjkLO+DxM29tb3usgs76QjvFcORDn0NSi\nBN83cSjZcIzdQLYJ1P3jq9/KCEEAzV8+L+5hDI5D1J/hJ0p/kqTypAgTMhPzmUvb\nsGtwS3wS3dVe9bR/vLn5DVxoVgY4TeLyb9UvZaHWLQKBgQDU8yr0zhf/+rQfmbwZ\nRH0F6+1cyxvcP8aK7/UwQk1/WTM+5MvtCxueOiiI4Dkja4H1tGM8UoupniWHXqs5\ngkIYUFQsUf4d8dtteqL66b6pfEUsU9F1XGhjaedvXxauPooIVCXMFe/NcLAeUxt0\nqU9iEIu0fwtFowCItoZ856juLwKBgQC2KOzWk2209MbfGS0+Tu3SlFymzh4WqDJ+\nz924ZgECsaDg9z5Y58I2xjXTdeAUqumOdTKCzeoip83A6I7NTtw5tVa38VPN+BrE\nKeW9Yv6+O1Pc80zEDnGWSXiil6P877jiYfthHEzwFvnLAPzau5mGQGKiGYoIhqws\nNuAUYZ1mIwKBgCuNwI9pR4dXY1fDPbF9TITViCqecAhQEu9/vIouRWNyfwSyDvNg\nfjmSc4/rLESOTHpQdqtzxpTef5Z8SlDsz0/hvhWCf5LoUJTHrGXdQN2xSQST8Bcs\n2zzaADfLHvxsVhb1/vUK140RKzRIkyj9J/tKnwg/o7KOcCGGE2OgjfCJAoGAP/1U\nZXRYv46VJd4ERLUZWjX/7iDN9QuU4XNH4fUDOd0INL7lyflwAinS0ru/wcLgVMja\nu5R2QUJNRwzqzTh8qFEJa4h89gfH700AhWz3LABPT3iwaNbiE/cvR36Zfsr/WZct\n5Uk5xcVsbmGkcXohTkXj4Cm0kZYteUK1qLM5xZ0CgYBO1ygxEFjRKVkWzxY/Uzgf\nJiqoB++fg+4MgUQXkpgRQGKdOIC3nqiEteMQDcLyVBUFBFYI8lNkpiul7CpCkpri\nKvbHKG7G5clZG9NpuE35oHnxiJNAUR8xBjmoR13jTMEbmT7uaJjFxhSLWsZ7VAHJ\ne+KEPj9b1oRV9lJAZ75SgQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "nahu-texto-voz@rock-strength-390117.iam.gserviceaccount.com",
+  "client_id": "106256716425221123372",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nahu-texto-voz%40rock-strength-390117.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -58,7 +58,7 @@ class Hospedaje(
     var comentarios: List<ComentarioHospedaje>?= listOf()
 
     fun calcularPrecio(cantPasajeros : Int): Double {
-        //El porcentaje de comisión para Airphm es del 5%.
+        //El porcentaje de comisión para la app es del 5%.
         val comision: Double = 1.05
         return costoBase!! * comision + this.calcularPlus(cantPasajeros)
     }

@@ -51,6 +51,9 @@ dependencies {
     testImplementation("io.mockk:mockk:1.12.8")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    implementation ("com.google.cloud:google-cloud-texttospeech:1.0.0")
+
+
 }
 
 dependencyManagement {
