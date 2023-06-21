@@ -6,24 +6,35 @@ import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import java.util.*
 import javax.persistence.*
+
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity
-class Hospedaje(
-    @Column(length = 200)
-    var nombre: String? = null,
-    @Column(length = 5000)
+class Espacio(
+        @Column(length = 200)
+    var titulo: String? = null,
+        @Column(length = 5000)
     var descripcion: String? = null,
-    @Column
+        @Column
+    var dimensiones: Double? = null,
+        @ElementCollection(targetClass = Uso::class)
+        @Enumerated(EnumType.STRING)
+        @JoinTable(
+                name = "espacio_uso",
+                joinColumns = [JoinColumn(name = "espacio_id")]
+        )
+        @Column(name = "uso")
+    var uso: MutableList<Uso>? = null,
+        @Column
     var capacidad: Int? = null,
-    @Column
+        @Column
     var habitaciones: Int? = null,
-    @Column
+        @Column
     var banios: Int? = null,
-    @Column(length = 255)
+        @Column(length = 255)
     var detalleAlojamiento: String? = null,
-    @Column(length = 255)
+        @Column(length = 255)
     var otrosAspectos: String? = null,
-    @ElementCollection(targetClass = Servicio::class)
+        @ElementCollection(targetClass = Servicio::class)
     @Enumerated(EnumType.STRING)
     @JoinTable(
         name = "hospedaje_servicio",
@@ -31,22 +42,22 @@ class Hospedaje(
     )
     @Column(name = "servicio")
     var servicios: MutableList<Servicio>? = null,
-    @ManyToOne
+        @ManyToOne
     var duenio: Usuario? = null,
-    @Column
-    var costoBase: Double? = null,
-    @Column(length = 150)
+        @Column
+    var costo_hora: Double? = null,
+        @Column(length = 150)
     var ubicacion: String? = null,
-    @Enumerated(EnumType.STRING)
+        @Enumerated(EnumType.STRING)
     var pais: Pais? = null,
 
-    @Convert(converter = TipoHospedajeConverter::class)
+        @Convert(converter = TipoHospedajeConverter::class)
     var hospedajeTipo: TipoHospedaje? = null
 
 
     ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+    var id_espacio: Long? = null
 
     @Column
     var estaActivo: Boolean = true
@@ -55,20 +66,14 @@ class Hospedaje(
     var puntajePromedio: Int = -1
 
     @Transient
-    var comentarios: List<ComentarioHospedaje>?= listOf()
-
-    fun calcularPrecio(cantPasajeros : Int): Double {
-        //El porcentaje de comisión para Airphm es del 5%.
-        val comision: Double = 1.05
-        return costoBase!! * comision + this.calcularPlus(cantPasajeros)
-    }
+    var comentarios: List<ComentarioEspacio>?= listOf()
 
     fun calcularPlus(cantPasajeros : Int): Double{
         return hospedajeTipo!!.calcularPlus(this, cantPasajeros)
     }
 
-    fun calcularTotal(fechaInicio: LocalDate, fechaFin: LocalDate, cantPasajeros: Int): Double {
-        return this.calcularPrecio(cantPasajeros) * ChronoUnit.DAYS.between(fechaInicio, fechaFin)
+    fun calcularTotal(fechaInicio: LocalDate, fechaFin: LocalDate): Long {
+        return ChronoUnit.DAYS.between(fechaInicio, fechaFin)
     }
 
     fun poseeServicio(servicio: Servicio): Boolean {
@@ -79,8 +84,8 @@ class Hospedaje(
 
     companion object {
 
-        fun validarDatos(hospedaje: Hospedaje) {
-            validarTexto("nombre", hospedaje.nombre, 100)
+        fun validarDatos(hospedaje: Espacio) {
+            validarTexto("nombre", hospedaje.titulo, 100)
             validarTexto("descripcion", hospedaje.descripcion, 1000)
             validadCantidad("capacidad", hospedaje.capacidad, 100000)
             validadCantidad("habitaciones", hospedaje.habitaciones, 1000)
@@ -88,7 +93,7 @@ class Hospedaje(
             validarTexto("detalleAlojamiento", hospedaje.detalleAlojamiento, 1000)
             validarTexto("otrosAspectos", hospedaje.otrosAspectos, 1000)
             validarTexto("ubicacion", hospedaje.ubicacion, 100)
-            if (hospedaje.costoBase == null || hospedaje.costoBase == 0.0) {
+            if (hospedaje.costo_hora == null || hospedaje.costo_hora == 0.0) {
                 throw HospedajeInvalido("El costo base del hospedaje no puede ser 0")
             }
             // NOTE: si el pais existe, ya es validado por jackson al deserializarlo

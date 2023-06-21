@@ -7,7 +7,4 @@ import org.springframework.web.bind.annotation.ResponseStatus
 class UsuarioInvalido(mensaje: String): RuntimeException(mensaje) {}
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-class ErrorAlCargarSaldo(mensaje: String) : RuntimeException(mensaje) {}
-
-@ResponseStatus(HttpStatus.BAD_REQUEST)
 class ErrorFechaNacimiento(mensaje: String) : RuntimeException(mensaje) {}

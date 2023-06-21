@@ -1,7 +1,7 @@
 package ar.edu.unsam.pds.controller
 
 import ar.edu.unsam.pds.controller.dto.PuntajeComentarioDTO
-import ar.edu.unsam.pds.controller.dto.ReservaDTO
+import ar.edu.unsam.pds.controller.dto.RentaDTO
 import ar.edu.unsam.pds.services.ReservaService
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @CrossOrigin("*")
-class ReservasController {
+class RentaController {
     @Autowired
     lateinit var reservaService: ReservaService
 
     @PostMapping("/realizarReserva")
-    fun realizarReserva(@RequestBody reservaDTO : ReservaDTO){
+    fun realizarRenta(@RequestBody reservaDTO : RentaDTO){
         this.reservaService.realizarReserva(reservaDTO)
     }
 
     @PostMapping("/calificarReserva")
     @Operation(summary = "Endpoint para calificar una reserva")
-    fun calificarReserva(@RequestBody puntajeComentarioDTO: PuntajeComentarioDTO): Int {
-        this.reservaService.calificarReserva(puntajeComentarioDTO)
+    fun calificarRenta(@RequestBody puntajeComentarioDTO: PuntajeComentarioDTO): Int {
+        // TODO: implementar
         return 200
     }
 }

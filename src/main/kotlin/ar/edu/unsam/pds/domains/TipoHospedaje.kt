@@ -18,14 +18,14 @@ abstract class TipoHospedaje {
 
     open var nombre: String = ""
 
-    open fun calcularPlus(hospedaje: Hospedaje, cantPasajeros: Int): Double {return 0.0}
+    open fun calcularPlus(hospedaje: Espacio, cantPasajeros: Int): Double {return 0.0}
 }
 
 class Casa() : TipoHospedaje() {
 
     override var nombre = "Casa"
 
-    override fun calcularPlus(hospedaje: Hospedaje, cantPasajeros: Int): Double {
+    override fun calcularPlus(hospedaje: Espacio, cantPasajeros: Int): Double {
         return cantPasajeros * 500.0
     }
 }
@@ -34,7 +34,7 @@ class Departamento() : TipoHospedaje() {
 
     override var nombre = "Departamento"
 
-    override fun calcularPlus(hospedaje: Hospedaje, cantPasajeros: Int): Double {
+    override fun calcularPlus(hospedaje: Espacio, cantPasajeros: Int): Double {
         return if (hospedaje.habitaciones!! < 3) 2000.0 else 1000.0 * hospedaje.habitaciones!!
     }
 }
@@ -42,7 +42,7 @@ class Departamento() : TipoHospedaje() {
 class Cabania() : TipoHospedaje() {
     override var nombre = "Cabania"
 
-    override fun calcularPlus(hospedaje: Hospedaje, cantPasajeros: Int): Double {
+    override fun calcularPlus(hospedaje: Espacio, cantPasajeros: Int): Double {
         return if (hospedaje.poseeServicio(Servicio.LIMPIEZA)) 10000.0 else 0.0
     }
 }

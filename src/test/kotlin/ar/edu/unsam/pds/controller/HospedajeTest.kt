@@ -24,11 +24,11 @@ class HospedajeTest {
     @Test
     fun `Testeando los costos por noche de cada hospedaje 2`() {
         // "Costo total de hospedajeCasa1"
-        hospedaje1.calcularTotal(reserva1.inicio!!, reserva1.fin!!,reserva1.cantPasajeros!!) shouldBe 28128.0
+        hospedaje1.calcularTotal(reserva1.fecha_desde!!, reserva1.fecha_hasta!!,reserva1.cantPasajeros!!) shouldBe 28128.0
         // "Costo total de hospedajeDepartamento2"
-        hospedaje2.calcularTotal(reserva2.inicio!!, reserva2.fin!!,reserva2.cantPasajeros!!) shouldBe 132624.0
+        hospedaje2.calcularTotal(reserva2.fecha_desde!!, reserva2.fecha_hasta!!,reserva2.cantPasajeros!!) shouldBe 132624.0
         // "Costo total de hospedajeCabania3"
-        hospedaje3.calcularTotal(reserva3.inicio!!, reserva3.fin!!,reserva3.cantPasajeros!!) shouldBe 167600.0
+        hospedaje3.calcularTotal(reserva3.fecha_desde!!, reserva3.fecha_hasta!!,reserva3.cantPasajeros!!) shouldBe 167600.0
     }
 
 }

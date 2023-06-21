@@ -1,6 +1,6 @@
 package ar.edu.unsam.pds.controller
 
-import ar.edu.unsam.pds.domains.Reserva
+import ar.edu.unsam.pds.domains.Renta
 import ar.edu.unsam.pds.exceptions.CantidadPasajerosIncorrecto
 import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.exceptions.SaldoInsuficiente
@@ -56,11 +56,11 @@ class ReservaTest {
 
     @Test
     fun `Verificar que tira una excepciòn cuando Eminem se las manda al seleccionar fechas`() {
-        val reserva4 = Reserva(
+        val reserva4 = Renta(
             usuario = eminem,
-            hospedaje = hospedaje1,
-            inicio = LocalDate.of(2023, 4, 5),
-            fin = LocalDate.of(2023, 4, 4),
+            espacio = hospedaje1,
+            fecha_desde = LocalDate.of(2023, 4, 5),
+            fecha_hasta = LocalDate.of(2023, 4, 4),
             cantPasajeros = 5
         )
         // "Error al reservar, fecha Inicio es un dia antes que fecha fin"

@@ -10,22 +10,22 @@ class Usuario(
         @Column(length = 100)
         var username: String? = null,
         @Column(length = 100)
-        var password: String? = null,
+        var contrasenia: String? = null,
         @Column(length = 150)
         var nombre: String? = null,
         @Column(length = 150)
         var apellido: String? = null,
         @Column(columnDefinition = "DATE")
-        var fechaNacimiento: LocalDate? = null,
+        var fecha_nacimiento: LocalDate? = null,
         @Enumerated(EnumType.STRING)
         var pais: Pais? = null,
         @Column
-        var saldo: Double? = null,
+        var dni: Double? = null,
         @Column
-        var profileUrl: String? = null, // TODO: sustituir base url hardcodeada
+        var foto_perfil: String? = null, // TODO: sustituir base url hardcodeada
 ) {
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Long? = null
+        var id_usuario: Long? = null
 
 }
 

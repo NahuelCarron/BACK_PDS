@@ -4,16 +4,16 @@ import ar.edu.unsam.pds.controller.BusinessException
 import ar.edu.unsam.pds.controller.dto.HospedajeDTO
 import ar.edu.unsam.pds.controller.dto.HospedajesCantPaginasDTO
 import ar.edu.unsam.pds.controller.dto.toDTO
-import ar.edu.unsam.pds.domains.ComentarioHospedaje
-import ar.edu.unsam.pds.domains.Hospedaje
-import ar.edu.unsam.pds.domains.Reserva
+import ar.edu.unsam.pds.domains.ComentarioEspacio
+import ar.edu.unsam.pds.domains.Espacio
+import ar.edu.unsam.pds.domains.Renta
 import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.exceptions.IdInvalido
 import ar.edu.unsam.pds.exceptions.NoEsDuenioDelHospedaje
 import ar.edu.unsam.pds.exceptions.elementoEliminado
 import ar.edu.unsam.pds.repositories.ComentarioRepositorio
 import ar.edu.unsam.pds.repositories.HospedajeRepositorio
-import ar.edu.unsam.pds.repositories.ReservasRepositorio
+import ar.edu.unsam.pds.repositories.RentasRepositorio
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDate
@@ -25,7 +25,7 @@ class HospedajeService {
     @Autowired
     lateinit var hospedajesRepo: HospedajeRepositorio
     @Autowired
-    lateinit var reservasRepo: ReservasRepositorio
+    lateinit var reservasRepo: RentasRepositorio
     @Autowired
     lateinit var comentariosRepo: ComentarioRepositorio
 
@@ -62,7 +62,7 @@ class HospedajeService {
             listOf(-1,0,1,2,3,4,5)
         } else puntajes!!
 
-        var resultado: List<Hospedaje> = this.hospedajesRepo.find(
+        var resultado: List<Espacio> = this.hospedajesRepo.find(
                 ubicacion,
                 fechaInicio,
                 fechaFin,
@@ -75,14 +75,14 @@ class HospedajeService {
     }
 
     @Transactional(Transactional.TxType.REQUIRED)
-    fun modificarHospedaje(id: Long, hospedajeBody : Hospedaje) {
+    fun modificarHospedaje(id: Long, hospedajeBody : Espacio) {
         try{
             if (id == null) {
                 throw IdInvalido("No se puede actualizar un objeto sin id")
             }
             var hospedaje = this.hospedajesRepo.findById(id).get()
             this.validarEstaActivo(hospedaje)
-            hospedaje.nombre = hospedajeBody.nombre
+            hospedaje.titulo = hospedajeBody.titulo
             hospedaje.descripcion = hospedajeBody.descripcion
             hospedaje.otrosAspectos = hospedajeBody.otrosAspectos
             hospedaje.detalleAlojamiento = hospedajeBody.detalleAlojamiento
@@ -90,7 +90,7 @@ class HospedajeService {
             hospedaje.capacidad = hospedajeBody.capacidad
             hospedaje.habitaciones = hospedajeBody.habitaciones
             hospedaje.banios = hospedajeBody.banios
-            hospedaje.costoBase = hospedajeBody.costoBase
+            hospedaje.costo_hora = hospedajeBody.costo_hora
             hospedaje.hospedajeTipo = hospedajeBody.hospedajeTipo
             hospedaje.servicios = hospedajeBody.servicios
             hospedajesRepo.save(hospedaje)
@@ -100,8 +100,8 @@ class HospedajeService {
         }
     }
 
-    fun actualizarPuntajePromedio(hospedaje: Hospedaje){
-        hospedaje.puntajePromedio = hospedajesRepo.obtenerPromedioHospedaje(hospedaje.id!!)
+    fun actualizarPuntajePromedio(hospedaje: Espacio){
+        hospedaje.puntajePromedio = hospedajesRepo.obtenerPromedioHospedaje(hospedaje.id_espacio!!)
         hospedajesRepo.save(hospedaje)
     }
 
@@ -114,7 +114,7 @@ class HospedajeService {
         hospedajesRepo.save(hospedaje)
     }
 
-    fun validarEstaActivo(hospedaje: Hospedaje){
+    fun validarEstaActivo(hospedaje: Espacio){
         if(hospedaje.estaActivo != true){
             throw elementoEliminado("El elemento está eliminado.")
         }
@@ -122,7 +122,7 @@ class HospedajeService {
     fun cantidadDePaginas(cantidadHospedajes : Int) : Int = ceil(cantidadHospedajes.toDouble().div(cantidadPorPagina)).toInt()
 
 
-    fun filtrarPorPagina(hospedajes: List<Hospedaje>, numeroPagina: Int?): List<Hospedaje> {
+    fun filtrarPorPagina(hospedajes: List<Espacio>, numeroPagina: Int?): List<Espacio> {
         var resultado = hospedajes
         if (numeroPagina != null && numeroPagina > 0) {
             val inicio = (numeroPagina - 1) * cantidadPorPagina
@@ -137,37 +137,37 @@ class HospedajeService {
         return resultado
     }
 
-    fun crearHospedaje(nuevoHospedaje : Hospedaje){
-        Hospedaje.validarDatos(nuevoHospedaje)
+    fun crearHospedaje(nuevoHospedaje : Espacio){
+        Espacio.validarDatos(nuevoHospedaje)
         hospedajesRepo.save(nuevoHospedaje)
     }
 
     fun promedioPuntaje(idHospedaje: Long): Int{
         return this.hospedajesRepo.obtenerPromedioHospedaje(idHospedaje)
     }
-    fun obtenerUltimos3Comentarios(hospedaje: Hospedaje): List<ComentarioHospedaje> {
-        return this.comentariosRepo.obtenerComentariosOrdenados(hospedaje.id!!).take(3)
+    fun obtenerUltimos3Comentarios(hospedaje: Espacio): List<ComentarioEspacio> {
+        return this.comentariosRepo.obtenerComentariosOrdenados(hospedaje.id_espacio!!).take(3)
     }
 
-    fun validarDuenioHospedaje(userId: Long, hospedaje: Hospedaje){
-        if( hospedaje.duenio?.id!!.toInt() != userId.toInt() ) throw NoEsDuenioDelHospedaje("Un hospedaje solo puede ser eliminado por el dueño")
+    fun validarDuenioHospedaje(userId: Long, hospedaje: Espacio){
+        if( hospedaje.duenio?.id_usuario!!.toInt() != userId.toInt() ) throw NoEsDuenioDelHospedaje("Un hospedaje solo puede ser eliminado por el dueño")
     }
 
     //TODO: Desde la query se puede validar que la fecha seleccionada esta ocupada. REVISAR
-    fun estaOcupado(reserva : Reserva, fechaInicio: LocalDate, fechaFin: LocalDate) : Boolean {
+    fun estaOcupado(reserva : Renta, fechaInicio: LocalDate, fechaFin: LocalDate) : Boolean {
         return return this.antesDelHorarioReservado(reserva,fechaInicio) || this.despuesDelHorarioReservado(reserva, fechaFin) || this.fueraDelHorarioReservado (reserva, fechaInicio,fechaFin)
     }
 
-    fun fueraDelHorarioReservado(reserva : Reserva, filtroFechaInicio: LocalDate, filtroFechaFin: LocalDate): Boolean{
-        return(filtroFechaInicio < reserva.inicio) && (filtroFechaFin > reserva.inicio)
+    fun fueraDelHorarioReservado(reserva : Renta, filtroFechaInicio: LocalDate, filtroFechaFin: LocalDate): Boolean{
+        return(filtroFechaInicio < reserva.fecha_desde) && (filtroFechaFin > reserva.fecha_desde)
     }
 
-    fun antesDelHorarioReservado(reserva : Reserva, filtroFechaInicio: LocalDate): Boolean {
-        return (reserva.inicio!! <= filtroFechaInicio) && (reserva.fin!! >= filtroFechaInicio)
+    fun antesDelHorarioReservado(reserva : Renta, filtroFechaInicio: LocalDate): Boolean {
+        return (reserva.fecha_desde!! <= filtroFechaInicio) && (reserva.fecha_hasta!! >= filtroFechaInicio)
     }
 
-    fun despuesDelHorarioReservado(reserva : Reserva, filtroFechaFin: LocalDate): Boolean {
-        return (reserva.inicio!! <= filtroFechaFin) && (reserva.fin!! >= filtroFechaFin)
+    fun despuesDelHorarioReservado(reserva : Renta, filtroFechaFin: LocalDate): Boolean {
+        return (reserva.fecha_desde!! <= filtroFechaFin) && (reserva.fecha_hasta!! >= filtroFechaFin)
     }
 
 

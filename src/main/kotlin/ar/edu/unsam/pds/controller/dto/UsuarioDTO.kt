@@ -20,17 +20,5 @@ data class UsuarioDTO(
 data class UsuarioIdDTO(
     val id: Int? = null,
 )
-data class PosibleAmigo(
-    val id: Long? = null,
-    val nombre: String? = null,
-    val apellido: String? = null,
-)
-data class AmigoDTO(
-    val id: Long? = null,
-    val nombre: String? = null,
-    val apellido: String? = null,
-    var profileUrl: String? = null,
-    val pais: Pais? = null
-)
 
-fun Usuario.toIdDTO() = UsuarioIdDTO(id!!.toInt())
+fun Usuario.toIdDTO() = UsuarioIdDTO(id_usuario!!.toInt())

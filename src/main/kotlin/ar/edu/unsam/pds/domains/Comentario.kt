@@ -5,7 +5,7 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-class ComentarioHospedaje(
+class ComentarioEspacio(
         var reservaId: Long? = null,
         var duenioNombre: String? = null,
         var duenioApellido: String? = null,
@@ -27,7 +27,8 @@ class Comentario(
         var puntaje: Int? = null,
         @Column
         var fechaPublicacion: LocalDate? = null,
-
+        @ManyToOne
+        var renta: Renta? = null,
 ) {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

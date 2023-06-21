@@ -28,10 +28,10 @@ class AuthController {
         if (dto.username == null) {
             throw BadRequestException("Parametro 'username' es requerido")
         }
-        if (dto.password == null) {
+        if (dto.contrasenia == null) {
             throw BadRequestException("El parametro 'password' es requerido")
         }
-        return this.authService.login(dto.username!!, dto.password!!)
+        return this.authService.login(dto.username!!, dto.contrasenia!!)
     }
 
 }

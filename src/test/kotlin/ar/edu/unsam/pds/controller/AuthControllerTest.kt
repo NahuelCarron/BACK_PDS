@@ -51,7 +51,7 @@ class AuthControllerTest {
                         response,
                         Usuario::class.java
                 )
-                .id
+                .id_usuario
         id shouldNotBe null
         id!! shouldBeGreaterThan 0
         this.usuarioRepositorio.findById(id.toLong()).get().username shouldBe "karolg"

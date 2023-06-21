@@ -1,27 +1,27 @@
 package ar.edu.unsam.pds.repositories
-import ar.edu.unsam.pds.domains.Hospedaje
+import ar.edu.unsam.pds.domains.Espacio
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 
 @Repository
-interface HospedajeRepositorio: CrudRepository<Hospedaje, Long> {
+interface HospedajeRepositorio: CrudRepository<Espacio, Long> {
 
     @Query("""
-       SELECT h FROM Hospedaje h
-	    WHERE h.duenio.id = :userId AND h.estaActivo = true
+       SELECT h FROM Espacio h
+	    WHERE h.duenio.id_usuario = :userId AND h.estaActivo = true
         """)
-    fun obtenerHospedajesPorUsuario(userId:Long):List<Hospedaje>
+    fun obtenerHospedajesPorUsuario(userId:Long):List<Espacio>
 
     @Query("""
-        SELECT h FROM Hospedaje h
+        SELECT h FROM Espacio h
         WHERE h.estaActivo = true
         AND LOWER(h.ubicacion) LIKE CONCAT('%',LOWER(:ubicacion),'%')
         AND NOT EXISTS (
-            SELECT r.hospedaje FROM Reserva r
-            WHERE r.inicio BETWEEN :fechaInicio AND :fechaFin
-            OR r.fin BETWEEN :fechaInicio AND :fechaFin
+            SELECT r.espacio FROM Renta r
+            WHERE r.fecha_desde BETWEEN :fechaInicio AND :fechaFin
+            OR r.fecha_hasta BETWEEN :fechaInicio AND :fechaFin
         )
         AND h.capacidad >= :maxPasajeros
         AND h.puntajePromedio IN :puntajes
@@ -33,14 +33,14 @@ interface HospedajeRepositorio: CrudRepository<Hospedaje, Long> {
             fechaFin: LocalDate?,
             maxPasajeros: Int?,
             puntajes: List <Int>?
-    ): List<Hospedaje>
+    ): List<Espacio>
 
     @Query("""
         SELECT COALESCE(AVG(c.puntaje), -1)
-        FROM Reserva r
-        LEFT JOIN Comentario c ON r.comentario.id = c.id
-        WHERE r.hospedaje.id= :idHospedaje
-        GROUP BY r.hospedaje.id
+        FROM Renta r
+        LEFT JOIN Comentario c ON r.id_renta = c.renta.id_renta
+        WHERE r.espacio.id_espacio= :idHospedaje
+        GROUP BY r.espacio.id_espacio
         HAVING COALESCE(AVG(c.puntaje), -1) >= -1
     """)
     fun obtenerPromedioHospedaje(idHospedaje:Long): Int

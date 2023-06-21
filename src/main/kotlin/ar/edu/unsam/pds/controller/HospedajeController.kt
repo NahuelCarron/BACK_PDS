@@ -3,7 +3,7 @@ package ar.edu.unsam.pds.controller
 import ar.edu.unsam.pds.controller.dto.FiltroHospedaje
 import ar.edu.unsam.pds.controller.dto.HospedajeDTO
 import ar.edu.unsam.pds.controller.dto.HospedajesCantPaginasDTO
-import ar.edu.unsam.pds.domains.Hospedaje
+import ar.edu.unsam.pds.domains.Espacio
 import ar.edu.unsam.pds.services.HospedajeService
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -44,12 +44,12 @@ class HospedajeController {
 
     @PutMapping("/hospedajes/nuevo")
     fun crearHospedaje(@RequestBody body: String) {
-        val nuevo = objectMapper.readValue(body, Hospedaje::class.java)
+        val nuevo = objectMapper.readValue(body, Espacio::class.java)
         this.hospedajeService.crearHospedaje(nuevo)
     }
 
     @PutMapping("/hospedajes/{id}")
-    fun editarHospedaje(@PathVariable id: Long, @RequestBody hospedajeBody : Hospedaje){
+    fun editarHospedaje(@PathVariable id: Long, @RequestBody hospedajeBody : Espacio){
         this.hospedajeService.modificarHospedaje(id, hospedajeBody)
     }
     @DeleteMapping("/hospedajes/{userId}/eliminar/{hospedajeId}")

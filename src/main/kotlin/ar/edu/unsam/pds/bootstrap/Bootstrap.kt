@@ -16,13 +16,7 @@ class Bootstrap: InitializingBean {
     private lateinit var hospedajeRepository: HospedajeRepositorio
 
     @Autowired
-    private lateinit var reservasRepository: ReservasRepositorio
-
-    @Autowired
-    private lateinit var amigosRepository: AmigosRepositorio
-
-    @Autowired
-    private lateinit var comentarioRepositoryCrud: ComentarioRepositorio
+    private lateinit var reservasRepository: RentasRepositorio
 
     fun iniciarUsuarios() {
         usuariosRepository.save(eminem)
@@ -78,37 +72,13 @@ class Bootstrap: InitializingBean {
         this.crearReserva(reservaUsuario4Casa1v2)
     }
 
-    fun crearReserva(reserva : Reserva){
+    fun crearReserva(reserva : Renta){
         reservasRepository.save(reserva)
-        if(reserva.comentario != null) {
-            comentarioRepositoryCrud.save(reserva.comentario!!)
-            this.cargarPuntaje(reserva.hospedaje!!)
-        }
-    }
-
-    fun cargarPuntaje(hospedaje : Hospedaje){
-        hospedaje.puntajePromedio = hospedajeRepository.obtenerPromedioHospedaje(hospedaje.id!!)
-        hospedajeRepository.save(hospedaje)
-    }
-
-    fun iniciarAmigos() {
-        this.amigosRepository.save(RelacionAmigo(usuario = eminem, amigo= solari))
-        this.amigosRepository.save(RelacionAmigo(usuario = eminem, amigo= michaelJackson))
-
-        this.amigosRepository.save(RelacionAmigo(usuario = solari, amigo= eminem))
-        this.amigosRepository.save(RelacionAmigo(usuario = solari, amigo= michaelJackson))
-        this.amigosRepository.save(RelacionAmigo(usuario = solari, amigo= karolg))
-
-        this.amigosRepository.save(RelacionAmigo(usuario = michaelJackson, amigo= solari))
-        this.amigosRepository.save(RelacionAmigo(usuario = michaelJackson, amigo= eminem))
-        this.amigosRepository.save(RelacionAmigo(usuario = michaelJackson, amigo= karolg))
     }
 
     override fun afterPropertiesSet() {
         iniciarUsuarios()
         iniciarHospedajes()
         iniciarReserva()
-        iniciarAmigos()
-
     }
 }

@@ -21,7 +21,7 @@ class AuthService {
             throw BadRequestException("tiene que poner una contraseña")
         }
         val resultado = Usuario()
-        resultado.id = this.usuarioRepositorio.obtenerId(username, password)
+        resultado.id_usuario = this.usuarioRepositorio.obtenerId(username, password)
         return resultado
     }
 
