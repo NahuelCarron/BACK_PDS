@@ -16,7 +16,7 @@ class Bootstrap: InitializingBean {
     private lateinit var espacioRepository: EspacioRepositorio
 
     @Autowired
-    private lateinit var reservasRepository: RentasRepositorio
+    private lateinit var rentaRepository: RentasRepositorio
 
     fun iniciarUsuarios() {
         usuariosRepository.save(eminem)
@@ -56,24 +56,24 @@ class Bootstrap: InitializingBean {
     }
 
     fun iniciarRentas(){
-        this.crearRentas(reservaUsuario1Casa1)
-        this.crearRentas(reservaUsuario1Casa2)
-        this.crearRentas(reservaUsuario1Depto5)
-        this.crearRentas(reservaUsuario2Casa2)
-        this.crearRentas(reservaUsuario2Casa3)
-        this.crearRentas(reservaUsuario3Casa4)
-        this.crearRentas(reservaUsuario3Casa5)
-        this.crearRentas(reservaUsuario4Casa6)
-        this.crearRentas(reservaUsuario4Casa7)
-        this.crearRentas(reservaUsuario1Casa7)
-        this.crearRentas(reservaUsuario1Casa8)
-        this.crearRentas(reservaUsuario4Casa1v1)
-        this.crearRentas(reservaUsuario3Casa1)
-        this.crearRentas(reservaUsuario4Casa1v2)
+        this.crearRentas(rentaUsuario1Casa1)
+        this.crearRentas(rentaUsuario1Casa2)
+        this.crearRentas(rentaUsuario1Depto5)
+        this.crearRentas(rentaUsuario2Casa2)
+        this.crearRentas(rentaUsuario2Casa3)
+        this.crearRentas(rentaUsuario3Casa4)
+        this.crearRentas(rentaUsuario3Casa5)
+        this.crearRentas(rentaUsuario4Casa6)
+        this.crearRentas(rentaUsuario4Casa7)
+        this.crearRentas(rentaUsuario1Casa7)
+        this.crearRentas(rentaUsuario1Casa8)
+        this.crearRentas(rentaUsuario4Casa1v1)
+        this.crearRentas(rentaUsuario3Casa1)
+        this.crearRentas(rentaUsuario4Casa1v2)
     }
 
-    fun crearRentas(reserva : Renta){
-        reservasRepository.save(reserva)
+    fun crearRentas(renta: Renta){
+        rentaRepository.save(renta)
     }
 
     override fun afterPropertiesSet() {

@@ -9,7 +9,7 @@ import ar.edu.unsam.pds.domains.Espacio
 import ar.edu.unsam.pds.domains.Renta
 import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.exceptions.IdInvalido
-import ar.edu.unsam.pds.exceptions.NoEsDuenioDelHospedaje
+import ar.edu.unsam.pds.exceptions.NoEsDuenioDelEspacio
 import ar.edu.unsam.pds.exceptions.elementoEliminado
 import ar.edu.unsam.pds.repositories.ComentarioRepositorio
 import ar.edu.unsam.pds.repositories.EspacioRepositorio
@@ -76,23 +76,23 @@ class EspacioService {
     }
 
     @Transactional(Transactional.TxType.REQUIRED)
-    fun modificarEspacio(id: Long, hospedajeBody : Espacio) {
+    fun modificarEspacio(id: Long, espacioBody : Espacio) {
         try{
             if (id == null) {
                 throw IdInvalido("No se puede actualizar un objeto sin id")
             }
             var espacio = this.espaciosRepositorio.findById(id).get()
             this.validarEstaActivo(espacio)
-            espacio.titulo = hospedajeBody.titulo
-            espacio.descripcion = hospedajeBody.descripcion
-            espacio.otrosAspectos = hospedajeBody.otrosAspectos
-            espacio.detalleAlojamiento = hospedajeBody.detalleAlojamiento
-            espacio.ubicacion = hospedajeBody.ubicacion
-            espacio.capacidad = hospedajeBody.capacidad
-            espacio.habitaciones = hospedajeBody.habitaciones
-            espacio.banios = hospedajeBody.banios
-            espacio.costo_hora = hospedajeBody.costo_hora
-            espacio.servicios = hospedajeBody.servicios
+            espacio.titulo = espacioBody.titulo
+            espacio.descripcion = espacioBody.descripcion
+            espacio.otrosAspectos = espacioBody.otrosAspectos
+            espacio.detalleAlojamiento = espacioBody.detalleAlojamiento
+            espacio.ubicacion = espacioBody.ubicacion
+            espacio.capacidad = espacioBody.capacidad
+            espacio.habitaciones = espacioBody.habitaciones
+            espacio.banios = espacioBody.banios
+            espacio.costo_hora = espacioBody.costo_hora
+            espacio.servicios = espacioBody.servicios
             espaciosRepositorio.save(espacio)
 
         } catch (e: Exception) {
@@ -100,16 +100,16 @@ class EspacioService {
         }
     }
 
-    fun actualizarPuntajePromedio(hospedaje: Espacio){
-        hospedaje.puntajePromedio = espaciosRepositorio.obtenerPromedioEspacio(hospedaje.id!!)
-        espaciosRepositorio.save(hospedaje)
+    fun actualizarPuntajePromedio(espacio: Espacio){
+        espacio.puntajePromedio = espaciosRepositorio.obtenerPromedioEspacio(espacio.id!!)
+        espaciosRepositorio.save(espacio)
     }
 
     @Transactional(Transactional.TxType.REQUIRED)
-    fun eliminarEspacio(userId: Long, hospedajeId: Long){
-        val espacio = this.espaciosRepositorio.findById(hospedajeId).get()
+    fun eliminarEspacio(userId: Long, espacioId: Long){
+        val espacio = this.espaciosRepositorio.findById(espacioId).get()
         this.validarEstaActivo(espacio)
-        this.validarDuenioHospedaje(userId, espacio)
+        this.validarDuenioEspacio(userId, espacio)
         espacio.estaActivo = false
         espaciosRepositorio.save(espacio)
     }
@@ -149,8 +149,8 @@ class EspacioService {
         return this.comentariosRepo.obtenerComentariosOrdenados(espacio.id!!).take(3)
     }
 
-    fun validarDuenioHospedaje(userId: Long, espacio: Espacio){
-        if( espacio.duenio?.id!!.toInt() != userId.toInt() ) throw NoEsDuenioDelHospedaje("Un hospedaje solo puede ser eliminado por el dueño")
+    fun validarDuenioEspacio(userId: Long, espacio: Espacio){
+        if( espacio.duenio?.id!!.toInt() != userId.toInt() ) throw NoEsDuenioDelEspacio("Un espacio solo puede ser eliminado por el dueño")
     }
 
     //TODO: Desde la query se puede validar que la fecha seleccionada esta ocupada. REVISAR
@@ -158,16 +158,16 @@ class EspacioService {
         return return this.antesDelHorarioRentado(renta,fechaInicio) || this.despuesDelHorarioRentado(renta, fechaFin) || this.fueraDelHorarioRentado (renta, fechaInicio,fechaFin)
     }
 
-    fun fueraDelHorarioRentado(reserva : Renta, filtroFechaInicio: LocalDate, filtroFechaFin: LocalDate): Boolean{
-        return(filtroFechaInicio < reserva.fecha_desde) && (filtroFechaFin > reserva.fecha_desde)
+    fun fueraDelHorarioRentado(renta : Renta, filtroFechaInicio: LocalDate, filtroFechaFin: LocalDate): Boolean{
+        return(filtroFechaInicio < renta.fecha_desde) && (filtroFechaFin > renta.fecha_desde)
     }
 
-    fun antesDelHorarioRentado(reserva : Renta, filtroFechaInicio: LocalDate): Boolean {
-        return (reserva.fecha_desde!! <= filtroFechaInicio) && (reserva.fecha_hasta!! >= filtroFechaInicio)
+    fun antesDelHorarioRentado(renta : Renta, filtroFechaInicio: LocalDate): Boolean {
+        return (renta.fecha_desde!! <= filtroFechaInicio) && (renta.fecha_hasta!! >= filtroFechaInicio)
     }
 
-    fun despuesDelHorarioRentado(reserva : Renta, filtroFechaFin: LocalDate): Boolean {
-        return (reserva.fecha_desde!! <= filtroFechaFin) && (reserva.fecha_hasta!! >= filtroFechaFin)
+    fun despuesDelHorarioRentado(renta : Renta, filtroFechaFin: LocalDate): Boolean {
+        return (renta.fecha_desde!! <= filtroFechaFin) && (renta.fecha_hasta!! >= filtroFechaFin)
     }
 
 

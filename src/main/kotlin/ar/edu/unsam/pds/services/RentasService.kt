@@ -33,14 +33,14 @@ class RentasService {
         }
 
         try {
-            val nuevaReserva = Renta(usuario = usuariosRepo.findById(rentaDTO.usuario?.id!!.toLong()).get(),
+            val nuevaRenta = Renta(usuario = usuariosRepo.findById(rentaDTO.usuario?.id!!.toLong()).get(),
                 espacio = espaciosRepository.findById(rentaDTO.espacio.id.toLong()).get(),
                 fecha_desde = rentaDTO.inicio,
                 fecha_hasta = rentaDTO.fin,
             )
-            nuevaReserva.realizarCompra()
-            rentasRepositorio.save(nuevaReserva)
-            this.usuariosRepo.save(nuevaReserva.usuario!!) //guarda el nuevo saldo del usuario en el repo de usuarios
+            nuevaRenta.realizarCompra()
+            rentasRepositorio.save(nuevaRenta)
+            this.usuariosRepo.save(nuevaRenta.usuario!!) //guarda el nuevo saldo del usuario en el repo de usuarios
 
         }
         catch (e: Exception) {

@@ -39,7 +39,7 @@ class UserController {
     }
 
     @GetMapping("/usuarios/{userId}/rentas")
-    @Operation(summary = "Endpoint acceder a las reservas compradas por el usuario")
+    @Operation(summary = "Endpoint acceder a las rentas compradas por el usuario")
     fun getUserRentas(@PathVariable userId: Long): List<RentaUsuarioDTO> {
         return this.userService.getUserRentas(userId)
     }
@@ -50,9 +50,9 @@ class UserController {
       return this.userService.getUserEspacios(userId)
     }
 
-    @DeleteMapping("/comentarios/{reservaId}/delete")
+    @DeleteMapping("/comentarios/{rentaId}/delete")
     @Operation(summary = "Endpoint eliminar un comentario")
-    fun eliminarComentario(@PathVariable reservaId: Int) {
+    fun eliminarComentario(@PathVariable rentaId: Int) {
         // TODO: implementar
     }
 

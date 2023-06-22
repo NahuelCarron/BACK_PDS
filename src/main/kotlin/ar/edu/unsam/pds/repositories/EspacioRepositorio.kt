@@ -47,7 +47,7 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
 }
 
 /*
-Interfaz que extiende la interfaz JpaRepository de Spring Data JPA y que declara un método para obtener todos los alojamientos reservados
+Interfaz que extiende la interfaz JpaRepository de Spring Data JPA y que declara un método para obtener todos los alojamientos rentados
 por un usuario determinado.
 Este método utiliza la convención de nomenclatura "findBy" seguida del nombre del atributo "UsuarioId" para generar una consulta SQL para buscar los registros en la tabla "espacios" que coincidan con el valor proporcionado para "userId".
 para usar esta interfaz, se debe inyectarla en la clase correspondiente utilizando la anotación @Autowired o @Inject. Además, de tener configurado el datasource y la conexión a la base de datos en el archivo de configuración de Spring.

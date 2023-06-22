@@ -12,9 +12,9 @@ data class RentaDTO (
         var costoTotal: Double? = null,
 )
 data class PuntajeComentarioDTO(
-    val idReserva: Int,
-    val puntaje: Int? = null,
-    var comentario: String? = null,
+        val idRenta: Int,
+        val puntaje: Int? = null,
+        var comentario: String? = null,
 )
 data class RentaUsuarioDTO (
         val id: Long? = null,

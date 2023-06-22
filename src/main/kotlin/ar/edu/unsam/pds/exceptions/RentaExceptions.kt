@@ -10,10 +10,10 @@ class ErrorFechas(mensaje: String) : RuntimeException(mensaje) {}
 class CantidadPasajerosIncorrecto(mensaje: String) : RuntimeException(mensaje) {}
 
 @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-class ReservaYaTieneComentario(mensaje: String) : RuntimeException(mensaje) {}
+class RentaYaTieneComentario(mensaje: String) : RuntimeException(mensaje) {}
 
 @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
-class NoExisteReserva(mensaje: String) : RuntimeException(mensaje) {}
+class NoExisteRenta(mensaje: String) : RuntimeException(mensaje) {}
 
 @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
 class FechaDeFinNoAlcanzada(mensaje: String) : RuntimeException(mensaje) {}

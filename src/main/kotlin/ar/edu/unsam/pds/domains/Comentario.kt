@@ -6,7 +6,7 @@ import javax.persistence.*
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 class ComentarioEspacio(
-        var reservaId: Long? = null,
+        var rentaId: Long? = null,
         var duenioNombre: String? = null,
         var duenioApellido: String? = null,
         var espacioNombre: String? = null,

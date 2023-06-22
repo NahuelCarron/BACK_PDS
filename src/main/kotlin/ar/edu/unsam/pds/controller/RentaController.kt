@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController
 @CrossOrigin("*")
 class RentaController {
     @Autowired
-    lateinit var reservaService: RentasService
+    lateinit var rentaService: RentasService
 
-    @PostMapping("/realizarReserva")
-    fun realizarRenta(@RequestBody reservaDTO : RentaDTO){
-        this.reservaService.realizarRenta(reservaDTO)
+    @PostMapping("/realizarRenta")
+    fun realizarRenta(@RequestBody rentaDTO : RentaDTO){
+        this.rentaService.realizarRenta(rentaDTO)
     }
 
-    @PostMapping("/calificarReserva")
-    @Operation(summary = "Endpoint para calificar una reserva")
+    @PostMapping("/calificarRenta")
+    @Operation(summary = "Endpoint para calificar una renta")
     fun calificarRenta(@RequestBody puntajeComentarioDTO: PuntajeComentarioDTO): Int {
         // TODO: implementar
         return 200

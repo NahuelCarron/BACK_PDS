@@ -28,14 +28,14 @@ class UserService {
 
     @Transactional(Transactional.TxType.NEVER)
     fun getUserComentarios(userId: Long): List<ComentarioEspacio> {
-        var reservas = this.rentasRepositorio.obtenerComentariosPorUsuario(userId)
-        return getComentarios(reservas)
+        var rentas = this.rentasRepositorio.obtenerComentariosPorUsuario(userId)
+        return getComentarios(rentas)
     }
 
-    fun getComentarios(reservas : List<Renta>): List<ComentarioEspacio>{
-        return reservas.map{
+    fun getComentarios(rentas : List<Renta>): List<ComentarioEspacio>{
+        return rentas.map{
             ComentarioEspacio(
-                reservaId = it.id,
+                rentaId = it.id,
                 duenioNombre = it.espacio?.duenio?.nombre,
                 duenioApellido = it.espacio?.duenio?.apellido,
                 duenioProfileUrl = it.espacio?.duenio?.fotoPerfil,

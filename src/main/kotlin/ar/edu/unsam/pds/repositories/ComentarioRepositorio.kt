@@ -23,8 +23,8 @@ interface ComentarioRepositorio: CrudRepository<Comentario, Long> {
     JOIN Usuario u ON h.duenio.id = u.id
     JOIN Renta r ON r.espacio.id = h.id
     JOIN Comentario c ON r.id = c.renta.id
-    WHERE r.espacio.id = :idHospedaje
+    WHERE r.espacio.id = :idEspacio
     ORDER BY c.fechaPublicacion DESC
     """)
-    fun obtenerComentariosOrdenados(idHospedaje: Long): List<ComentarioEspacio>
+    fun obtenerComentariosOrdenados(idEspacio: Long): List<ComentarioEspacio>
 }
