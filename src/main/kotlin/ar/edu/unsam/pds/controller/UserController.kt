@@ -68,4 +68,10 @@ class UserController {
         this.userService.actualizarPais(userId,pais)
     }
 
+    @PostMapping("crearUsuario")
+    @Operation(summary = "Endpoint para crear un usuario")
+    fun crearUsuario(@RequestBody usuario: Usuario){
+        this.userService.crearUsuario(usuario)
+    }
+
 }

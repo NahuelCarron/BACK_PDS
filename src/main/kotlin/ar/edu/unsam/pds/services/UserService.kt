@@ -75,5 +75,10 @@ class UserService {
         this.usuarioRepositorio.actualizarPais(Pais.valueOf(pais), userId)
     }
 
+    @Transactional(Transactional.TxType.REQUIRED)
+    fun crearUsuario(usuario: Usuario){
+        this.usuarioRepositorio.save(usuario)
+    }
+
 
 }
