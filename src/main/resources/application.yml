@@ -9,7 +9,7 @@ server:
 spring:
   #   base de datos posta
   datasource:
-    url: jdbc:postgresql://0.0.0.0:5432/espacios_coin
+    url: jdbc:postgresql://0.0.0.0:6543/espacios_coin
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
