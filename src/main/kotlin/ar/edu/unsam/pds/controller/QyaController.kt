@@ -1,5 +1,7 @@
 package ar.edu.unsam.pds.controller
 
+import ar.edu.unsam.pds.controller.dto.QyaPreguntaDto
+import ar.edu.unsam.pds.controller.dto.QyaRespuestaDto
 import ar.edu.unsam.pds.domains.Qya
 import ar.edu.unsam.pds.services.QyaService
 import com.fasterxml.jackson.databind.MapperFeature
@@ -15,18 +17,31 @@ class QyaController {
 
     @Autowired
     lateinit var qyaService: QyaService
+
     var objectMapper: ObjectMapper = JsonMapper.builder()
             .addModule(JavaTimeModule())
             .build()
             .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 
-    @PostMapping("/preguntas")
-    fun enviarPregunta(@RequestBody body: String) {
-        val dto = objectMapper.readValue(body, Qya::class.java)
-        this.qyaService.enviarPregunta(dto)
+    @PostMapping("/preguntas/enviar")
+    fun enviarPregunta(@RequestBody body: QyaPreguntaDto) {
+        this.qyaService.enviarPregunta(body.idUsuario, body.idEspacio, body.pregunta)
     }
+
     @GetMapping("/preguntas")
-    fun getSinResponder(@RequestParam idUsuario: Long): List<Qya> {
-        return this.qyaService.getSinResponder(idUsuario)
+    fun getQyas(
+            @RequestParam idUsuario: Long?,
+            @RequestParam idEspacio: Long?,
+    ): List<Qya> {
+        return this.qyaService.getQyas(
+                idUsuario,
+                idEspacio,
+                )
+    }
+
+    @PutMapping("/preguntas/responder")
+    fun responder(@RequestBody body: String) {
+        val dto = objectMapper.readValue(body, QyaRespuestaDto::class.java)
+        this.qyaService.responder(dto.id_qya, dto.respuesta)
     }
 }

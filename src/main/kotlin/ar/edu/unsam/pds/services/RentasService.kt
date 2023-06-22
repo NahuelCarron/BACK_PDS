@@ -11,35 +11,35 @@ import java.time.LocalDate
 import javax.transaction.Transactional
 
 @Service
-class ReservaService {
+class RentasService {
     @Autowired
-    lateinit var reservasRepo : RentasRepositorio
+    lateinit var rentasRepositorio : RentasRepositorio
     @Autowired
-    lateinit var hospedajesRepo : HospedajeRepositorio
+    lateinit var espaciosRepository : EspacioRepositorio
     @Autowired
     lateinit var usuariosRepo : UsuarioRepositorio
     @Autowired
-    lateinit var hospedajeService : HospedajeService
+    lateinit var espaciosService : EspacioService
 
-    fun sePuedeReservar(fechaInicio : LocalDate, fechaFin: LocalDate, idHospedaje: Long) : Boolean {
-        var reservasSegunHospedaje = this.reservasRepo.obtenerReservasPorHospedaje(idHospedaje)
-        return reservasSegunHospedaje.any { hospedajeService.estaOcupado(it,fechaInicio,fechaFin) }
+    fun sePuedeRentar(fechaInicio : LocalDate, fechaFin: LocalDate, idEspacio: Long) : Boolean {
+        var rentasSegunEspacio = this.rentasRepositorio.obtenerRentasPorEspacio(idEspacio)
+        return rentasSegunEspacio.any { espaciosService.estaOcupado(it,fechaInicio,fechaFin) }
     }
     @Transactional(Transactional.TxType.REQUIRED)
-    fun realizarReserva(reservaDTO : RentaDTO){
+    fun realizarRenta(rentaDTO : RentaDTO){
 
-        if (this.sePuedeReservar(reservaDTO?.inicio!!,reservaDTO?.fin!!,reservaDTO.hospedaje?.id!!.toLong())){
+        if (this.sePuedeRentar(rentaDTO?.inicio!!,rentaDTO?.fin!!,rentaDTO.espacio?.id!!.toLong())){
             throw ErrorFechas("Las fechas seleccionadas no estan disponibles")
         }
 
         try {
-            val nuevaReserva = Renta(usuario = usuariosRepo.findById(reservaDTO.usuario?.id!!.toLong()).get(),
-                espacio = hospedajesRepo.findById(reservaDTO.hospedaje.id.toLong()).get(),
-                fecha_desde = reservaDTO.inicio,
-                fecha_hasta = reservaDTO.fin,
+            val nuevaReserva = Renta(usuario = usuariosRepo.findById(rentaDTO.usuario?.id!!.toLong()).get(),
+                espacio = espaciosRepository.findById(rentaDTO.espacio.id.toLong()).get(),
+                fecha_desde = rentaDTO.inicio,
+                fecha_hasta = rentaDTO.fin,
             )
             nuevaReserva.realizarCompra()
-            reservasRepo.save(nuevaReserva)
+            rentasRepositorio.save(nuevaReserva)
             this.usuariosRepo.save(nuevaReserva.usuario!!) //guarda el nuevo saldo del usuario en el repo de usuarios
 
         }

@@ -9,21 +9,21 @@ import org.springframework.stereotype.Repository
 interface ComentarioRepositorio: CrudRepository<Comentario, Long> {
     @Query("""
         SELECT new ar.edu.unsam.pds.domains.ComentarioEspacio(
-        r.id_renta,
+        r.id,
         u.nombre,
         u.apellido,
         h.titulo,
-        u.foto_perfil,
+        u.fotoPerfil,
         h.pais,
         c.puntaje,
         c.comentario,
         c.fechaPublicacion
     )
     FROM Espacio h
-    JOIN Usuario u ON h.duenio.id_usuario = u.id_usuario
-    JOIN Renta r ON r.espacio.id_espacio = h.id_espacio
-    JOIN Comentario c ON r.id_renta = c.renta.id_renta
-    WHERE r.espacio.id_espacio = :idHospedaje
+    JOIN Usuario u ON h.duenio.id = u.id
+    JOIN Renta r ON r.espacio.id = h.id
+    JOIN Comentario c ON r.id = c.renta.id
+    WHERE r.espacio.id = :idHospedaje
     ORDER BY c.fechaPublicacion DESC
     """)
     fun obtenerComentariosOrdenados(idHospedaje: Long): List<ComentarioEspacio>

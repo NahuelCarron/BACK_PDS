@@ -8,10 +8,10 @@ class MetodoDePago(
     var tipo: String? = null,
     @Column
     var numero: String? = null,
-    @Column
-    var id_usuario: Long? = null,
+    @ManyToOne
+    var usuario: Usuario? = null,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id_metodo: Long? = null
+    var id: Long? = null
 }

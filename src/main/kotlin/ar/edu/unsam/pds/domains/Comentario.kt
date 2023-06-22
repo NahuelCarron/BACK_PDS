@@ -9,9 +9,9 @@ class ComentarioEspacio(
         var reservaId: Long? = null,
         var duenioNombre: String? = null,
         var duenioApellido: String? = null,
-        var hospedajeNombre: String? = null,
+        var espacioNombre: String? = null,
         var duenioProfileUrl: String? = null,
-        var hospedajePais: Pais? = null,
+        var espacioPais: Pais? = null,
         var cantidadEstrellas: Int? = null,
         var comentario: String? = null,
         var fechaPublicacion: LocalDate? = null

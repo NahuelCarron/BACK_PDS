@@ -2,7 +2,7 @@ package ar.edu.unsam.pds.controller
 
 import ar.edu.unsam.pds.controller.dto.PuntajeComentarioDTO
 import ar.edu.unsam.pds.controller.dto.RentaDTO
-import ar.edu.unsam.pds.services.ReservaService
+import ar.edu.unsam.pds.services.RentasService
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController
 @CrossOrigin("*")
 class RentaController {
     @Autowired
-    lateinit var reservaService: ReservaService
+    lateinit var reservaService: RentasService
 
     @PostMapping("/realizarReserva")
     fun realizarRenta(@RequestBody reservaDTO : RentaDTO){
-        this.reservaService.realizarReserva(reservaDTO)
+        this.reservaService.realizarRenta(reservaDTO)
     }
 
     @PostMapping("/calificarReserva")

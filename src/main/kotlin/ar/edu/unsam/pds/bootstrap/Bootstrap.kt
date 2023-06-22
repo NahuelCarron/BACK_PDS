@@ -13,7 +13,7 @@ class Bootstrap: InitializingBean {
     private lateinit var usuariosRepository: UsuarioRepositorio
 
     @Autowired
-    private lateinit var hospedajeRepository: HospedajeRepositorio
+    private lateinit var espacioRepository: EspacioRepositorio
 
     @Autowired
     private lateinit var reservasRepository: RentasRepositorio
@@ -25,60 +25,60 @@ class Bootstrap: InitializingBean {
         usuariosRepository.save(karolg)
     }
 
-    fun iniciarHospedajes() {
+    fun iniciarEspacios() {
         //Casas
-        hospedajeRepository.save(hospedajeCasa1)
-        hospedajeRepository.save(hospedajeCasa2)
-        hospedajeRepository.save(hospedajeCasa3)
-        hospedajeRepository.save(hospedajeCasa4)
-        hospedajeRepository.save(hospedajeCasa5)
-        hospedajeRepository.save(hospedajeCasa6)
-        hospedajeRepository.save(hospedajeCasa7)
-        hospedajeRepository.save(hospedajeCasa8)
+        espacioRepository.save(espacioCasa1)
+        espacioRepository.save(espacioCasa2)
+        espacioRepository.save(espacioCasa3)
+        espacioRepository.save(espacioCasa4)
+        espacioRepository.save(espacioCasa5)
+        espacioRepository.save(espacioCasa6)
+        espacioRepository.save(espacioCasa7)
+        espacioRepository.save(espacioCasa8)
         //Departamentos
-        hospedajeRepository.save(hospedajeDepartamento1)
-        hospedajeRepository.save(hospedajeDepartamento2)
-        hospedajeRepository.save(hospedajeDepartamento3)
-        hospedajeRepository.save(hospedajeDepartamento4)
-        hospedajeRepository.save(hospedajeDepartamento5)
-        hospedajeRepository.save(hospedajeDepartamento6)
-        hospedajeRepository.save(hospedajeDepartamento7)
-        hospedajeRepository.save(hospedajeDepartamento8)
+        espacioRepository.save(espacioDepartamento1)
+        espacioRepository.save(espacioDepartamento2)
+        espacioRepository.save(espacioDepartamento3)
+        espacioRepository.save(espacioDepartamento4)
+        espacioRepository.save(espacioDepartamento5)
+        espacioRepository.save(espacioDepartamento6)
+        espacioRepository.save(espacioDepartamento7)
+        espacioRepository.save(espacioDepartamento8)
         //Cabañas
-        hospedajeRepository.save(hospedajeCabania1)
-        hospedajeRepository.save(hospedajeCabania2)
-        hospedajeRepository.save(hospedajeCabania3)
-        hospedajeRepository.save(hospedajeCabania4)
-        hospedajeRepository.save(hospedajeCabania5)
-        hospedajeRepository.save(hospedajeCabania6)
-        hospedajeRepository.save(hospedajeCabania7)
-        hospedajeRepository.save(hospedajeCabania8)
+        espacioRepository.save(espacioCabania1)
+        espacioRepository.save(espacioCabania2)
+        espacioRepository.save(espacioCabania3)
+        espacioRepository.save(espacioCabania4)
+        espacioRepository.save(espacioCabania5)
+        espacioRepository.save(espacioCabania6)
+        espacioRepository.save(espacioCabania7)
+        espacioRepository.save(espacioCabania8)
     }
 
-    fun iniciarReserva(){
-        this.crearReserva(reservaUsuario1Casa1)
-        this.crearReserva(reservaUsuario1Casa2)
-        this.crearReserva(reservaUsuario1Depto5)
-        this.crearReserva(reservaUsuario2Casa2)
-        this.crearReserva(reservaUsuario2Casa3)
-        this.crearReserva(reservaUsuario3Casa4)
-        this.crearReserva(reservaUsuario3Casa5)
-        this.crearReserva(reservaUsuario4Casa6)
-        this.crearReserva(reservaUsuario4Casa7)
-        this.crearReserva(reservaUsuario1Casa7)
-        this.crearReserva(reservaUsuario1Casa8)
-        this.crearReserva(reservaUsuario4Casa1v1)
-        this.crearReserva(reservaUsuario3Casa1)
-        this.crearReserva(reservaUsuario4Casa1v2)
+    fun iniciarRentas(){
+        this.crearRentas(reservaUsuario1Casa1)
+        this.crearRentas(reservaUsuario1Casa2)
+        this.crearRentas(reservaUsuario1Depto5)
+        this.crearRentas(reservaUsuario2Casa2)
+        this.crearRentas(reservaUsuario2Casa3)
+        this.crearRentas(reservaUsuario3Casa4)
+        this.crearRentas(reservaUsuario3Casa5)
+        this.crearRentas(reservaUsuario4Casa6)
+        this.crearRentas(reservaUsuario4Casa7)
+        this.crearRentas(reservaUsuario1Casa7)
+        this.crearRentas(reservaUsuario1Casa8)
+        this.crearRentas(reservaUsuario4Casa1v1)
+        this.crearRentas(reservaUsuario3Casa1)
+        this.crearRentas(reservaUsuario4Casa1v2)
     }
 
-    fun crearReserva(reserva : Renta){
+    fun crearRentas(reserva : Renta){
         reservasRepository.save(reserva)
     }
 
     override fun afterPropertiesSet() {
         iniciarUsuarios()
-        iniciarHospedajes()
-        iniciarReserva()
+        iniciarEspacios()
+        iniciarRentas()
     }
 }

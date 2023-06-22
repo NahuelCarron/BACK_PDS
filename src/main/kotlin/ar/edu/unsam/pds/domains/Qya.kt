@@ -11,10 +11,8 @@ class Qya(
     var respuesta: String? = null,
         @Column(name = "fechaPublicacion")
     val fechaPublicacion: LocalDate? = null,
-        @ManyToOne
-    val usuario: Usuario? = null,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id_qya: Long? = null
+    var id: Long? = null
 }

@@ -3,7 +3,7 @@ package ar.edu.unsam.pds.controller.dto
 import ar.edu.unsam.pds.domains.*
 import java.time.LocalDate
 
-data class HospedajeDTO(
+data class EspacioDTO(
         val id: Int? = null,
         val nombre: String? = null,
         val descripcion: String? = null,
@@ -17,28 +17,27 @@ data class HospedajeDTO(
         val costoBase: Double? = null,
         val ubicacion: String? = null,
         val pais: Pais? = null,
-        val hospedajeTipo: TipoHospedaje? = null,
         var puntaje: Int? = null,
         var comentarios: List<ComentarioEspacio>? = null,
         val estaActivo: Boolean? = null
 )
-data class comentarioHospedajeDTO(
+data class comentarioEspacioDTO(
     var duenioNombre: String = "",
     var duenioApellido: String = "",
     val fechaPublicacion: LocalDate? = null,
     var comentario: String = ""
 )
 
-fun Espacio.toDTO() = HospedajeDTO(id_espacio!!.toInt(),titulo,descripcion,capacidad,habitaciones,banios,detalleAlojamiento,
-    otrosAspectos,servicios,duenio?.toIdDTO(),costo_hora,ubicacion,pais,hospedajeTipo,puntajePromedio,comentarios, estaActivo)
+fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,capacidad,habitaciones,banios,detalleAlojamiento,
+    otrosAspectos,servicios,duenio?.toIdDTO(),costo_hora,ubicacion,pais,puntajePromedio,comentarios, estaActivo)
 
-data class HospedajeIdDTO(
+data class EspacioIdDTO(
     val id: Int? = null,
 )
 
-fun Espacio.toIdDTO() = HospedajeIdDTO(id_espacio!!.toInt())
+fun Espacio.toIdDTO() = EspacioIdDTO(id!!.toInt())
 
-data  class FiltroHospedaje(
+data  class FiltroEspacio(
     val ubicacion: String = "",
     val fechaInicio: LocalDate? = null,
     val fechaFin: LocalDate? = null,
@@ -46,11 +45,11 @@ data  class FiltroHospedaje(
     val numeroPagina: Int? = null,
     val puntajes: List<Int>? = null
 )
-data class HospedajesCantPaginasDTO(
-    val hospedajes: List<HospedajeDTO>? = null,
-    val cantidadPaginas : Int? = null
+data class EspaciosCantPaginasDTO(
+        val espacios: List<EspacioDTO>? = null,
+        val cantidadPaginas : Int? = null
 )
-data class HospedajeUsuarioDTO(
+data class EspacioUsuarioDTO(
     val id: Long? = null,
     val nombre: String? = null,
     val descripcion: String? = null,

@@ -12,7 +12,7 @@ import java.time.LocalDate
 interface UsuarioRepositorio: CrudRepository<Usuario, Long> {
 
     @Query("""
-        SELECT u.id_usuario
+        SELECT u.id
         FROM Usuario u
         WHERE u.username = :username AND u.contrasenia = :password
     """)
@@ -20,13 +20,13 @@ interface UsuarioRepositorio: CrudRepository<Usuario, Long> {
 
     @Modifying
     @Query("""
-       UPDATE Usuario SET fecha_nacimiento = :nuevaFecha WHERE id_usuario= :idUser
+       UPDATE Usuario SET fechaNacimiento = :nuevaFecha WHERE id= :idUser
     """)
     fun actualizarFechaNacimiento(nuevaFecha: LocalDate, idUser: Long)
 
     @Modifying
     @Query("""
-       UPDATE Usuario SET pais = :nuevoPais WHERE id_usuario= :idUser
+       UPDATE Usuario SET pais = :nuevoPais WHERE id= :idUser
     """)
     fun actualizarPais(nuevoPais: Pais, idUser: Long)
 

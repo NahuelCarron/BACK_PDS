@@ -10,7 +10,7 @@ class CalificacionInvalida(mensaje: String) : RuntimeException(mensaje) {}
 class SaldoInsuficiente(mensaje: String) : RuntimeException(mensaje) {}
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-class HospedajeInvalido(mensaje: String) : RuntimeException(mensaje) {}
+class EspacioInvalido(mensaje: String) : RuntimeException(mensaje) {}
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 class NoEsDuenioDelHospedaje(mensaje: String) : RuntimeException(mensaje) {}

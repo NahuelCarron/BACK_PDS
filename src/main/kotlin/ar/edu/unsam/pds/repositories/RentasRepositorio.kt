@@ -11,8 +11,8 @@ interface RentasRepositorio: CrudRepository<Renta, Long> {
     @Query("""
        SELECT r
 	    FROM Renta r
-        JOIN Comentario c ON r.id_renta = c.renta.id_renta
-	    WHERE r.usuario.id_usuario = :userId
+        JOIN Comentario c ON r.id = c.renta.id
+	    WHERE r.usuario.id = :userId
         AND c.comentario IS NOT NULL
         """)
     fun obtenerComentariosPorUsuario(userId:Long):List<Renta>
@@ -20,8 +20,8 @@ interface RentasRepositorio: CrudRepository<Renta, Long> {
     @Query("""
        SELECT r
 	    FROM Renta r
-	    WHERE r.espacio.id_espacio = :hospedajeId
+	    WHERE r.espacio.id = :espacioId
         """)
-    fun obtenerReservasPorHospedaje(hospedajeId:Long):List<Renta>
+    fun obtenerRentasPorEspacio(espacioId:Long):List<Renta>
 
 }

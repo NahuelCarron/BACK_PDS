@@ -16,16 +16,16 @@ class Usuario(
         @Column(length = 150)
         var apellido: String? = null,
         @Column(columnDefinition = "DATE")
-        var fecha_nacimiento: LocalDate? = null,
+        var fechaNacimiento: LocalDate? = null,
         @Enumerated(EnumType.STRING)
         var pais: Pais? = null,
         @Column
         var dni: Double? = null,
         @Column
-        var foto_perfil: String? = null, // TODO: sustituir base url hardcodeada
+        var fotoPerfil: String? = null,
 ) {
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id_usuario: Long? = null
+        var id: Long? = null
 
 }
 

@@ -11,10 +11,10 @@ val eminem = Usuario(
     contrasenia = "abc123",
     nombre = "Marshall Bruce",
     apellido = "Mathers III",
-    fecha_nacimiento = LocalDate.of(1972, 10, 17),
+    fechaNacimiento = LocalDate.of(1972, 10, 17),
     pais = Pais.USA,
     saldo = 50000.0,
-    foto_perfil = "http://localhost:9000/api/v0/assets/3ce66d74-6f90-4219-ae6f-be3ef24b163e.jpg",
+    fotoPerfil = "http://localhost:9000/api/v0/assets/3ce66d74-6f90-4219-ae6f-be3ef24b163e.jpg",
 )
 
 val solari = Usuario(
@@ -22,10 +22,10 @@ val solari = Usuario(
     contrasenia = "abc123",
     nombre = "Carlos Alberto",
     apellido = "Solari",
-    fecha_nacimiento = LocalDate.now(),
+    fechaNacimiento = LocalDate.now(),
     pais = Pais.ARG,
     saldo = 34000.0,
-    foto_perfil = "http://localhost:9000/api/v0/assets/513c8ff4-2911-4736-b2f4-5707982b70e2.jpg",
+    fotoPerfil = "http://localhost:9000/api/v0/assets/513c8ff4-2911-4736-b2f4-5707982b70e2.jpg",
 )
 
 val hospedaje1 = Espacio(
@@ -33,7 +33,7 @@ val hospedaje1 = Espacio(
     capacidad = 4, habitaciones = 2, banios = 1, detalleAlojamiento = "Las habitaciones disponen de aire acondicionado, escritorio, caja fuerte, TV de pantalla plana, patio y baño privado con ducha. Las habitaciones incluyen nevera. Sirve un desayuno americano todas las mañanas.",
     servicios = mutableListOf(Servicio.LIMPIEZA), ubicacion = "Ayacucho 152",
     duenio = solari, costo_hora = 25360.0,
-    hospedajeTipo = tiposHospedajes[0], otrosAspectos = "Hay bañera de hidromasaje. Se puede jugar al billar y al ping pong. La zona es ideal para practicar ciclismo."
+    espacioTipo = tiposEspacios[0], otrosAspectos = "Hay bañera de hidromasaje. Se puede jugar al billar y al ping pong. La zona es ideal para practicar ciclismo."
 )
 
 val hospedaje2 = Espacio(
@@ -41,7 +41,7 @@ val hospedaje2 = Espacio(
     capacidad = 5, habitaciones = 3, banios = 1, detalleAlojamiento = "",
     servicios = mutableListOf(Servicio.WIFI), ubicacion = "Rivadavia 623",
     duenio = solari, costo_hora = 28720.0,
-    hospedajeTipo = tiposHospedajes[1], otrosAspectos = ""
+    espacioTipo = tiposEspacios[1], otrosAspectos = ""
 )
 
 val hospedaje3 = Espacio(
@@ -49,7 +49,7 @@ val hospedaje3 = Espacio(
     capacidad = 5, habitaciones = 3, banios = 1, detalleAlojamiento = "",
     servicios = mutableListOf(Servicio.LIMPIEZA), ubicacion = "Rivadavia 623",
     duenio = solari, costo_hora = 22400.0,
-    hospedajeTipo = tiposHospedajes[2], otrosAspectos = ""
+    espacioTipo = tiposEspacios[2], otrosAspectos = ""
 )
 
 

@@ -11,7 +11,7 @@ var comentarioReservaUsuario1Casa1 = Comentario(
 )
 val reservaUsuario1Casa1 = Renta(
             usuario = eminem,
-            espacio = hospedajeCasa1,
+            espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2023, 3, 20),
             fecha_hasta = LocalDate.of(2023, 3, 23),
 )
@@ -22,14 +22,14 @@ var comentarioReservaUsuario1Casa2 = Comentario(
 )
 val reservaUsuario1Casa2 = Renta(
             usuario = eminem,
-            espacio = hospedajeCasa2,
+            espacio = espacioCasa2,
             fecha_desde = LocalDate.of(2023, 4, 22),
             fecha_hasta = LocalDate.of(2023, 4, 29),
 )
 
 val reservaUsuario1Depto5 = Renta(
             usuario = eminem,
-            espacio = hospedajeDepartamento5,
+            espacio = espacioDepartamento5,
             fecha_desde = LocalDate.of(2023, 5, 22),
             fecha_hasta = LocalDate.of(2023, 5, 29),
 )
@@ -40,7 +40,7 @@ var comentarioReservaUsuario2Casa2 = Comentario(
 )
 val reservaUsuario2Casa2 = Renta(
             usuario = solari,
-            espacio = hospedajeCasa2,
+            espacio = espacioCasa2,
             fecha_desde = LocalDate.of(2023, 4, 3),
             fecha_hasta = LocalDate.of(2023, 4, 5),
 )
@@ -51,7 +51,7 @@ var comentarioReservaUsuario2Casa3 = Comentario(
 )
  val reservaUsuario2Casa3 = Renta(
             usuario = solari,
-            espacio = hospedajeCasa3,
+            espacio = espacioCasa3,
             fecha_desde = LocalDate.of(2023, 4, 10),
             fecha_hasta = LocalDate.of(2023, 4, 15),
 )
@@ -62,7 +62,7 @@ var comentarioReservaUsuario3Casa4 = Comentario(
 )
 val reservaUsuario3Casa4 = Renta(
             usuario = michaelJackson,
-            espacio = hospedajeCasa4,
+            espacio = espacioCasa4,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 21),
 )
@@ -73,7 +73,7 @@ var comentarioReservaUsuario3Casa5 = Comentario(
 )
 val reservaUsuario3Casa5 = Renta(
             usuario = michaelJackson,
-            espacio = hospedajeCasa5,
+            espacio = espacioCasa5,
             fecha_desde = LocalDate.of(2023, 4, 23),
             fecha_hasta = LocalDate.of(2023, 4, 27),
 )
@@ -84,28 +84,28 @@ var comentarioReservaUsuario4Casa6 = Comentario(
 )
 val reservaUsuario4Casa6 = Renta(
             usuario = karolg,
-            espacio = hospedajeCasa6,
+            espacio = espacioCasa6,
             fecha_desde = LocalDate.of(2023, 5, 1),
             fecha_hasta = LocalDate.of(2023, 5, 3),
 )
 
 val reservaUsuario4Casa7 = Renta(
             usuario = karolg,
-            espacio = hospedajeCasa7,
+            espacio = espacioCasa7,
             fecha_desde = LocalDate.of(2023, 6, 20),
             fecha_hasta = LocalDate.of(2023, 6, 21),
 )
 
 val reservaUsuario1Casa7 = Renta(
             usuario = eminem,
-            espacio = hospedajeCasa7,
+            espacio = espacioCasa7,
             fecha_desde = LocalDate.of(2022, 8, 20),
             fecha_hasta = LocalDate.of(2022, 8, 21),
 )
 
 val reservaUsuario1Casa8 = Renta(
             usuario = eminem,
-            espacio = hospedajeCasa8,
+            espacio = espacioCasa8,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 21),
 )
@@ -116,7 +116,7 @@ var comentarioReservaUsuario4Casa1v1 = Comentario(
 )
 val reservaUsuario4Casa1v1 = Renta(
             usuario = karolg,
-            espacio = hospedajeCasa1,
+            espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 25),
 )
@@ -127,7 +127,7 @@ var comentarioReservaUsuario3Casa1 = Comentario(
 )
 val reservaUsuario3Casa1 = Renta(
             usuario = michaelJackson,
-            espacio = hospedajeCasa1,
+            espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2023, 1, 20),
             fecha_hasta = LocalDate.of(2023, 1, 22),
 )
@@ -138,7 +138,7 @@ var comentarioReservaUsuario4Casa1v2 = Comentario(
 )
 val reservaUsuario4Casa1v2 = Renta(
             usuario = karolg,
-            espacio = hospedajeCasa1,
+            espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 29),
 )

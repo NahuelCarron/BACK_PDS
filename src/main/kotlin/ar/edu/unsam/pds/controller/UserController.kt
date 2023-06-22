@@ -1,6 +1,6 @@
 package ar.edu.unsam.pds.controller
 
-import ar.edu.unsam.pds.controller.dto.HospedajeUsuarioDTO
+import ar.edu.unsam.pds.controller.dto.EspacioUsuarioDTO
 import ar.edu.unsam.pds.controller.dto.RentaUsuarioDTO
 import ar.edu.unsam.pds.domains.ComentarioEspacio
 import ar.edu.unsam.pds.domains.Usuario
@@ -38,16 +38,16 @@ class UserController {
         return this.userService.getUserComentarios(userId)
     }
 
-    @GetMapping("/usuarios/{userId}/reservas")
+    @GetMapping("/usuarios/{userId}/rentas")
     @Operation(summary = "Endpoint acceder a las reservas compradas por el usuario")
-    fun getUserReservas(@PathVariable userId: Long): List<RentaUsuarioDTO> {
-        return this.userService.getUserReservas(userId)
+    fun getUserRentas(@PathVariable userId: Long): List<RentaUsuarioDTO> {
+        return this.userService.getUserRentas(userId)
     }
 
-    @GetMapping("/usuarios/{userId}/hospedajes")
+    @GetMapping("/usuarios/{userId}/espacios")
     @Operation(summary = "Endpoint acceder a las publicaciones del usuario")
-    fun getUserHospedajes(@PathVariable userId: Long): List<HospedajeUsuarioDTO>{
-      return this.userService.getUserHospedajes(userId)
+    fun getUserEspacios(@PathVariable userId: Long): List<EspacioUsuarioDTO>{
+      return this.userService.getUserEspacios(userId)
     }
 
     @DeleteMapping("/comentarios/{reservaId}/delete")

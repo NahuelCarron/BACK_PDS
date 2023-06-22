@@ -4,12 +4,12 @@ import ar.edu.unsam.pds.domains.Espacio
 import java.time.LocalDate
 
 data class RentaDTO (
-    val usuario: UsuarioIdDTO? = null,
-    val hospedaje: HospedajeIdDTO? = null,
-    val inicio: LocalDate? = null,
-    val fin: LocalDate? = null,
-    val cantPasajeros: Int? = null,
-    var costoTotal: Double? = null,
+        val usuario: UsuarioIdDTO? = null,
+        val espacio: EspacioIdDTO? = null,
+        val inicio: LocalDate? = null,
+        val fin: LocalDate? = null,
+        val cantPasajeros: Int? = null,
+        var costoTotal: Double? = null,
 )
 data class PuntajeComentarioDTO(
     val idReserva: Int,
@@ -18,7 +18,7 @@ data class PuntajeComentarioDTO(
 )
 data class RentaUsuarioDTO (
         val id: Long? = null,
-        val hospedaje: Espacio? = null,
+        val espacio: Espacio? = null,
         val inicio: LocalDate? = null,
         val fin: LocalDate? = null,
         val puntaje: Int? = null,

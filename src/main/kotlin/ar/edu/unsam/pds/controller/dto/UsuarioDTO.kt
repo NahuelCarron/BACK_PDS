@@ -1,6 +1,5 @@
 package ar.edu.unsam.pds.controller.dto
 
-import ar.edu.unsam.pds.domains.Pais
 import ar.edu.unsam.pds.domains.Usuario
 import java.time.LocalDate
 
@@ -21,4 +20,4 @@ data class UsuarioIdDTO(
     val id: Int? = null,
 )
 
-fun Usuario.toIdDTO() = UsuarioIdDTO(id_usuario!!.toInt())
+fun Usuario.toIdDTO() = UsuarioIdDTO(id!!.toInt())

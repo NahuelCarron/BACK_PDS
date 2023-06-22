@@ -1,7 +1,7 @@
 package ar.edu.unsam.pds.controller
 
-import ar.edu.unsam.pds.controller.dto.HospedajeDTO
-import ar.edu.unsam.pds.repositories.HospedajeRepositorio
+import ar.edu.unsam.pds.controller.dto.EspacioDTO
+import ar.edu.unsam.pds.repositories.EspacioRepositorio
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
@@ -24,7 +24,7 @@ class HospedajeTestController {
     @Autowired
     lateinit var mockMvc: MockMvc
     @Autowired
-    lateinit var hopedajesRepo : HospedajeRepositorio
+    lateinit var hopedajesRepo : EspacioRepositorio
     var objectMapper: ObjectMapper = ObjectMapper().registerModule(JavaTimeModule())
 
     @BeforeEach
@@ -64,7 +64,7 @@ class HospedajeTestController {
             .contentAsString
 
         val hospedajesNode = objectMapper.readTree(response).get("hospedajes")
-        val hospedajes: List<HospedajeDTO> = objectMapper.readValue(hospedajesNode.traverse(), object : TypeReference<List<HospedajeDTO>>() {})
+        val hospedajes: List<EspacioDTO> = objectMapper.readValue(hospedajesNode.traverse(), object : TypeReference<List<EspacioDTO>>() {})
         hospedajes.size shouldBe 1 // TODO: fix retornando 0 en vez de 1
         //TODO: Comentario para justificar
         /*
