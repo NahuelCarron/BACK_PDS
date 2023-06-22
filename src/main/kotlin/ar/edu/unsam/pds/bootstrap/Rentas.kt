@@ -55,10 +55,12 @@ var comentarioRentaUsuario2Casa2 = Comentario(
     fechaPublicacion = LocalDate.of(2023, 4, 28),
     tipoComentario = "renta"
 )
-var comentarioRentaUsuario2Casa3 = Comentario(
-    comentario = "Casa recomendable y muy comoda",
+var comentarioInquilinoUsuario2Casa2 = Comentario(
+    comentario = "Re buen inquilino!!!!",
     puntaje = 5,
-    fechaPublicacion = LocalDate.of(2023, 4, 28),
+    fechaPublicacion = LocalDate.of(2023, 5, 28),
+    renta = rentaUsuario2Casa2,
+    tipoComentario = "inquilino"
 )
  val rentaUsuario2Casa3 = Renta(
             usuario = solari,

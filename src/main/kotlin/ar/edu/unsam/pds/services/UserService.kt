@@ -59,6 +59,11 @@ class UserService {
         var resultado = this.espaciosRepo.obtenerEspaciosPorUsuario(userId)
         return resultado
     }
+    @Transactional(Transactional.TxType.NEVER)
+    fun getUserEspaciosRentadosPorOtros(userId: Long): List<EspacioRentaDTO> {
+        var resultado = this.rentasRepositorio.obtenerRentasDeEspaciosDelUsuario(userId)
+        return resultado
+    }
 
     @Transactional(Transactional.TxType.REQUIRED)
     fun actualizarFecha(userId: Long, fecha: LocalDate){

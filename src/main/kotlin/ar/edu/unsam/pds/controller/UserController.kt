@@ -48,6 +48,11 @@ class UserController {
     fun getUserEspacios(@PathVariable userId: Long): List<EspacioDTO>{
       return this.userService.getUserEspacios(userId).map{ it.toDTO()}
     }
+    @GetMapping("/espaciosDelUsuario/{userId}/rentados")
+    @Operation(summary = "Endpoint acceder a los espacios del usuario que fueron rentados por otros")
+    fun getEspaciosDelUsuarioRentados(@PathVariable userId: Long): List<EspacioRentaDTO>{
+        return this.userService.getUserEspaciosRentadosPorOtros(userId)
+    }
 
     @DeleteMapping("/comentarios/{rentaId}/delete")
     @Operation(summary = "Endpoint eliminar un comentario")

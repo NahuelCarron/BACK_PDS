@@ -82,12 +82,12 @@ class Bootstrap: InitializingBean {
         crearComentario(comentarioRentaUsuario1Casa1)
         crearComentario(comentarioRentaUsuario1Casa2)
         crearComentario(comentarioRentaUsuario2Casa2)
-
+        crearComentario(comentarioInquilinoUsuario2Casa2)
     }
     fun crearComentario(comentario: Comentario){
         comentarioRepository.save(comentario)
         var espacio = espacioRepository.findById(comentario.renta!!.espacio!!.id!!).get()
-        cargarPuntaje(espacio)
+        if (comentario.tipoComentario == "renta") { cargarPuntaje(espacio)}
     }
     fun cargarPuntaje(espacio : Espacio){
         espacio.puntajePromedio = rentaRepository.obtenerPromedioComentarios(espacio.id!!)
