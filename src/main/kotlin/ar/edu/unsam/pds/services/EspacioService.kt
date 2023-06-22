@@ -3,6 +3,7 @@ package ar.edu.unsam.pds.services
 import ar.edu.unsam.pds.controller.BusinessException
 import ar.edu.unsam.pds.controller.dto.EspacioDTO
 import ar.edu.unsam.pds.controller.dto.EspaciosCantPaginasDTO
+import ar.edu.unsam.pds.controller.dto.FiltroEspacio
 import ar.edu.unsam.pds.controller.dto.toDTO
 import ar.edu.unsam.pds.domains.ComentarioEspacio
 import ar.edu.unsam.pds.domains.Espacio
@@ -41,37 +42,31 @@ class EspacioService {
     }
 
     @Transactional(Transactional.TxType.NEVER)
-    fun getEspacios(
-            ubicacion: String? = null,
-            fechaInicio: LocalDate? = null,
-            fechaFin: LocalDate? = null,
-            cantidadPasajeros: Int? = null,
-            numeroPagina: Int? = null,
-            puntajes: List<Int>? = null,
-    ) : EspaciosCantPaginasDTO {
+    fun getEspacios(filtro: FiltroEspacio) : EspaciosCantPaginasDTO {
 
         // NOTE: las fechas pueden ser nulas
-        if (fechaInicio != null && fechaFin != null){
-            if (fechaInicio.isAfter(fechaFin)) {
+        if (filtro.fechaInicio != null && filtro.fechaFin != null){
+            if (filtro.fechaInicio.isAfter(filtro.fechaFin)) {
                 println("pasa por aqui")
                 throw ErrorFechas("Error al seleccionar las fechas")
             }
         }
         // NOTE: puntajes nulos se reemplazan por todos
         val todosLosPuntajes = listOf(-1,0,1,2,3,4,5)
-        val puntajesABuscar : List<Int> = if ((puntajes == null ) || (puntajes.size == 1 && puntajes[0] == 1)) {
+        val puntajesABuscar : List<Int> = if ((filtro.estrellas == null ) || (filtro.estrellas.size == 1 && filtro.estrellas[0] == 1)) {
             todosLosPuntajes
-        } else puntajes
+        } else filtro.estrellas
 
         var resultado: List<Espacio> = this.espaciosRepositorio.find(
-                ubicacion,
-                fechaInicio,
-                fechaFin,
-                cantidadPasajeros ?: 1,
+                filtro.ubicacion,
+            filtro.fechaInicio,
+            filtro.fechaFin,
+            filtro.dimensiones,
+            filtro.cantPasajeros ?: 1,
                 puntajesABuscar
         )
         val cantidadPaginas = this.cantidadDePaginas(resultado.size)
-        resultado = filtrarPorPagina(resultado, numeroPagina ?: 1)
+        resultado = filtrarPorPagina(resultado, filtro.numeroPagina ?: 1)
         return EspaciosCantPaginasDTO(resultado.map { it.toDTO() }, cantidadPaginas)
     }
 
@@ -89,8 +84,6 @@ class EspacioService {
             espacio.detalleAlojamiento = espacioBody.detalleAlojamiento
             espacio.ubicacion = espacioBody.ubicacion
             espacio.capacidad = espacioBody.capacidad
-            espacio.habitaciones = espacioBody.habitaciones
-            espacio.banios = espacioBody.banios
             espacio.costo_hora = espacioBody.costo_hora
             espacio.servicios = espacioBody.servicios
             espaciosRepositorio.save(espacio)

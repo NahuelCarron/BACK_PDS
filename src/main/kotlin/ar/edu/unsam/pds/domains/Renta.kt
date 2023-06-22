@@ -15,6 +15,10 @@ class Renta(
     val fecha_desde: LocalDate? = null,
         @Column(name = "fechaHasta")
     val fecha_hasta: LocalDate? = null,
+        @Column
+    val costoTotal: Double? = null,
+        @Column
+    val cantPasajeros: Int? = null
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

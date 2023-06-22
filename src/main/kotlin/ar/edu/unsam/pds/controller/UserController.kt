@@ -1,7 +1,6 @@
 package ar.edu.unsam.pds.controller
 
-import ar.edu.unsam.pds.controller.dto.EspacioUsuarioDTO
-import ar.edu.unsam.pds.controller.dto.RentaUsuarioDTO
+import ar.edu.unsam.pds.controller.dto.*
 import ar.edu.unsam.pds.domains.ComentarioEspacio
 import ar.edu.unsam.pds.domains.Usuario
 import ar.edu.unsam.pds.services.UserService
@@ -40,14 +39,14 @@ class UserController {
 
     @GetMapping("/usuarios/{userId}/rentas")
     @Operation(summary = "Endpoint acceder a las rentas compradas por el usuario")
-    fun getUserRentas(@PathVariable userId: Long): List<RentaUsuarioDTO> {
+    fun getUserRentas(@PathVariable userId: Long): List<EspacioRentaDTO> {
         return this.userService.getUserRentas(userId)
     }
 
     @GetMapping("/usuarios/{userId}/espacios")
     @Operation(summary = "Endpoint acceder a las publicaciones del usuario")
-    fun getUserEspacios(@PathVariable userId: Long): List<EspacioUsuarioDTO>{
-      return this.userService.getUserEspacios(userId)
+    fun getUserEspacios(@PathVariable userId: Long): List<EspacioDTO>{
+      return this.userService.getUserEspacios(userId).map{ it.toDTO()}
     }
 
     @DeleteMapping("/comentarios/{rentaId}/delete")

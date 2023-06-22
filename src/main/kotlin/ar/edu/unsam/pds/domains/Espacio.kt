@@ -22,19 +22,15 @@ class Espacio(
                 name = "espacio_uso",
                 joinColumns = [JoinColumn(name = "espacio_id")]
         )
-        @Column(name = "uso")
+    @Column(name = "uso")
     var uso: MutableList<Uso>? = null,
-        @Column
-    var capacidad: Int? = null,
-        @Column
-    var habitaciones: Int? = null,
-        @Column
-    var banios: Int? = null,
-        @Column(length = 255)
+    @Column(length = 255)
     var detalleAlojamiento: String? = null,
-        @Column(length = 255)
+    @Column
+    var capacidad: Int? = null,
+    @Column(length = 255)
     var otrosAspectos: String? = null,
-        @ElementCollection(targetClass = Servicio::class)
+    @ElementCollection(targetClass = Servicio::class)
     @Enumerated(EnumType.STRING)
     @JoinTable(
         name = "espacio_servicio",
@@ -42,13 +38,17 @@ class Espacio(
     )
     @Column(name = "servicio")
     var servicios: MutableList<Servicio>? = null,
-        @ManyToOne
+    @ManyToOne
     var duenio: Usuario? = null,
-        @Column
+    @Column
     var costo_hora: Double? = null,
-        @Column(length = 150)
+    @Column
+    var costo_dia: Double? = null,
+    @Column
+    var costo_mes: Double? = null,
+    @Column(length = 150)
     var ubicacion: String? = null,
-        @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     var pais: Pais? = null,
 
     ) {
@@ -73,14 +73,17 @@ class Espacio(
         fun validarDatos(espacio: Espacio) {
             validarTexto("nombre", espacio.titulo, 100)
             validarTexto("descripcion", espacio.descripcion, 1000)
-            validadCantidad("capacidad", espacio.capacidad, 100000)
-            validadCantidad("habitaciones", espacio.habitaciones, 1000)
-            validadCantidad("banios", espacio.banios, 1000)
             validarTexto("detalleAlojamiento", espacio.detalleAlojamiento, 1000)
             validarTexto("otrosAspectos", espacio.otrosAspectos, 1000)
             validarTexto("ubicacion", espacio.ubicacion, 100)
             if (espacio.costo_hora == null || espacio.costo_hora == 0.0) {
-                throw EspacioInvalido("El costo base del espacio no puede ser 0")
+                throw EspacioInvalido("El costo hora del espacio no puede ser 0")
+            }
+            if (espacio.costo_dia == null || espacio.costo_dia == 0.0) {
+                throw EspacioInvalido("El costo día del espacio no puede ser 0")
+            }
+            if (espacio.costo_mes == null || espacio.costo_mes == 0.0) {
+                throw EspacioInvalido("El costo mes del espacio no puede ser 0")
             }
             // NOTE: si el pais existe, ya es validado por jackson al deserializarlo
             if (espacio.pais == null) {

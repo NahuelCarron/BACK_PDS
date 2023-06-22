@@ -1,5 +1,8 @@
 package ar.edu.unsam.pds.repositories
+import ar.edu.unsam.pds.controller.dto.EspacioRentaDTO
+import ar.edu.unsam.pds.controller.dto.RentaDTO
 import ar.edu.unsam.pds.domains.Espacio
+import ar.edu.unsam.pds.domains.Usuario
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
@@ -7,7 +10,6 @@ import java.time.LocalDate
 
 @Repository
 interface EspacioRepositorio: CrudRepository<Espacio, Long> {
-
     @Query("""
        SELECT h FROM Espacio h
 	    WHERE h.duenio.id = :userId AND h.estaActivo = true
@@ -24,6 +26,7 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
             OR r.fecha_hasta BETWEEN :fechaInicio AND :fechaFin
         )
         AND h.capacidad >= :maxPasajeros
+        AND h.dimensiones >= :dimensiones
         AND h.puntajePromedio IN :puntajes
         ORDER BY h.puntajePromedio DESC
         """)
@@ -31,6 +34,7 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
             ubicacion: String?,
             fechaInicio: LocalDate?,
             fechaFin: LocalDate?,
+            dimensiones: Double?,
             maxPasajeros: Int?,
             puntajes: List <Int>?
     ): List<Espacio>
@@ -44,6 +48,8 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
         HAVING COALESCE(AVG(c.puntaje), -1) >= -1
     """)
     fun obtenerPromedioEspacio(idEspacio:Long): Int
+
+    fun findByTituloAndUbicacionAndAndDuenio(titulo:String, ubicacion: String, duenio: Usuario)
 }
 
 /*

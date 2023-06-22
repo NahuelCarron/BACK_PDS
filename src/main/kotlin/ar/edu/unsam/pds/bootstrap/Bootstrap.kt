@@ -18,6 +18,9 @@ class Bootstrap: InitializingBean {
     @Autowired
     private lateinit var rentaRepository: RentasRepositorio
 
+    @Autowired
+    private lateinit var comentarioRepository: ComentarioRepositorio
+
     fun iniciarUsuarios() {
         usuariosRepository.save(eminem)
         usuariosRepository.save(solari)
@@ -75,10 +78,25 @@ class Bootstrap: InitializingBean {
     fun crearRentas(renta: Renta){
         rentaRepository.save(renta)
     }
+    fun iniciarComentarios(){
+        crearComentario(comentarioRentaUsuario1Casa1)
+        crearComentario(comentarioRentaUsuario1Casa2)
+        crearComentario(comentarioRentaUsuario2Casa2)
 
+    }
+    fun crearComentario(comentario: Comentario){
+        comentarioRepository.save(comentario)
+        var espacio = espacioRepository.findById(comentario.renta!!.espacio!!.id!!).get()
+        cargarPuntaje(espacio)
+    }
+    fun cargarPuntaje(espacio : Espacio){
+        espacio.puntajePromedio = rentaRepository.obtenerPromedioComentarios(espacio.id!!)
+        espacioRepository.save(espacio)
+    }
     override fun afterPropertiesSet() {
         iniciarUsuarios()
         iniciarEspacios()
         iniciarRentas()
+        iniciarComentarios()
     }
 }

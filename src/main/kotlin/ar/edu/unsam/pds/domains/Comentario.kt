@@ -29,6 +29,8 @@ class Comentario(
         var fechaPublicacion: LocalDate? = null,
         @ManyToOne
         var renta: Renta? = null,
+        @Column
+        var tipoComentario: String? = null,
 ) {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

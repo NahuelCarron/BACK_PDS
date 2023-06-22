@@ -1,6 +1,8 @@
 package ar.edu.unsam.pds.services
 
+import ar.edu.unsam.pds.controller.dto.EspacioRentaDTO
 import ar.edu.unsam.pds.controller.dto.EspacioUsuarioDTO
+import ar.edu.unsam.pds.controller.dto.RentaDTO
 import ar.edu.unsam.pds.controller.dto.RentaUsuarioDTO
 import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.exceptions.ErrorFechaNacimiento
@@ -48,18 +50,14 @@ class UserService {
     }
 
     @Transactional(Transactional.TxType.NEVER)
-    fun getUserRentas(userId: Long): List<RentaUsuarioDTO> {
-        // TODO: implementar
-        return listOf()
+    fun getUserRentas(userId: Long): List<EspacioRentaDTO> {
+        return rentasRepositorio.obtenerRentasPorUsuario(userId)
     }
 
     @Transactional(Transactional.TxType.NEVER)
-    fun getUserEspacios(userId: Long): List<EspacioUsuarioDTO> {
+    fun getUserEspacios(userId: Long): List<Espacio> {
         var resultado = this.espaciosRepo.obtenerEspaciosPorUsuario(userId)
-        return resultado.map{ EspacioUsuarioDTO(
-            id = it.id, nombre = it.titulo,
-            descripcion = it.descripcion, costoBase = it.costo_hora,
-            ubicacion = it.ubicacion, puntaje= it.puntajePromedio ) }
+        return resultado
     }
 
     @Transactional(Transactional.TxType.REQUIRED)

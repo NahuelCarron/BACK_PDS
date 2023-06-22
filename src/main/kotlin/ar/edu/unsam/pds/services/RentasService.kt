@@ -34,7 +34,7 @@ class RentasService {
 
         try {
             val nuevaRenta = Renta(usuario = usuariosRepo.findById(rentaDTO.usuario?.id!!.toLong()).get(),
-                espacio = espaciosRepository.findById(rentaDTO.espacio.id.toLong()).get(),
+                espacio = espaciosRepository.findById(rentaDTO.espacio.id!!.toLong()).get(),
                 fecha_desde = rentaDTO.inicio,
                 fecha_hasta = rentaDTO.fin,
             )

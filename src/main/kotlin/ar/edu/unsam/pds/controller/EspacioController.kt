@@ -28,17 +28,12 @@ class EspacioController {
     }
 
     // TODO: cambiar request de POST a GET
-    @PostMapping("/espacios/list")
+    @PostMapping("/espaciosFiltrados/")
     fun getEspacios(@RequestBody body: String)
     : EspaciosCantPaginasDTO {
         val dto = objectMapper.readValue(body, FiltroEspacio::class.java)
         return this.espaciosService.getEspacios(
-                dto.ubicacion,
-                dto.fechaInicio,
-                dto.fechaFin,
-                dto.capacidad,
-                dto.numeroPagina,
-                dto.puntajes,
+            dto
         )
     }
 

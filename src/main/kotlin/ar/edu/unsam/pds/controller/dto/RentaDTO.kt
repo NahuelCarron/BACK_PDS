@@ -18,7 +18,6 @@ data class PuntajeComentarioDTO(
 )
 data class RentaUsuarioDTO (
         val id: Long? = null,
-        val espacio: Espacio? = null,
         val inicio: LocalDate? = null,
         val fin: LocalDate? = null,
         val puntaje: Int? = null,

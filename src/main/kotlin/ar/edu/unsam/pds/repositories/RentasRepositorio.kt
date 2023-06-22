@@ -1,5 +1,7 @@
 package ar.edu.unsam.pds.repositories
 
+import ar.edu.unsam.pds.controller.dto.EspacioRentaDTO
+import ar.edu.unsam.pds.controller.dto.RentaUsuarioDTO
 import ar.edu.unsam.pds.domains.Renta
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
@@ -8,6 +10,14 @@ import org.springframework.stereotype.Repository
 @Repository
 interface RentasRepositorio: CrudRepository<Renta, Long> {
 
+    @Query("""
+       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c)
+        FROM Renta r
+        LEFT JOIN Espacio e ON r.espacio.id = e.id
+        LEFT JOIN Comentario c ON r.id = c.renta.id
+        WHERE r.usuario.id = :userId
+        """)
+    fun obtenerRentasPorUsuario(userId:Long):List<EspacioRentaDTO>
     @Query("""
        SELECT r
 	    FROM Renta r
@@ -23,5 +33,14 @@ interface RentasRepositorio: CrudRepository<Renta, Long> {
 	    WHERE r.espacio.id = :espacioId
         """)
     fun obtenerRentasPorEspacio(espacioId:Long):List<Renta>
+    @Query("""
+        SELECT COALESCE(AVG(c.puntaje), -1)
+        FROM Renta r
+        LEFT JOIN Comentario c ON c.renta.id = r.id
+        WHERE r.espacio.id = 1
+        GROUP BY r.espacio.id
+        HAVING COALESCE(AVG(c.puntaje), -1) >= -1
+    """)
+    fun obtenerPromedioComentarios(idEspacio: Long): Int
 
 }
