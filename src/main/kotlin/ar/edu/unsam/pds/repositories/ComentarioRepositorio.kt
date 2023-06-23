@@ -27,4 +27,5 @@ interface ComentarioRepositorio: CrudRepository<Comentario, Long> {
     ORDER BY c.fechaPublicacion DESC
     """)
     fun obtenerComentariosOrdenados(idEspacio: Long): List<ComentarioEspacio>
+
 }

@@ -2,6 +2,7 @@ package ar.edu.unsam.pds.controller.dto
 
 import ar.edu.unsam.pds.domains.Espacio
 import java.time.LocalDate
+import java.util.*
 
 data class RentaDTO (
         val usuario: UsuarioIdDTO? = null,
@@ -12,9 +13,12 @@ data class RentaDTO (
         var costoTotal: Double? = null,
 )
 data class PuntajeComentarioDTO(
-        val idRenta: Int,
+        val comentario: String? = null,
         val puntaje: Int? = null,
-        var comentario: String? = null,
+        var fechaPublicacion: LocalDate? = null,
+        val idRenta: Long?= null,
+        val tipoComentario: String? = null,
+        val id: Int? = null
 )
 data class RentaUsuarioDTO (
         val id: Long? = null,

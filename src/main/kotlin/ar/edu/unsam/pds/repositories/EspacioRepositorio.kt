@@ -36,16 +36,6 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
             puntajes: List <Int>?
     ): List<Espacio>
 
-    @Query("""
-        SELECT COALESCE(AVG(c.puntaje), -1)
-        FROM Renta r
-        LEFT JOIN Comentario c ON r.id = c.renta.id
-        WHERE r.espacio.id= :idEspacio
-        GROUP BY r.espacio.id
-        HAVING COALESCE(AVG(c.puntaje), -1) >= -1
-    """)
-    fun obtenerPromedioEspacio(idEspacio:Long): Int
-
     fun findByTituloAndUbicacionAndAndDuenio(titulo:String, ubicacion: String, duenio: Usuario)
 }
 

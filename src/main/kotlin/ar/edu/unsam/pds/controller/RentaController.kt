@@ -23,8 +23,12 @@ class RentaController {
 
     @PostMapping("/calificarRenta")
     @Operation(summary = "Endpoint para calificar una renta")
-    fun calificarRenta(@RequestBody puntajeComentarioDTO: PuntajeComentarioDTO): Int {
-        // TODO: implementar
-        return 200
+    fun calificarRenta(@RequestBody puntajeComentarioDTO: PuntajeComentarioDTO) {
+       this.rentaService.calificarRenta(puntajeComentarioDTO)
+    }
+    @PostMapping("/calificarInquilino")
+    @Operation(summary = "Endpoint para calificar un inquilino")
+    fun calificarInquilino(@RequestBody puntajeComentarioDTO: PuntajeComentarioDTO) {
+        this.rentaService.calificarRenta(puntajeComentarioDTO)
     }
 }

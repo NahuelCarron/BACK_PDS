@@ -12,6 +12,7 @@ import ar.edu.unsam.pds.exceptions.NoEsDuenioDelEspacio
 import ar.edu.unsam.pds.exceptions.elementoEliminado
 import ar.edu.unsam.pds.repositories.ComentarioRepositorio
 import ar.edu.unsam.pds.repositories.EspacioRepositorio
+import ar.edu.unsam.pds.repositories.RentasRepositorio
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDate
@@ -24,6 +25,8 @@ class EspacioService {
     lateinit var espaciosRepositorio: EspacioRepositorio
     @Autowired
     lateinit var comentariosRepo: ComentarioRepositorio
+    @Autowired
+    lateinit var rentaRepository: RentasRepositorio
 
     var cantidadPorPagina = 12
 
@@ -93,7 +96,7 @@ class EspacioService {
     }
 
     fun actualizarPuntajePromedio(espacio: Espacio){
-        espacio.puntajePromedio = espaciosRepositorio.obtenerPromedioEspacio(espacio.id!!)
+        espacio.puntajePromedio = rentaRepository.obtenerPromedioComentarios(espacio.id!!)
         espaciosRepositorio.save(espacio)
     }
 
@@ -135,7 +138,7 @@ class EspacioService {
     }
 
     fun promedioPuntaje(idEspacio: Long): Int{
-        return this.espaciosRepositorio.obtenerPromedioEspacio(idEspacio)
+        return this.rentaRepository.obtenerPromedioComentarios(idEspacio)
     }
     fun obtenerUltimos3Comentarios(espacio: Espacio): List<ComentarioEspacio> {
         return this.comentariosRepo.obtenerComentariosOrdenados(espacio.id!!).take(3)

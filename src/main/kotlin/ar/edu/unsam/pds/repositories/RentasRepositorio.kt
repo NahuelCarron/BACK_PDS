@@ -46,7 +46,7 @@ interface RentasRepositorio: CrudRepository<Renta, Long> {
         SELECT COALESCE(AVG(c.puntaje), -1)
         FROM Renta r
         LEFT JOIN Comentario c ON c.renta.id = r.id
-        WHERE r.espacio.id = 1
+        WHERE r.espacio.id = 1 AND c.tipoComentario = 'renta'
         GROUP BY r.espacio.id
         HAVING COALESCE(AVG(c.puntaje), -1) >= -1
     """)
