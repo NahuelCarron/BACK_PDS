@@ -1,5 +1,6 @@
 package ar.edu.unsam.pds.repositories
 
+import ar.edu.unsam.pds.controller.dto.QyaEspacio
 import ar.edu.unsam.pds.domains.Espacio
 import ar.edu.unsam.pds.domains.Usuario
 import org.springframework.data.jpa.repository.Query
@@ -35,8 +36,15 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
             dimensiones: Double?,
             puntajes: List <Int>?
     ): List<Espacio>
-
-    fun findByTituloAndUbicacionAndAndDuenio(titulo:String, ubicacion: String, duenio: Usuario)
+    @Query("""
+        SELECT new ar.edu.unsam.pds.controller.dto.QyaEspacio(uqe.id, q.pregunta, u.nombre, q.respuesta, q.fechaPublicacion )
+        FROM UsuarioQyaEspacio uqe
+        LEFT JOIN Qya q ON q.id = uqe.qya.id
+        LEFT JOIN Espacio e ON e.id = uqe.espacio.id
+        LEFT JOIN Usuario u ON u.id = uqe.usuario.id
+        WHERE uqe.espacio.id = :idEspacio
+    """)
+    fun getQyaEspacio(idEspacio:Long): List<QyaEspacio>
 }
 
 /*

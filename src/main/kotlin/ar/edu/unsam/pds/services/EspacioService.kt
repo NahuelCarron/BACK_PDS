@@ -1,10 +1,7 @@
 package ar.edu.unsam.pds.services
 
 import ar.edu.unsam.pds.controller.BusinessException
-import ar.edu.unsam.pds.controller.dto.EspacioDTO
-import ar.edu.unsam.pds.controller.dto.EspaciosCantPaginasDTO
-import ar.edu.unsam.pds.controller.dto.FiltroEspacio
-import ar.edu.unsam.pds.controller.dto.toDTO
+import ar.edu.unsam.pds.controller.dto.*
 import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.exceptions.IdInvalido
@@ -41,7 +38,9 @@ class EspacioService {
         }
 
     }
-
+    fun getQyaEspacio(idEspacio: Long): List<QyaEspacio>{
+        return this.espaciosRepositorio.getQyaEspacio(idEspacio)
+    }
     @Transactional(Transactional.TxType.NEVER)
     fun getEspacios(filtro: FiltroEspacio) : EspaciosCantPaginasDTO {
 

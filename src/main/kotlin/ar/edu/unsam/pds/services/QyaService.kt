@@ -24,20 +24,15 @@ class QyaService {
 
     fun enviarPregunta(idUsuario: Long, idEspacio: Long, pregunta: String) {
         val qya = Qya(
-                pregunta = pregunta,
-                fechaPublicacion = LocalDate.now(),
-                )
-        val optionalUqe = this.uqeRepositorio.getBy(idUsuario, idEspacio)
-        val uqe: UsuarioQyaEspacio = if (optionalUqe.isPresent) {
-            optionalUqe.get()
-        } else {
-            UsuarioQyaEspacio(
-                    usuario = this.usuarioRepositorio.findById(idUsuario).get(),
-                    qya = listOf(),
-                    espacio = this.espacioRepositorio.findById(idEspacio).get(),
-                    )
-        }
-        uqe.qya += qya
+            pregunta = pregunta,
+            fechaPublicacion = LocalDate.now(),
+        )
+
+        var uqe = UsuarioQyaEspacio(
+            usuario = this.usuarioRepositorio.findById(idUsuario).get(),
+            qya = qya,
+            espacio = this.espacioRepositorio.findById(idEspacio).get(),
+            )
         this.qyaRepositorio.save(qya)
         this.uqeRepositorio.save(uqe)
     }

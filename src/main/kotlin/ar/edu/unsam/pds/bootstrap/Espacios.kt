@@ -1,5 +1,8 @@
 package ar.edu.unsam.pds.bootstrap
 import ar.edu.unsam.pds.domains.*
+import java.util.*
+
+
 
 val espacioCasa1 = Espacio(
                 titulo ="Casa de diseño moderno y amplio",

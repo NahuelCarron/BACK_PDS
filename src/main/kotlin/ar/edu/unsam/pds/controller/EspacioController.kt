@@ -3,6 +3,7 @@ package ar.edu.unsam.pds.controller
 import ar.edu.unsam.pds.controller.dto.FiltroEspacio
 import ar.edu.unsam.pds.controller.dto.EspacioDTO
 import ar.edu.unsam.pds.controller.dto.EspaciosCantPaginasDTO
+import ar.edu.unsam.pds.controller.dto.QyaEspacio
 import ar.edu.unsam.pds.domains.Espacio
 import ar.edu.unsam.pds.domains.Pais
 import ar.edu.unsam.pds.domains.TiempoRenta
@@ -39,10 +40,13 @@ class EspacioController {
     @PostMapping("/espacios/list")
     fun getEspacios(@RequestBody body: String)
     : EspaciosCantPaginasDTO {
-        println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-        println(body)
         val dto = objectMapper.readValue(body, FiltroEspacio::class.java)
         return this.espaciosService.getEspacios(dto)
+    }
+    @GetMapping("/qya/Espacio/{idEspacio}")
+    fun getQyaEspacio(@PathVariable idEspacio: Long): List<QyaEspacio>
+             {
+       return this.espaciosService.getQyaEspacio(idEspacio)
     }
 
     @PutMapping("/espacios/nuevo")

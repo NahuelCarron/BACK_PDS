@@ -11,8 +11,8 @@ import javax.persistence.OneToOne
 class UsuarioQyaEspacio(
         @OneToOne
         var usuario: Usuario,
-        @OneToMany
-        var qya: List<Qya> = listOf(),
+        @OneToOne
+        var qya: Qya? = null,
         @OneToOne
         var espacio: Espacio? = null,
 ) {
