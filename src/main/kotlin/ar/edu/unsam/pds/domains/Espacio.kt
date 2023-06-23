@@ -16,7 +16,7 @@ class Espacio(
     var descripcion: String? = null,
         @Column
     var dimensiones: Double? = null,
-        @Column
+    @Column
     var usos: String? = null,
         @Column(length = 255)
     var detalleAlojamiento: String? = null,
@@ -36,13 +36,7 @@ class Espacio(
     var ubicacion: String? = null,
         @Enumerated(EnumType.STRING)
     var pais: Pais? = null,
-        @Enumerated(EnumType.STRING)
-        @JoinTable(
-                name = "tiempo_renta",
-                joinColumns = [JoinColumn(name = "tiempo_renta_id")]
-        )
-        @Column(name = "tiempo_renta")
-    var tiempoRenta: TiempoRenta,
+
     ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null

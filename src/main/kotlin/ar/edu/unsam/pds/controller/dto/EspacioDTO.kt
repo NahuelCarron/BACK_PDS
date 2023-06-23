@@ -12,7 +12,9 @@ data class EspacioDTO(
         var duenio: UsuarioIdDTO? = null,
         val costo_hora: Double? = null,
         val ubicacion: String? = null,
+        val usos: String? = null,
         val pais: Pais? = null,
+        val dimensiones: Double? = null,
         var puntajePromedio: Int? = null,
         var comentarios: List<ComentarioEspacio>? = listOf(),
         val estaActivo: Boolean? = null,
@@ -26,7 +28,7 @@ data class comentarioEspacioDTO(
 )
 
 fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,detalleAlojamiento
-        , servicios,duenio?.toIdDTO(),costo_hora,ubicacion,pais,puntajePromedio,comentarios, estaActivo)
+        , servicios,duenio?.toIdDTO(),costo_hora,ubicacion,usos,pais,dimensiones,puntajePromedio, comentarios, estaActivo)
 
 
 // val pais: Pais? = null,
@@ -43,14 +45,14 @@ data class EspacioIdDTO(
 fun Espacio.toIdDTO() = EspacioIdDTO(id!!.toInt())
 
 data  class FiltroEspacio(
-        val tiempoRenta: TiempoRenta? = null,
-        val ubicacion: String = "",
-        val fechaInicio: LocalDate? = null,
-        val fechaFin: LocalDate? = null,
-        val dimensiones: Double? = null,
-        val numeroPagina: Int? = null,
-        val estrellas: List<Int>? = null,
-        val uso: String? = null,
+    val tiempoRenta: TiempoRenta? = null,
+    val ubicacion: String = "",
+    val fechaInicio: LocalDate? = null,
+    val fechaFin: LocalDate? = null,
+    val dimensiones: Double? = null,
+    val numeroPagina: Int? = null,
+    val estrellas: List<Int>? = null,
+    val usos: String? = null,
         )
 
 data class EspaciosCantPaginasDTO(

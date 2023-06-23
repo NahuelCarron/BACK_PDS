@@ -2,6 +2,9 @@ package ar.edu.unsam.pds.domains
 
 enum class Servicio {
     WIFI,
-    INTERNET_DIGITAL,
+    TV,
     LIMPIEZA,
+    PORTERIA,
+    SEGURIDAD,
+    ESTACIONAMIENTO,
 }

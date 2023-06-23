@@ -17,7 +17,7 @@ data class UsuarioDTO(
 )
 
 data class UsuarioIdDTO(
-    val id: Int? = null,
+    val id: Long? = null,
 )
 
-fun Usuario.toIdDTO() = UsuarioIdDTO(id!!.toInt())
+fun Usuario.toIdDTO() = UsuarioIdDTO(id!!)
