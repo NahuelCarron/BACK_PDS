@@ -7,15 +7,13 @@ data class EspacioDTO(
         val id: Int? = null,
         val titulo: String? = null,
         val descripcion: String? = null,
-        val habitaciones: Int? = null,
-        val banios: Int? = null,
         val detalleAlojamiento: String? = null,
         val servicios: MutableList<Servicio>? = null,
         var duenio: UsuarioIdDTO? = null,
         val costo_hora: Double? = null,
         val ubicacion: String? = null,
         val pais: Pais? = null,
-        var puntaje: Int? = null,
+        var puntajePromedio: Int? = null,
         var comentarios: List<ComentarioEspacio>? = listOf(),
         val estaActivo: Boolean? = null,
         val qya: List<Qya>? = listOf()
@@ -27,7 +25,7 @@ data class comentarioEspacioDTO(
     var comentario: String = ""
 )
 
-fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,habitaciones,banios,detalleAlojamiento
+fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,detalleAlojamiento
         , servicios,duenio?.toIdDTO(),costo_hora,ubicacion,pais,puntajePromedio,comentarios, estaActivo)
 
 

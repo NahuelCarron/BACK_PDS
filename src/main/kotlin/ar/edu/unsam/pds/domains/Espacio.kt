@@ -18,14 +18,8 @@ class Espacio(
     var dimensiones: Double? = null,
         @Column
     var usos: String? = null,
-        @Column
-    var habitaciones: Int? = null,
-        @Column
-    var banios: Int? = null,
         @Column(length = 255)
     var detalleAlojamiento: String? = null,
-        @Column
-    var capacidad: Int? = null,
         @ElementCollection(targetClass = Servicio::class)
     @Enumerated(EnumType.STRING)
     @JoinTable(
@@ -38,10 +32,6 @@ class Espacio(
     var duenio: Usuario? = null,
         @Column
     var costo_hora: Double? = null,
-        @Column
-    var costo_dia: Double? = null,
-        @Column
-    var costo_mes: Double? = null,
         @Column(length = 150)
     var ubicacion: String? = null,
         @Enumerated(EnumType.STRING)
@@ -82,12 +72,6 @@ class Espacio(
             validarTexto("ubicacion", espacio.ubicacion, 100)
             if (espacio.costo_hora == null || espacio.costo_hora == 0.0) {
                 throw EspacioInvalido("El costo hora del espacio no puede ser 0")
-            }
-            if (espacio.costo_dia == null || espacio.costo_dia == 0.0) {
-                throw EspacioInvalido("El costo día del espacio no puede ser 0")
-            }
-            if (espacio.costo_mes == null || espacio.costo_mes == 0.0) {
-                throw EspacioInvalido("El costo mes del espacio no puede ser 0")
             }
             // NOTE: si el pais existe, ya es validado por jackson al deserializarlo
             if (espacio.pais == null) {
