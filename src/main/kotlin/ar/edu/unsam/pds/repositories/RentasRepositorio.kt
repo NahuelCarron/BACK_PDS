@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository
 interface RentasRepositorio: CrudRepository<Renta, Long> {
 
     @Query("""
-       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c)
+       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c, r.id)
         FROM Espacio e
         LEFT JOIN Renta r ON r.espacio.id = e.id
         LEFT JOIN Usuario u ON u.id = e.duenio.id
@@ -20,7 +20,7 @@ interface RentasRepositorio: CrudRepository<Renta, Long> {
         """)
     fun obtenerRentasDeEspaciosDelUsuario(userId:Long):List<EspacioRentaDTO>
     @Query("""
-       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c)
+       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c, r.id)
         FROM Renta r
         LEFT JOIN Espacio e ON r.espacio.id = e.id
         LEFT JOIN Comentario c ON r.id = c.renta.id

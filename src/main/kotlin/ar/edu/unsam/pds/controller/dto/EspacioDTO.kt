@@ -73,7 +73,8 @@ data class EspacioRentaDTO(
     val fecha_desde: LocalDate? = null,
     val fecha_hasta: LocalDate? = null,
     val costoTotal: Double? = null,
-    val comentario: Comentario? = null
+    val comentario: Comentario? = null,
+    val idRenta: Long? = null
 )
 
 
