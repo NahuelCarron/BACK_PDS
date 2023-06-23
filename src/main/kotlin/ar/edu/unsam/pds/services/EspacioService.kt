@@ -57,7 +57,11 @@ class EspacioService {
         }
         // NOTE: puntajes nulos se reemplazan por todos
         val todosLosPuntajes = listOf(-1,0,1,2,3,4,5)
-        val puntajesABuscar : List<Int> = if ((filtro.estrellas == null ) || (filtro.estrellas.size == 1 && filtro.estrellas[0] == 1)) {
+        val puntajesABuscar : List<Int> = if (
+                (filtro.estrellas == null )
+                || (filtro.estrellas.size == 1 && filtro.estrellas[0] == 1)
+                || (filtro.estrellas.isEmpty())
+                ) {
             todosLosPuntajes
         } else filtro.estrellas
 

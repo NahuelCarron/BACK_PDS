@@ -20,13 +20,13 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
         SELECT h FROM Espacio h
         WHERE h.estaActivo = true
         AND LOWER(h.ubicacion) LIKE CONCAT('%',LOWER(:ubicacion),'%')
-        AND (CAST(:fechaInicio AS date) IS NULL AND CAST(:fechaFin AS date) IS NULL) OR NOT EXISTS (
+        AND ((CAST(:fechaInicio AS date) IS NULL AND CAST(:fechaFin AS date) IS NULL) OR NOT EXISTS (
             SELECT r.espacio FROM Renta r
             WHERE r.fecha_desde BETWEEN :fechaInicio AND :fechaFin
             OR r.fecha_hasta BETWEEN :fechaInicio AND :fechaFin
-        )
+        ))
         AND h.dimensiones >= :dimensiones
-        AND h.puntajePromedio IN :puntajes
+        AND h.puntajePromedio IN (:puntajes)
         ORDER BY h.puntajePromedio DESC
         """)
     fun find(
