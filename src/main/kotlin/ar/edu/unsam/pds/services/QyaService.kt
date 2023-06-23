@@ -1,5 +1,6 @@
 package ar.edu.unsam.pds.services
 
+import ar.edu.unsam.pds.controller.dto.QyaEspacio
 import ar.edu.unsam.pds.domains.Qya
 import ar.edu.unsam.pds.domains.UsuarioQyaEspacio
 import ar.edu.unsam.pds.repositories.EspacioRepositorio
@@ -51,5 +52,9 @@ class QyaService {
         val qya = this.qyaRepositorio.findById(idQya).get()
         qya.respuesta = respuesta
         this.qyaRepositorio.save(qya)
+    }
+
+    fun getQyaAResponder(idUsuario: Long): List<QyaEspacio>{
+        return this.qyaRepositorio.findPreguntasAResponder(idUsuario)
     }
 }

@@ -45,6 +45,7 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
         WHERE uqe.espacio.id = :idEspacio
     """)
     fun getQyaEspacio(idEspacio:Long): List<QyaEspacio>
+
 }
 
 /*
