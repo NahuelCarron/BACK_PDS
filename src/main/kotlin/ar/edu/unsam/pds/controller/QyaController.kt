@@ -1,5 +1,6 @@
 package ar.edu.unsam.pds.controller
 
+import ar.edu.unsam.pds.controller.dto.QyaEspacio
 import ar.edu.unsam.pds.controller.dto.QyaPreguntaDto
 import ar.edu.unsam.pds.controller.dto.QyaRespuestaDto
 import ar.edu.unsam.pds.domains.Qya
@@ -38,10 +39,14 @@ class QyaController {
                 idEspacio,
                 )
     }
+    @GetMapping("/preguntas/{idUsuario}")
+    fun getQyasAResponder(@PathVariable idUsuario: Long): List<QyaEspacio> {
+        return this.qyaService.getQyaAResponder(idUsuario)
+    }
 
     @PutMapping("/preguntas/responder")
-    fun responder(@RequestBody body: String) {
-        val dto = objectMapper.readValue(body, QyaRespuestaDto::class.java)
-        this.qyaService.responder(dto.id_qya, dto.respuesta)
+    fun responder(@RequestBody body: QyaRespuestaDto) {
+        //val dto = objectMapper.readValue(body, QyaRespuestaDto::class.java)
+        this.qyaService.responder(body.id_qya, body.respuesta)
     }
 }
