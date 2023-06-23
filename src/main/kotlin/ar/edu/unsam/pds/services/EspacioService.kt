@@ -4,9 +4,7 @@ import ar.edu.unsam.pds.controller.BusinessException
 import ar.edu.unsam.pds.controller.dto.EspacioDTO
 import ar.edu.unsam.pds.controller.dto.EspaciosCantPaginasDTO
 import ar.edu.unsam.pds.controller.dto.toDTO
-import ar.edu.unsam.pds.domains.ComentarioEspacio
-import ar.edu.unsam.pds.domains.Espacio
-import ar.edu.unsam.pds.domains.Renta
+import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.exceptions.IdInvalido
 import ar.edu.unsam.pds.exceptions.NoEsDuenioDelEspacio
@@ -42,13 +40,19 @@ class EspacioService {
 
     @Transactional(Transactional.TxType.NEVER)
     fun getEspacios(
+            tiempoRenta: TiempoRenta? = null,
             ubicacion: String? = null,
             fechaInicio: LocalDate? = null,
             fechaFin: LocalDate? = null,
-            cantidadPasajeros: Int? = null,
+            dimensiones: Double? = null,
             numeroPagina: Int? = null,
-            puntajes: List<Int>? = null,
+            estrellas: List<Int>? = null,
+            uso: String? = null,
     ) : EspaciosCantPaginasDTO {
+
+        // TODO: filtrar tiempo renta segun cantidad de tiempo entre incio y fin
+        // TODO: filtrar por tiempo renta
+        // TODO: filtrar por uso
 
         // NOTE: las fechas pueden ser nulas
         if (fechaInicio != null && fechaFin != null){
@@ -58,17 +62,17 @@ class EspacioService {
             }
         }
         // NOTE: puntajes nulos se reemplazan por todos
-        val todosLosPuntajes = listOf(-1,0,1,2,3,4,5)
-        val puntajesABuscar : List<Int> = if ((puntajes == null ) || (puntajes.size == 1 && puntajes[0] == 1)) {
-            todosLosPuntajes
-        } else puntajes
+        val todosLasEstrellas = listOf(-1,0,1,2,3,4,5)
+        val estrellasABuscar : List<Int> = if ((estrellas == null ) || (estrellas.size == 1 && estrellas[0] == 1)) {
+            todosLasEstrellas
+        } else estrellas
 
         var resultado: List<Espacio> = this.espaciosRepositorio.find(
                 ubicacion,
                 fechaInicio,
                 fechaFin,
-                cantidadPasajeros ?: 1,
-                puntajesABuscar
+                dimensiones ?: 1.0,
+                estrellasABuscar,
         )
         val cantidadPaginas = this.cantidadDePaginas(resultado.size)
         resultado = filtrarPorPagina(resultado, numeroPagina ?: 1)
@@ -88,7 +92,6 @@ class EspacioService {
             espacio.otrosAspectos = espacioBody.otrosAspectos
             espacio.detalleAlojamiento = espacioBody.detalleAlojamiento
             espacio.ubicacion = espacioBody.ubicacion
-            espacio.capacidad = espacioBody.capacidad
             espacio.habitaciones = espacioBody.habitaciones
             espacio.banios = espacioBody.banios
             espacio.costo_hora = espacioBody.costo_hora

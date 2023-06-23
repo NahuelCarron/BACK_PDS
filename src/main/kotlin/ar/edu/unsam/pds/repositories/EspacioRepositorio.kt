@@ -1,5 +1,6 @@
 package ar.edu.unsam.pds.repositories
 import ar.edu.unsam.pds.domains.Espacio
+import ar.edu.unsam.pds.domains.TiempoRenta
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
@@ -23,16 +24,16 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
             WHERE r.fecha_desde BETWEEN :fechaInicio AND :fechaFin
             OR r.fecha_hasta BETWEEN :fechaInicio AND :fechaFin
         )
-        AND h.capacidad >= :maxPasajeros
-        AND h.puntajePromedio IN :puntajes
+        AND h.dimensiones >= :dimensiones
+        AND h.puntajePromedio IN :estrellas
         ORDER BY h.puntajePromedio DESC
         """)
     fun find(
             ubicacion: String?,
             fechaInicio: LocalDate?,
             fechaFin: LocalDate?,
-            maxPasajeros: Int?,
-            puntajes: List <Int>?
+            dimensiones: Double?,
+            estrellas: List <Int>?,
     ): List<Espacio>
 
     @Query("""

@@ -5,21 +5,21 @@ import java.time.LocalDate
 
 data class EspacioDTO(
         val id: Int? = null,
-        val nombre: String? = null,
+        val titulo: String? = null,
         val descripcion: String? = null,
-        val capacidad: Int? = null,
         val habitaciones: Int? = null,
         val banios: Int? = null,
         val detalleAlojamiento: String? = null,
         val otrosAspectos: String? = null,
         val servicios: MutableList<Servicio>? = null,
-        var id_usuario_duenio: UsuarioIdDTO? = null,
-        val costoBase: Double? = null,
+        var duenio: UsuarioIdDTO? = null,
+        val costo_hora: Double? = null,
         val ubicacion: String? = null,
         val pais: Pais? = null,
         var puntaje: Int? = null,
-        var comentarios: List<ComentarioEspacio>? = null,
-        val estaActivo: Boolean? = null
+        var comentarios: List<ComentarioEspacio>? = listOf(),
+        val estaActivo: Boolean? = null,
+        val qya: List<Qya>? = listOf()
 )
 data class comentarioEspacioDTO(
     var duenioNombre: String = "",
@@ -28,7 +28,7 @@ data class comentarioEspacioDTO(
     var comentario: String = ""
 )
 
-fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,capacidad,habitaciones,banios,detalleAlojamiento,
+fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,habitaciones,banios,detalleAlojamiento,
     otrosAspectos,servicios,duenio?.toIdDTO(),costo_hora,ubicacion,pais,puntajePromedio,comentarios, estaActivo)
 
 data class EspacioIdDTO(
@@ -38,13 +38,16 @@ data class EspacioIdDTO(
 fun Espacio.toIdDTO() = EspacioIdDTO(id!!.toInt())
 
 data  class FiltroEspacio(
-    val ubicacion: String = "",
-    val fechaInicio: LocalDate? = null,
-    val fechaFin: LocalDate? = null,
-    val capacidad: Int? = null,
-    val numeroPagina: Int? = null,
-    val puntajes: List<Int>? = null
-)
+        val tiempoRenta: TiempoRenta? = null,
+        val ubicacion: String = "",
+        val fechaInicio: LocalDate? = null,
+        val fechaFin: LocalDate? = null,
+        val dimensiones: Double? = null,
+        val numeroPagina: Int? = null,
+        val estrellas: List<Int>? = null,
+        val uso: String? = null,
+        )
+
 data class EspaciosCantPaginasDTO(
         val espacios: List<EspacioDTO>? = null,
         val cantidadPaginas : Int? = null

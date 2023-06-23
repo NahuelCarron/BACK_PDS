@@ -33,12 +33,14 @@ class EspacioController {
     : EspaciosCantPaginasDTO {
         val dto = objectMapper.readValue(body, FiltroEspacio::class.java)
         return this.espaciosService.getEspacios(
+                dto.tiempoRenta,
                 dto.ubicacion,
                 dto.fechaInicio,
                 dto.fechaFin,
-                dto.capacidad,
+                dto.dimensiones,
                 dto.numeroPagina,
-                dto.puntajes,
+                dto.estrellas,
+                dto.uso,
         )
     }
 

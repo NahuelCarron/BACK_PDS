@@ -16,16 +16,8 @@ class Espacio(
     var descripcion: String? = null,
         @Column
     var dimensiones: Double? = null,
-        @ElementCollection(targetClass = Uso::class)
-        @Enumerated(EnumType.STRING)
-        @JoinTable(
-                name = "espacio_uso",
-                joinColumns = [JoinColumn(name = "espacio_id")]
-        )
-        @Column(name = "uso")
-    var uso: MutableList<Uso>? = null,
         @Column
-    var capacidad: Int? = null,
+    var uso: String? = null,
         @Column
     var habitaciones: Int? = null,
         @Column
@@ -50,7 +42,13 @@ class Espacio(
     var ubicacion: String? = null,
         @Enumerated(EnumType.STRING)
     var pais: Pais? = null,
-
+        @Enumerated(EnumType.STRING)
+        @JoinTable(
+                name = "tiempo_renta",
+                joinColumns = [JoinColumn(name = "tiempo_renta_id")]
+        )
+        @Column(name = "tiempo_renta")
+    var tiempoRenta: TiempoRenta,
     ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
@@ -64,6 +62,9 @@ class Espacio(
     @Transient
     var comentarios: List<ComentarioEspacio>?= listOf()
 
+    @Transient
+    var qya: List<Qya>?= listOf()
+
     fun calcularTotal(fechaInicio: LocalDate, fechaFin: LocalDate): Long {
         return ChronoUnit.DAYS.between(fechaInicio, fechaFin)
     }
@@ -73,7 +74,6 @@ class Espacio(
         fun validarDatos(espacio: Espacio) {
             validarTexto("nombre", espacio.titulo, 100)
             validarTexto("descripcion", espacio.descripcion, 1000)
-            validadCantidad("capacidad", espacio.capacidad, 100000)
             validadCantidad("habitaciones", espacio.habitaciones, 1000)
             validadCantidad("banios", espacio.banios, 1000)
             validarTexto("detalleAlojamiento", espacio.detalleAlojamiento, 1000)
