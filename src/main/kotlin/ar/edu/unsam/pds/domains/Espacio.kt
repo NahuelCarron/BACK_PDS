@@ -16,21 +16,17 @@ class Espacio(
     var descripcion: String? = null,
         @Column
     var dimensiones: Double? = null,
-        @ElementCollection(targetClass = Uso::class)
-        @Enumerated(EnumType.STRING)
-        @JoinTable(
-                name = "espacio_uso",
-                joinColumns = [JoinColumn(name = "espacio_id")]
-        )
-    @Column(name = "uso")
-    var uso: MutableList<Uso>? = null,
-    @Column(length = 255)
+        @Column
+    var usos: String? = null,
+        @Column
+    var habitaciones: Int? = null,
+        @Column
+    var banios: Int? = null,
+        @Column(length = 255)
     var detalleAlojamiento: String? = null,
-    @Column
+        @Column
     var capacidad: Int? = null,
-    @Column(length = 255)
-    var otrosAspectos: String? = null,
-    @ElementCollection(targetClass = Servicio::class)
+        @ElementCollection(targetClass = Servicio::class)
     @Enumerated(EnumType.STRING)
     @JoinTable(
         name = "espacio_servicio",
@@ -38,19 +34,25 @@ class Espacio(
     )
     @Column(name = "servicio")
     var servicios: MutableList<Servicio>? = null,
-    @ManyToOne
+        @ManyToOne
     var duenio: Usuario? = null,
-    @Column
+        @Column
     var costo_hora: Double? = null,
-    @Column
+        @Column
     var costo_dia: Double? = null,
-    @Column
+        @Column
     var costo_mes: Double? = null,
-    @Column(length = 150)
+        @Column(length = 150)
     var ubicacion: String? = null,
-    @Enumerated(EnumType.STRING)
+        @Enumerated(EnumType.STRING)
     var pais: Pais? = null,
-
+        @Enumerated(EnumType.STRING)
+        @JoinTable(
+                name = "tiempo_renta",
+                joinColumns = [JoinColumn(name = "tiempo_renta_id")]
+        )
+        @Column(name = "tiempo_renta")
+    var tiempoRenta: TiempoRenta,
     ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
@@ -64,6 +66,9 @@ class Espacio(
     @Transient
     var comentarios: List<ComentarioEspacio>?= listOf()
 
+    @Transient
+    var qya: List<Qya>?= listOf()
+
     fun calcularTotal(fechaInicio: LocalDate, fechaFin: LocalDate): Long {
         return ChronoUnit.DAYS.between(fechaInicio, fechaFin)
     }
@@ -74,7 +79,6 @@ class Espacio(
             validarTexto("nombre", espacio.titulo, 100)
             validarTexto("descripcion", espacio.descripcion, 1000)
             validarTexto("detalleAlojamiento", espacio.detalleAlojamiento, 1000)
-            validarTexto("otrosAspectos", espacio.otrosAspectos, 1000)
             validarTexto("ubicacion", espacio.ubicacion, 100)
             if (espacio.costo_hora == null || espacio.costo_hora == 0.0) {
                 throw EspacioInvalido("El costo hora del espacio no puede ser 0")

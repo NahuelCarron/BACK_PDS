@@ -5,9 +5,7 @@ import ar.edu.unsam.pds.controller.dto.EspacioDTO
 import ar.edu.unsam.pds.controller.dto.EspaciosCantPaginasDTO
 import ar.edu.unsam.pds.controller.dto.FiltroEspacio
 import ar.edu.unsam.pds.controller.dto.toDTO
-import ar.edu.unsam.pds.domains.ComentarioEspacio
-import ar.edu.unsam.pds.domains.Espacio
-import ar.edu.unsam.pds.domains.Renta
+import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.exceptions.IdInvalido
 import ar.edu.unsam.pds.exceptions.NoEsDuenioDelEspacio
@@ -44,6 +42,10 @@ class EspacioService {
     @Transactional(Transactional.TxType.NEVER)
     fun getEspacios(filtro: FiltroEspacio) : EspaciosCantPaginasDTO {
 
+        // TODO: filtrar tiempo renta segun cantidad de tiempo entre incio y fin
+        // TODO: filtrar por tiempo renta
+        // TODO: filtrar por uso
+
         // NOTE: las fechas pueden ser nulas
         if (filtro.fechaInicio != null && filtro.fechaFin != null){
             if (filtro.fechaInicio.isAfter(filtro.fechaFin)) {
@@ -58,12 +60,11 @@ class EspacioService {
         } else filtro.estrellas
 
         var resultado: List<Espacio> = this.espaciosRepositorio.find(
-                filtro.ubicacion,
+            filtro.ubicacion,
             filtro.fechaInicio,
             filtro.fechaFin,
-            filtro.dimensiones,
-            filtro.cantPasajeros ?: 1,
-                puntajesABuscar
+            filtro.dimensiones ?: 1.0,
+            puntajesABuscar
         )
         val cantidadPaginas = this.cantidadDePaginas(resultado.size)
         resultado = filtrarPorPagina(resultado, filtro.numeroPagina ?: 1)
@@ -80,10 +81,8 @@ class EspacioService {
             this.validarEstaActivo(espacio)
             espacio.titulo = espacioBody.titulo
             espacio.descripcion = espacioBody.descripcion
-            espacio.otrosAspectos = espacioBody.otrosAspectos
             espacio.detalleAlojamiento = espacioBody.detalleAlojamiento
             espacio.ubicacion = espacioBody.ubicacion
-            espacio.capacidad = espacioBody.capacidad
             espacio.costo_hora = espacioBody.costo_hora
             espacio.servicios = espacioBody.servicios
             espaciosRepositorio.save(espacio)

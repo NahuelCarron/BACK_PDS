@@ -2,26 +2,23 @@ package ar.edu.unsam.pds.controller.dto
 
 import ar.edu.unsam.pds.domains.*
 import java.time.LocalDate
-import java.util.*
 
 data class EspacioDTO(
         val id: Int? = null,
         val titulo: String? = null,
         val descripcion: String? = null,
-        val capacidad: Int? = null,
+        val habitaciones: Int? = null,
+        val banios: Int? = null,
         val detalleAlojamiento: String? = null,
-        val otrosAspectos: String? = null,
         val servicios: MutableList<Servicio>? = null,
-        var id_usuario_duenio: UsuarioIdDTO? = null,
+        var duenio: UsuarioIdDTO? = null,
         val costo_hora: Double? = null,
-        val costo_dia: Double? = null,
-        val costo_mes: Double? = null,
         val ubicacion: String? = null,
-        val usos : List<Uso>? = null,
         val pais: Pais? = null,
-        var puntajePromedio: Int? = null,
-        var comentarios: List<ComentarioEspacio>? = null,
-        val estaActivo: Boolean? = null
+        var puntaje: Int? = null,
+        var comentarios: List<ComentarioEspacio>? = listOf(),
+        val estaActivo: Boolean? = null,
+        val qya: List<Qya>? = listOf()
 )
 data class comentarioEspacioDTO(
     var duenioNombre: String = "",
@@ -30,8 +27,16 @@ data class comentarioEspacioDTO(
     var comentario: String = ""
 )
 
-fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,capacidad,detalleAlojamiento,
-    otrosAspectos,servicios,duenio?.toIdDTO(),costo_hora,costo_dia, costo_mes,ubicacion,uso,pais,puntajePromedio,comentarios, estaActivo)
+fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,habitaciones,banios,detalleAlojamiento
+        , servicios,duenio?.toIdDTO(),costo_hora,ubicacion,pais,puntajePromedio,comentarios, estaActivo)
+
+
+// val pais: Pais? = null,
+// var puntajePromedio: Int? = null,
+// var comentarios: List<ComentarioEspacio>? = listOf(),
+// val estaActivo: Boolean? = null,
+// val qya: List<Qya>? = listOf()
+
 
 data class EspacioIdDTO(
     val id: Int? = null,
@@ -40,17 +45,16 @@ data class EspacioIdDTO(
 fun Espacio.toIdDTO() = EspacioIdDTO(id!!.toInt())
 
 data  class FiltroEspacio(
-    val tipoRenta: String = "",
-    val fechaInicio: LocalDate? = null,
-    val fechaFin: LocalDate? = null,
-    val ubicacion: String = "",
-    val cantPasajeros: Int? = null,
-    val dimensiones: Double? = null,
-    val uso : List<String>? = null,
-    val estrellas: List<Int>? = null,
-    val numeroPagina: Int? = null,
+        val tiempoRenta: TiempoRenta? = null,
+        val ubicacion: String = "",
+        val fechaInicio: LocalDate? = null,
+        val fechaFin: LocalDate? = null,
+        val dimensiones: Double? = null,
+        val numeroPagina: Int? = null,
+        val estrellas: List<Int>? = null,
+        val uso: String? = null,
+        )
 
-)
 data class EspaciosCantPaginasDTO(
         val espacios: List<EspacioDTO>? = null,
         val cantidadPaginas : Int? = null
