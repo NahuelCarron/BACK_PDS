@@ -29,6 +29,9 @@ interface UsuarioRepositorio: CrudRepository<Usuario, Long> {
        UPDATE Usuario SET pais = :nuevoPais WHERE id= :idUser
     """)
     fun actualizarPais(nuevoPais: Pais, idUser: Long)
-
-
+    @Query("""
+        Select u.username
+        FROM Usuario u
+    """)
+    fun obtenerNombresUsuario(): List<String>
 }

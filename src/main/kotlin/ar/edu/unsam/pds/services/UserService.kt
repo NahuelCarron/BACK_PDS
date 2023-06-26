@@ -5,7 +5,9 @@ import ar.edu.unsam.pds.controller.dto.EspacioUsuarioDTO
 import ar.edu.unsam.pds.controller.dto.RentaDTO
 import ar.edu.unsam.pds.controller.dto.RentaUsuarioDTO
 import ar.edu.unsam.pds.domains.*
+import ar.edu.unsam.pds.exceptions.BadRequestException
 import ar.edu.unsam.pds.exceptions.ErrorFechaNacimiento
+import ar.edu.unsam.pds.exceptions.ErrorFechas
 import ar.edu.unsam.pds.repositories.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -80,7 +82,18 @@ class UserService {
 
     @Transactional(Transactional.TxType.REQUIRED)
     fun crearUsuario(usuario: Usuario){
+        validarUsuario(usuario)
         this.usuarioRepositorio.save(usuario)
+    }
+    fun validarUsuario(usuario: Usuario){
+        if (usuario.fechaNacimiento!! >= LocalDate.now()){
+            throw ErrorFechas("Fecha seleccionada inválida")
+        }
+        var listaUsers = this.usuarioRepositorio.obtenerNombresUsuario()
+        if( listaUsers.contains(usuario.username)){
+            throw BadRequestException("El nombre de usuario ya existe")
+        }
+
     }
 
 

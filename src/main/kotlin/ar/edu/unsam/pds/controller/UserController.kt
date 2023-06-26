@@ -2,6 +2,8 @@ package ar.edu.unsam.pds.controller
 
 import ar.edu.unsam.pds.controller.dto.*
 import ar.edu.unsam.pds.domains.ComentarioEspacio
+import ar.edu.unsam.pds.domains.Espacio
+import ar.edu.unsam.pds.domains.Pais
 import ar.edu.unsam.pds.domains.Usuario
 import ar.edu.unsam.pds.services.UserService
 import com.fasterxml.jackson.databind.MapperFeature
@@ -48,6 +50,11 @@ class UserController {
     fun getUserEspacios(@PathVariable userId: Long): List<EspacioDTO>{
       return this.userService.getUserEspacios(userId).map{ it.toDTO()}
     }
+    @GetMapping("/paises")
+    @Operation(summary = "Endpoint extraer los paises")
+    fun getPaises(): List<Pais>{
+        return mutableListOf<Pais>() + Pais.values()
+    }
     @GetMapping("/espaciosDelUsuario/{userId}/rentados")
     @Operation(summary = "Endpoint acceder a los espacios del usuario que fueron rentados por otros")
     fun getEspaciosDelUsuarioRentados(@PathVariable userId: Long): List<EspacioRentaDTO>{
@@ -74,8 +81,9 @@ class UserController {
 
     @PostMapping("crearUsuario")
     @Operation(summary = "Endpoint para crear un usuario")
-    fun crearUsuario(@RequestBody usuario: Usuario){
-        this.userService.crearUsuario(usuario)
+    fun crearUsuario(@RequestBody body: String){
+        val nuevo = objectMapper.readValue(body, Usuario::class.java)
+        this.userService.crearUsuario(nuevo)
     }
 
 }

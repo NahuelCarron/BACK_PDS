@@ -20,7 +20,7 @@ class Usuario(
         @Enumerated(EnumType.STRING)
         var pais: Pais? = null,
         @Column
-        var dni: Double? = null,
+        var dni: String? = null,
         @Column
         var fotoPerfil: String? = null,
 ) {

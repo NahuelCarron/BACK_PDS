@@ -13,7 +13,7 @@ val espacioCasa1 = Espacio(
                 costo_hora = 500.0,
                 dimensiones = 3.0,
                 duenio = eminem,
-                pais = Pais.ARG,
+                pais = Pais.ARGENTINA,
                 usos = "sirve para vivir como para trabajar, reuniones, etc"
 )
 
@@ -27,7 +27,7 @@ val espacioCasa2 = Espacio(
                 duenio = solari,
                 costo_hora = 1700.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
             )
 val espacioCasa3 = Espacio(
                 titulo ="QUINCHO PARRILLERO",
@@ -38,7 +38,7 @@ val espacioCasa3 = Espacio(
                 duenio = solari,
                 costo_hora = 140.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCasa4 = Espacio(
                 titulo ="Duplex",
@@ -49,7 +49,7 @@ val espacioCasa4 = Espacio(
                 duenio = karolg,
                 costo_hora = 130.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCasa5 = Espacio(
                 titulo ="Casa amplia cerca del Rio",
@@ -59,7 +59,7 @@ val espacioCasa5 = Espacio(
                 ubicacion = "Av Juan Perez 334, Corrientes",
                 duenio = karolg,
                 costo_hora = 140.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCasa6 = Espacio(
                 titulo ="Iglú",
@@ -70,7 +70,7 @@ val espacioCasa6 = Espacio(
                 duenio = eminem,
                 costo_hora = 10.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCasa7 = Espacio(
                 titulo ="Casa en el arbol",
@@ -81,7 +81,7 @@ val espacioCasa7 = Espacio(
                 duenio = michaelJackson,
                 costo_hora = 140.0,
                 dimensiones = 3.0,
-                pais = Pais.BOL
+                pais = Pais.ARGENTINA
 )
 val espacioCasa8 = Espacio(
                 titulo ="Casa rodante",
@@ -92,7 +92,7 @@ val espacioCasa8 = Espacio(
                 duenio = michaelJackson,
                 dimensiones = 3.0,
                 costo_hora = 900.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento1 = Espacio(
                 titulo ="Departamento moderno de tres ambientes",
@@ -103,7 +103,7 @@ val espacioDepartamento1 = Espacio(
                 duenio = michaelJackson,
                 costo_hora = 1000.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento2 = Espacio(
                 titulo ="DEPARTAMENTO CHETA",
@@ -114,7 +114,7 @@ val espacioDepartamento2 = Espacio(
                 duenio = karolg,
                 dimensiones = 3.0,
                 costo_hora = 3500.0,
-                pais = Pais.BOL
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento3 = Espacio(
                 titulo ="Depto piso 30",
@@ -125,7 +125,7 @@ val espacioDepartamento3 = Espacio(
                 duenio = michaelJackson,
                 costo_hora = 100.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento4 = Espacio(
                 titulo ="DEPTO re cheta 2",
@@ -136,7 +136,7 @@ val espacioDepartamento4 = Espacio(
                 duenio = karolg,
                 costo_hora = 3500.0,
                 dimensiones = 3.0,
-                pais = Pais.BOL
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento5 = Espacio(
                 titulo ="Departamento con hermosa vista",
@@ -147,7 +147,7 @@ val espacioDepartamento5 = Espacio(
                 duenio = eminem,
                 dimensiones = 3.0,
                 costo_hora = 3000.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento6 = Espacio(
                 titulo ="Departamento buena ubicacion",
@@ -158,7 +158,7 @@ val espacioDepartamento6 = Espacio(
                 duenio = solari,
                 costo_hora = 4000.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
  val espacioDepartamento7 = Espacio(
                 titulo ="Excelente departamento con vista al mar",
@@ -169,7 +169,7 @@ val espacioDepartamento6 = Espacio(
                 duenio = eminem,
                 dimensiones = 3.0,
                 costo_hora = 2500.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioDepartamento8 = Espacio(
                 titulo ="Departamento moderno",
@@ -190,7 +190,7 @@ val espacioCabania1 = Espacio(
                 duenio = eminem,
                 costo_hora = 1500.0,
                 dimensiones = 3.0,
-                pais = Pais.BRA
+                pais = Pais.ARGENTINA
 )
 val espacioCabania2 = Espacio(
                 titulo ="Cabaña alpina",
@@ -201,7 +201,7 @@ val espacioCabania2 = Espacio(
                 duenio = solari,
                 costo_hora = 2000.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
  val espacioCabania3 = Espacio(
                 titulo ="Cabañita humilde",
@@ -211,7 +211,7 @@ val espacioCabania2 = Espacio(
                 ubicacion = "Montaña, San Carlos de Bariloche",
                 duenio = eminem,
                 costo_hora = 1500.0,
-                pais = Pais.ARG,
+                pais = Pais.ARGENTINA,
                 dimensiones = 3.0
 )
 val espacioCabania4 = Espacio(
@@ -223,7 +223,7 @@ val espacioCabania4 = Espacio(
                 duenio = solari,
                 costo_hora = 200.0,
                 dimensiones = 3.0,
-                pais = Pais.BRA
+                pais = Pais.BRASIL
 )
 val espacioCabania5 = Espacio(
                 titulo ="Cabaña en la costa",
@@ -234,7 +234,7 @@ val espacioCabania5 = Espacio(
                 duenio = solari,
                 costo_hora = 300.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCabania6 = Espacio(
                 titulo ="Cabaña Chill",
@@ -245,7 +245,7 @@ val espacioCabania6 = Espacio(
                 duenio = karolg,
                 costo_hora = 240.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCabania7 = Espacio(
                 titulo ="Cabaña en la selva",
@@ -256,7 +256,7 @@ val espacioCabania7 = Espacio(
                 duenio = karolg,
                 costo_hora = 220.0,
                 dimensiones = 3.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )
 val espacioCabania8 = Espacio(
                 titulo ="Cabaña JUJUY",
@@ -267,5 +267,5 @@ val espacioCabania8 = Espacio(
                 duenio = karolg,
                 dimensiones = 3.0,
                 costo_hora = 240.0,
-                pais = Pais.ARG
+                pais = Pais.ARGENTINA
 )

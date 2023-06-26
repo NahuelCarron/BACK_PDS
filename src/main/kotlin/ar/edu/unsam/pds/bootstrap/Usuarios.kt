@@ -10,7 +10,7 @@ val eminem = Usuario(
     nombre = "Marshall Bruce",
     apellido = "Mathers III",
     fechaNacimiento = LocalDate.of(1972, 10, 17),
-    pais = Pais.USA,
+    pais = Pais.ARGENTINA,
     fotoPerfil = "http://localhost:9000/api/v0/assets/3ce66d74-6f90-4219-ae6f-be3ef24b163e.jpg",
 )
 val solari = Usuario(
@@ -19,7 +19,7 @@ val solari = Usuario(
     nombre = "Carlos Alberto",
     apellido = "Solari",
     fechaNacimiento = LocalDate.now(),
-    pais = Pais.ARG,
+    pais = Pais.ARGENTINA,
     fotoPerfil = "http://localhost:9000/api/v0/assets/513c8ff4-2911-4736-b2f4-5707982b70e2.jpg",
 )
 val michaelJackson = Usuario(
@@ -28,7 +28,7 @@ val michaelJackson = Usuario(
     nombre = "Michael Joseph",
     apellido = "Jackson",
     fechaNacimiento = LocalDate.of(1958, 8, 29),
-    pais = Pais.BOL,
+    pais = Pais.ARGENTINA,
     fotoPerfil = "http://localhost:9000/api/v0/assets/737b4ff8-c720-4225-9f9b-e8e785620d54.jpeg",
 )
 val karolg = Usuario(
@@ -37,6 +37,6 @@ val karolg = Usuario(
     nombre = "Karol",
     apellido = "Gonzalez",
     fechaNacimiento = LocalDate.of(1990, 1, 1),
-    pais = Pais.BRA,
+    pais = Pais.ARGENTINA,
     fotoPerfil = "http://localhost:9000/api/v0/assets/78a2730f-c4bd-410d-aa2d-b960c468fb16.jpg",
 )
