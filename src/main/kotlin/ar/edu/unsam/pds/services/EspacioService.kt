@@ -31,7 +31,7 @@ class EspacioService {
     fun obtenerEspacio(id : Long ) : EspacioDTO? {
         try{
             val espacio = espaciosRepositorio.findById(id).get()
-            espacio.comentarios = this.obtenerUltimos3Comentarios(espacio)
+            espacio.comentarios = this.obtenerComentarios(espacio)
             return espacio.toDTO()
         }catch (e: Exception){
              throw BusinessException("No existe el elemento seleccionado")
@@ -150,8 +150,8 @@ class EspacioService {
     fun promedioPuntaje(idEspacio: Long): Int{
         return this.rentaRepository.obtenerPromedioComentarios(idEspacio)
     }
-    fun obtenerUltimos3Comentarios(espacio: Espacio): List<ComentarioEspacio> {
-        return this.comentariosRepo.obtenerComentariosOrdenados(espacio.id!!).take(3)
+    fun obtenerComentarios(espacio: Espacio): List<ComentarioEspacio> {
+        return this.comentariosRepo.obtenerComentariosOrdenados(espacio.id!!)
     }
 
     fun validarDuenioEspacio(userId: Long, espacio: Espacio){

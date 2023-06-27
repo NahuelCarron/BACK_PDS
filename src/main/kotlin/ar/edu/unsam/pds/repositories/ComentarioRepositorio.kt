@@ -10,19 +10,22 @@ interface ComentarioRepositorio: CrudRepository<Comentario, Long> {
     @Query("""
         SELECT new ar.edu.unsam.pds.domains.ComentarioEspacio(
         r.id,
-        u.nombre,
-        u.apellido,
+        d.nombre,
+        d.apellido,
         h.titulo,
-        u.fotoPerfil,
+        d.fotoPerfil,
         h.pais,
         c.puntaje,
         c.comentario,
-        c.fechaPublicacion
+        c.fechaPublicacion,
+        u.nombre,
+        u.apellido
     )
     FROM Espacio h
-    JOIN Usuario u ON h.duenio.id = u.id
+    JOIN Usuario d ON h.duenio.id = d.id
     JOIN Renta r ON r.espacio.id = h.id
     JOIN Comentario c ON r.id = c.renta.id
+    JOIN Usuario u ON r.usuario.id = u.id
     WHERE r.espacio.id = :idEspacio
     ORDER BY c.fechaPublicacion DESC
     """)

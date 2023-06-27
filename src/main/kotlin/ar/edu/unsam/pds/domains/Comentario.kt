@@ -14,7 +14,9 @@ class ComentarioEspacio(
         var espacioPais: Pais? = null,
         var cantidadEstrellas: Int? = null,
         var comentario: String? = null,
-        var fechaPublicacion: LocalDate? = null
+        var fechaPublicacion: LocalDate? = null,
+        var nombreUsuario: String? = null,
+        var apellidoUsuario: String? = null
 ) {
     // Nada por ahora
 }
