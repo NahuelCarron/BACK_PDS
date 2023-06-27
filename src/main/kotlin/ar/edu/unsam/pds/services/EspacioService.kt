@@ -158,7 +158,6 @@ class EspacioService {
         if( espacio.duenio?.id!!.toInt() != userId.toInt() ) throw NoEsDuenioDelEspacio("Un espacio solo puede ser eliminado por el dueño")
     }
 
-    //TODO: Desde la query se puede validar que la fecha seleccionada esta ocupada. REVISAR
     fun estaOcupado(renta : Renta, fechaInicio: LocalDate, fechaFin: LocalDate) : Boolean {
         return return this.antesDelHorarioRentado(renta,fechaInicio) || this.despuesDelHorarioRentado(renta, fechaFin) || this.fueraDelHorarioRentado (renta, fechaInicio,fechaFin)
     }

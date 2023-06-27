@@ -17,8 +17,8 @@ class Renta(
     val fecha_hasta: LocalDate? = null,
         @Column
     val costoTotal: Double? = null,
-        @Column
-    val cantPasajeros: Int? = null
+        @Enumerated(EnumType.STRING)
+    val metodoDePago: MetodoPago? = null,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +29,6 @@ class Renta(
     fun calcularCostoTotal() : Long {
         this.validarFechas()
         return espacio!!.calcularTotal(this.fecha_desde!!, this.fecha_hasta!!)
-    }
-
-    fun realizarCompra(){
-        // TODO: implementar
     }
 
     fun validarFechas(){

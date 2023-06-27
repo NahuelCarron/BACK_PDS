@@ -39,10 +39,10 @@ fun Espacio.toDTO() = EspacioDTO(id!!.toInt(),titulo,descripcion,detalleAlojamie
 
 
 data class EspacioIdDTO(
-    val id: Int? = null,
+    val id: Long? = null,
 )
 
-fun Espacio.toIdDTO() = EspacioIdDTO(id!!.toInt())
+fun Espacio.toIdDTO() = EspacioIdDTO(id!!)
 
 data  class FiltroEspacio(
     val tiempoRenta: TiempoRenta? = null,

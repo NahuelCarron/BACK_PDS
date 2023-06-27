@@ -10,7 +10,6 @@ val rentaUsuario1Casa1 = Renta(
             espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2023, 3, 20),
             fecha_hasta = LocalDate.of(2023, 3, 23),
-            cantPasajeros = 1
 )
 var comentarioRentaUsuario1Casa1 = Comentario(
     renta = rentaUsuario1Casa1,
@@ -24,7 +23,6 @@ val rentaUsuario1Casa2 = Renta(
             espacio = espacioCasa2,
             fecha_desde = LocalDate.of(2023, 4, 22),
             fecha_hasta = LocalDate.of(2023, 4, 29),
-            cantPasajeros = 1
 )
 var comentarioRentaUsuario1Casa2 = Comentario(
     renta = rentaUsuario1Casa2,
@@ -38,7 +36,6 @@ val rentaUsuario1Depto5 = Renta(
             espacio = espacioDepartamento5,
             fecha_desde = LocalDate.of(2023, 5, 22),
             fecha_hasta = LocalDate.of(2023, 5, 29),
-            cantPasajeros = 1
 )
 
 val rentaUsuario2Casa2 = Renta(
@@ -46,7 +43,6 @@ val rentaUsuario2Casa2 = Renta(
             espacio = espacioCasa2,
             fecha_desde = LocalDate.of(2023, 4, 3),
             fecha_hasta = LocalDate.of(2023, 4, 5),
-    cantPasajeros = 1
 )
 var comentarioRentaUsuario2Casa2 = Comentario(
     renta= rentaUsuario2Casa2,
@@ -67,7 +63,6 @@ var comentarioInquilinoUsuario2Casa2 = Comentario(
             espacio = espacioCasa3,
             fecha_desde = LocalDate.of(2023, 4, 10),
             fecha_hasta = LocalDate.of(2023, 4, 15),
-     cantPasajeros = 1
 )
 var comentarioRentaUsuario3Casa4 = Comentario(
     comentario = "Buena Casa",
@@ -79,7 +74,6 @@ val rentaUsuario3Casa4 = Renta(
             espacio = espacioCasa4,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 21),
-    cantPasajeros = 1
 )
 var comentarioRentaUsuario3Casa5 = Comentario(
     comentario = "el inodoro estaba tapado",
@@ -91,7 +85,6 @@ val rentaUsuario3Casa5 = Renta(
             espacio = espacioCasa5,
             fecha_desde = LocalDate.of(2023, 4, 23),
             fecha_hasta = LocalDate.of(2023, 4, 27),
-    cantPasajeros = 1
 )
 var comentarioRentaUsuario4Casa6 = Comentario(
     comentario = "me encanto",
@@ -103,7 +96,6 @@ val rentaUsuario4Casa6 = Renta(
             espacio = espacioCasa6,
             fecha_desde = LocalDate.of(2023, 5, 1),
             fecha_hasta = LocalDate.of(2023, 5, 3),
-    cantPasajeros = 1
 )
 
 val rentaUsuario4Casa7 = Renta(
@@ -111,7 +103,6 @@ val rentaUsuario4Casa7 = Renta(
             espacio = espacioCasa7,
             fecha_desde = LocalDate.of(2023, 6, 20),
             fecha_hasta = LocalDate.of(2023, 6, 21),
-    cantPasajeros = 1
 )
 
 val rentaUsuario1Casa7 = Renta(
@@ -119,7 +110,6 @@ val rentaUsuario1Casa7 = Renta(
             espacio = espacioCasa7,
             fecha_desde = LocalDate.of(2022, 8, 20),
             fecha_hasta = LocalDate.of(2022, 8, 21),
-    cantPasajeros = 1
 )
 
 val rentaUsuario1Casa8 = Renta(
@@ -127,7 +117,6 @@ val rentaUsuario1Casa8 = Renta(
             espacio = espacioCasa8,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 21),
-    cantPasajeros = 1
 )
 var comentarioRentaUsuario4Casa1v1 = Comentario(
     comentario = "Muy lindo lugar, tiene un patio hermoso",
@@ -139,7 +128,6 @@ val rentaUsuario4Casa1v1 = Renta(
             espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 25),
-    cantPasajeros = 1
 )
 var comentarioRentaUsuario3Casa1 = Comentario(
     comentario = "Todo estaba muy sucio",
@@ -151,7 +139,6 @@ val rentaUsuario3Casa1 = Renta(
             espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2023, 1, 20),
             fecha_hasta = LocalDate.of(2023, 1, 22),
-    cantPasajeros = 1
 )
 var comentarioRentaUsuario4Casa1v2 = Comentario(
     comentario = "Fui por segunda vez, lo recomiendo",
@@ -163,5 +150,4 @@ val rentaUsuario4Casa1v2 = Renta(
             espacio = espacioCasa1,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 29),
-    cantPasajeros = 1
 )

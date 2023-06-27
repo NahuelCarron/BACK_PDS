@@ -4,6 +4,7 @@ import ar.edu.unsam.pds.controller.BusinessException
 import ar.edu.unsam.pds.controller.dto.PuntajeComentarioDTO
 import ar.edu.unsam.pds.controller.dto.RentaDTO
 import ar.edu.unsam.pds.domains.Comentario
+import ar.edu.unsam.pds.domains.MetodoPago
 import ar.edu.unsam.pds.domains.Renta
 import ar.edu.unsam.pds.exceptions.*
 import ar.edu.unsam.pds.repositories.*
@@ -39,22 +40,16 @@ class RentasService {
         return rentasSegunEspacio.any { espaciosService.estaOcupado(it,fechaInicio,fechaFin) }
     }
     @Transactional(Transactional.TxType.REQUIRED)
-    fun realizarRenta(rentaDTO : RentaDTO){
-
-        if (this.sePuedeRentar(rentaDTO?.inicio!!,rentaDTO?.fin!!,rentaDTO.espacio?.id!!.toLong())){
+    fun realizarRenta(renta : RentaDTO){
+        if (this.sePuedeRentar(renta?.inicio!!,renta?.fin!!,renta.espacio?.id!!)){
             throw ErrorFechas("Las fechas seleccionadas no estan disponibles")
         }
-
         try {
-            val nuevaRenta = Renta(usuario = usuariosRepo.findById(rentaDTO.usuario?.id!!.toLong()).get(),
-                espacio = espaciosRepository.findById(rentaDTO.espacio.id!!.toLong()).get(),
-                fecha_desde = rentaDTO.inicio,
-                fecha_hasta = rentaDTO.fin,
-            )
-            nuevaRenta.realizarCompra()
-            rentasRepositorio.save(nuevaRenta)
-            this.usuariosRepo.save(nuevaRenta.usuario!!) //guarda el nuevo saldo del usuario en el repo de usuarios
-
+            val usuario = this.usuariosRepo.findById(renta.usuario!!.id!!).get()
+            val espacio = this.espaciosRepository.findById(renta.espacio!!.id!!).get()
+            val nueva = Renta(usuario, espacio, renta.inicio, renta.fin, renta.costoTotal, renta.metodoDePago)
+            nueva.validarFechas()
+            rentasRepositorio.save(nueva)
         }
         catch (e: Exception) {
             throw BusinessException(e.message!!)
