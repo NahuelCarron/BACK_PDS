@@ -14,7 +14,7 @@ val espacioCasa1 = Espacio(
                 dimensiones = 3.0,
                 duenio = eminem,
                 pais = Pais.ARGENTINA,
-                usos = "sirve para vivir como para trabajar, reuniones, etc"
+                usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 
 
@@ -27,7 +27,8 @@ val espacioCasa2 = Espacio(
                 duenio = solari,
                 costo_hora = 1700.0,
                 dimensiones = 3.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
             )
 val espacioCasa3 = Espacio(
                 titulo ="QUINCHO PARRILLERO",
@@ -38,7 +39,8 @@ val espacioCasa3 = Espacio(
                 duenio = solari,
                 costo_hora = 140.0,
                 dimensiones = 3.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioCasa4 = Espacio(
                 titulo ="Duplex",
@@ -49,7 +51,8 @@ val espacioCasa4 = Espacio(
                 duenio = karolg,
                 costo_hora = 130.0,
                 dimensiones = 3.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioCasa5 = Espacio(
                 titulo ="Casa amplia cerca del Rio",
@@ -59,7 +62,8 @@ val espacioCasa5 = Espacio(
                 ubicacion = "Av Juan Perez 334, Corrientes",
                 duenio = karolg,
                 costo_hora = 140.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioCasa6 = Espacio(
                 titulo ="Iglú",
@@ -70,7 +74,8 @@ val espacioCasa6 = Espacio(
                 duenio = eminem,
                 costo_hora = 10.0,
                 dimensiones = 3.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioCasa7 = Espacio(
                 titulo ="Casa en el arbol",
@@ -81,7 +86,8 @@ val espacioCasa7 = Espacio(
                 duenio = michaelJackson,
                 costo_hora = 140.0,
                 dimensiones = 3.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioCasa8 = Espacio(
                 titulo ="Casa rodante",
@@ -92,7 +98,8 @@ val espacioCasa8 = Espacio(
                 duenio = michaelJackson,
                 dimensiones = 3.0,
                 costo_hora = 900.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioDepartamento1 = Espacio(
                 titulo ="Departamento moderno de tres ambientes",
@@ -103,7 +110,8 @@ val espacioDepartamento1 = Espacio(
                 duenio = michaelJackson,
                 costo_hora = 1000.0,
                 dimensiones = 3.0,
-                pais = Pais.ARGENTINA
+                pais = Pais.ARGENTINA,
+    usos = mutableListOf(Uso.OFICINA, Uso.VIVIENDA)
 )
 val espacioDepartamento2 = Espacio(
                 titulo ="DEPARTAMENTO CHETA",

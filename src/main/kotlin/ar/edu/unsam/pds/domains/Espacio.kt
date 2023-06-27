@@ -10,17 +10,23 @@ import javax.persistence.*
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity
 class Espacio(
-        @Column(length = 200)
+    @Column(length = 200)
     var titulo: String? = null,
-        @Column(length = 5000)
+    @Column(length = 5000)
     var descripcion: String? = null,
-        @Column
-    var dimensiones: Double? = null,
     @Column
-    var usos: String? = null,
-        @Column(length = 255)
+    var dimensiones: Double? = null,
+    @ElementCollection(targetClass = Uso::class)
+    @Enumerated(EnumType.STRING)
+    @JoinTable(
+        name = "espacio_uso",
+        joinColumns = [JoinColumn(name = "espacio_id")]
+    )
+    @Column(name = "usos")
+    var usos: MutableList<Uso>? = null,
+    @Column(length = 255)
     var detalleAlojamiento: String? = null,
-        @ElementCollection(targetClass = Servicio::class)
+    @ElementCollection(targetClass = Servicio::class)
     @Enumerated(EnumType.STRING)
     @JoinTable(
         name = "espacio_servicio",
@@ -28,13 +34,13 @@ class Espacio(
     )
     @Column(name = "servicio")
     var servicios: MutableList<Servicio>? = null,
-        @ManyToOne
+    @ManyToOne
     var duenio: Usuario? = null,
-        @Column
+    @Column
     var costo_hora: Double? = null,
-        @Column(length = 150)
+    @Column(length = 150)
     var ubicacion: String? = null,
-        @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     var pais: Pais? = null,
 
     ) {

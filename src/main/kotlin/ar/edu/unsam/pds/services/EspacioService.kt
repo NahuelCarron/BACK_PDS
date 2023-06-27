@@ -72,6 +72,13 @@ class EspacioService {
             filtro.dimensiones ?: 1.0,
             puntajesABuscar
         )
+        resultado = if (filtro.usos!!.isEmpty()) {
+            resultado
+        } else {
+            resultado.filter { espacio ->
+                espacio.usos!!.any { uso -> uso in filtro.usos!! }
+            }
+        }
         val cantidadPaginas = this.cantidadDePaginas(resultado.size)
         resultado = filtrarPorPagina(resultado, filtro.numeroPagina ?: 1)
         return EspaciosCantPaginasDTO(resultado.map { it.toDTO() }, cantidadPaginas)

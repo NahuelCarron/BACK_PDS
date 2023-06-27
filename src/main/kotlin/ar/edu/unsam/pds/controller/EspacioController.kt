@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -65,6 +66,12 @@ class EspacioController {
     @DeleteMapping("/espacios/{userId}/eliminar/{espacioId}")
     fun eliminarEspacio(@PathVariable userId: Long, @PathVariable espacioId: Long){
         this.espaciosService.eliminarEspacio(userId, espacioId)
+    }
+
+    @GetMapping("/usos")
+    @Operation(summary = "Endpoint extraer los usos")
+    fun getPaises(): List<Uso>{
+        return mutableListOf<Uso>() + Uso.values()
     }
 
 }

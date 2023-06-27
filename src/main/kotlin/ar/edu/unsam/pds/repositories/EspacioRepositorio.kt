@@ -2,6 +2,7 @@ package ar.edu.unsam.pds.repositories
 
 import ar.edu.unsam.pds.controller.dto.QyaEspacio
 import ar.edu.unsam.pds.domains.Espacio
+import ar.edu.unsam.pds.domains.Uso
 import ar.edu.unsam.pds.domains.Usuario
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
@@ -26,7 +27,7 @@ interface EspacioRepositorio: CrudRepository<Espacio, Long> {
             OR r.fecha_hasta BETWEEN :fechaInicio AND :fechaFin
         ))
         AND h.dimensiones >= :dimensiones
-        AND h.puntajePromedio IN (:puntajes)
+        AND h.puntajePromedio IN (:puntajes) 
         ORDER BY h.puntajePromedio DESC
         """)
     fun find(

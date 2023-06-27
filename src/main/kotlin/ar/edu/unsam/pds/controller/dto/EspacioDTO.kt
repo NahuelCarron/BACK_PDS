@@ -12,7 +12,7 @@ data class EspacioDTO(
         var duenio: UsuarioIdDTO? = null,
         val costo_hora: Double? = null,
         val ubicacion: String? = null,
-        val usos: String? = null,
+        val usos: MutableList<Uso>? = null,
         val pais: Pais? = null,
         val dimensiones: Double? = null,
         var puntajePromedio: Int? = null,
@@ -52,7 +52,7 @@ data  class FiltroEspacio(
     val dimensiones: Double? = null,
     val numeroPagina: Int? = null,
     val estrellas: List<Int>? = null,
-    val usos: String? = null,
+    val usos: List<Uso>? = null,
         )
 
 data class EspaciosCantPaginasDTO(
