@@ -1,7 +1,7 @@
 package ar.edu.unsam.pds.domains
 
 enum class MetodoPago {
-    TARJETACREDITODEBITO,
+    TARJETA_CREDITO_DEBITO,
     PAYPAL,
     TRANSFERENCIA,
     EFECTIVO,
