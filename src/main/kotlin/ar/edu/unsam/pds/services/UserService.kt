@@ -54,7 +54,9 @@ class UserService {
 
     @Transactional(Transactional.TxType.NEVER)
     fun getUserRentas(userId: Long): List<EspacioRentaDTO> {
-        return rentasRepositorio.obtenerRentasPorUsuario(userId)
+        var res =  rentasRepositorio.obtenerRentasPorUsuario(userId)
+        res = res.sortedBy { it.comentario != null }
+        return res
     }
 
     @Transactional(Transactional.TxType.NEVER)
@@ -65,6 +67,7 @@ class UserService {
     @Transactional(Transactional.TxType.NEVER)
     fun getUserEspaciosRentadosPorOtros(userId: Long): List<EspacioRentaDTO> {
         var resultado = this.rentasRepositorio.obtenerRentasDeEspaciosDelUsuario(userId)
+        resultado = resultado.sortedBy { it.comentario != null }
         return resultado
     }
 

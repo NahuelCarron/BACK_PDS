@@ -11,20 +11,30 @@ import org.springframework.stereotype.Repository
 interface RentasRepositorio: CrudRepository<Renta, Long> {
 
     @Query("""
-       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c, r.id)
-        FROM Espacio e
-        LEFT JOIN Renta r ON r.espacio.id = e.id
-        LEFT JOIN Usuario u ON u.id = e.duenio.id
-        LEFT JOIN Comentario c ON r.id = c.renta.id
-        WHERE u.id = :userId AND (c.tipoComentario != 'renta' OR c.tipoComentario IS NULL)
+        SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO( e, r.fecha_desde, r.fecha_hasta, r.costoTotal, r.id,
+           (SELECT c2
+            FROM Comentario c2
+            WHERE c2.renta.id = r.id AND c2.tipoComentario = 'inquilino'
+            ))
+            FROM Renta r
+            LEFT JOIN Espacio e ON r.espacio.id = e.id
+            LEFT JOIN Usuario u ON u.id = e.duenio.id
+            LEFT JOIN Comentario c ON c.renta.id = r.id
+            WHERE e.duenio.id = :userId
+            GROUP BY e.id, r.fecha_desde, r.fecha_hasta, r.costoTotal, r.id
         """)
     fun obtenerRentasDeEspaciosDelUsuario(userId:Long):List<EspacioRentaDTO>
     @Query("""
-       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO(e, r.fecha_desde, r.fecha_hasta, r.costoTotal, c, r.id)
-        FROM Renta r
-        LEFT JOIN Espacio e ON r.espacio.id = e.id
-        LEFT JOIN Comentario c ON r.id = c.renta.id
-        WHERE r.usuario.id = :userId AND (c.tipoComentario != 'inquilino' OR c.tipoComentario IS NULL)
+       SELECT new ar.edu.unsam.pds.controller.dto.EspacioRentaDTO( e, r.fecha_desde, r.fecha_hasta, r.costoTotal, r.id,
+           (SELECT c2
+            FROM Comentario c2
+            WHERE c2.renta.id = r.id AND c2.tipoComentario = 'renta'))
+            FROM Renta r
+            LEFT JOIN Espacio e ON r.espacio.id = e.id
+            LEFT JOIN Usuario u ON u.id = e.duenio.id
+            LEFT JOIN Comentario c ON c.renta.id = r.id
+            WHERE r.usuario.id = :userId
+            GROUP BY e.id, r.fecha_desde, r.fecha_hasta, r.costoTotal, r.id
         """)
     fun obtenerRentasPorUsuario(userId:Long):List<EspacioRentaDTO>
     @Query("""
