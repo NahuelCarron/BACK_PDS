@@ -7,4 +7,8 @@ enum class Servicio {
     PORTERIA,
     SEGURIDAD,
     ESTACIONAMIENTO,
+    BAÑO,
+    COCINA,
+    CALEFACCION,
+    MANTENIMIENTO
 }

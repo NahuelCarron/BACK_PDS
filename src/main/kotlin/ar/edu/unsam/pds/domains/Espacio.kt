@@ -12,7 +12,7 @@ import javax.persistence.*
 class Espacio(
     @Column(length = 200)
     var titulo: String? = null,
-    @Column(length = 5000)
+    @Column(length = 1000)
     var descripcion: String? = null,
     @Column
     var dimensiones: Double? = null,
@@ -24,7 +24,7 @@ class Espacio(
     )
     @Column(name = "usos")
     var usos: MutableList<Uso>? = null,
-    @Column(length = 255)
+    @Column(length = 5000)
     var detalleAlojamiento: String? = null,
     @ElementCollection(targetClass = Servicio::class)
     @Enumerated(EnumType.STRING)

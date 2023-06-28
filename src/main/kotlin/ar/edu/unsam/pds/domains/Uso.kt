@@ -17,5 +17,8 @@ enum class Uso {
     VIVIENDA,
     COWORKING,
     ENTRETENIMIENTO,
-    COMERCIAL
+    COMERCIAL,
+    GARAGE,
+    RECREATIVO,
+    CONSULTORIO
 }

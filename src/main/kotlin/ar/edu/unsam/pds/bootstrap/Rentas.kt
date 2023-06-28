@@ -5,48 +5,48 @@ import ar.edu.unsam.pds.domains.Renta
 import java.time.LocalDate
 
 
-val rentaUsuario1Casa1 = Renta(
+val rentaVillaSerenity1 = Renta(
             usuario = eminem,
-            espacio = espacioCasa1,
+            espacio = VillaSerenity,
             fecha_desde = LocalDate.of(2023, 3, 20),
             fecha_hasta = LocalDate.of(2023, 3, 23),
 )
-var comentarioRentaUsuario1Casa1 = Comentario(
-    renta = rentaUsuario1Casa1,
-    comentario = "el inodoro estaba tapado",
-    puntaje = 2,
+var comentarioRentaVillaSerenity1 = Comentario(
+    renta = rentaVillaSerenity1,
+    comentario = "Excelente casa, pero el wifi funcionaba bastante mal.",
+    puntaje = 4,
     fechaPublicacion = LocalDate.of(2023, 3, 28),
     tipoComentario = "renta"
 )
-val rentaUsuario1Casa2 = Renta(
+val rentaVillaSerenity2 = Renta(
             usuario = eminem,
-            espacio = espacioCasa2,
+            espacio = VillaSerenity,
             fecha_desde = LocalDate.of(2023, 4, 22),
             fecha_hasta = LocalDate.of(2023, 4, 29),
 )
-var comentarioRentaUsuario1Casa2 = Comentario(
-    renta = rentaUsuario1Casa2,
-    comentario = "Recomiendo, muy cómodo el duplex.",
-    puntaje = 2,
+var comentarioRentaVillaSerenity2= Comentario(
+    renta = rentaVillaSerenity2,
+    comentario = "Recomiendo, muy cómoda y elegante. Hermosa arquitectura. ME ENCANTO!!!",
+    puntaje = 5,
     fechaPublicacion = LocalDate.of(2023, 4, 30),
     tipoComentario = "renta"
 )
-val rentaUsuario1Depto5 = Renta(
+val rentaGarageEnPlenoCentro1 = Renta(
             usuario = eminem,
-            espacio = espacioDepartamento5,
+            espacio = GarageEnPlenoCentro,
             fecha_desde = LocalDate.of(2023, 5, 22),
             fecha_hasta = LocalDate.of(2023, 5, 29),
 )
 
-val rentaUsuario2Casa2 = Renta(
+val rentaGarageEnPlenoCentro2 = Renta(
             usuario = solari,
-            espacio = espacioCasa2,
+            espacio = GarageEnPlenoCentro,
             fecha_desde = LocalDate.of(2023, 4, 3),
             fecha_hasta = LocalDate.of(2023, 4, 5),
 )
-var comentarioRentaUsuario2Casa2 = Comentario(
-    renta= rentaUsuario2Casa2,
-    comentario = "Buenisimo!!!!! Voy a volver",
+var comentarioRentaGarageEnPlenoCentro2 = Comentario(
+    renta= rentaGarageEnPlenoCentro2,
+    comentario = "Buenisimo!!!!! Excelente atención",
     puntaje = 4,
     fechaPublicacion = LocalDate.of(2023, 4, 28),
     tipoComentario = "renta"
@@ -55,99 +55,111 @@ var comentarioInquilinoUsuario2Casa2 = Comentario(
     comentario = "Re buen inquilino!!!!",
     puntaje = 5,
     fechaPublicacion = LocalDate.of(2023, 5, 28),
-    renta = rentaUsuario2Casa2,
+    renta = rentaGarageEnPlenoCentro2,
     tipoComentario = "inquilino"
 )
- val rentaUsuario2Casa3 = Renta(
+ val rentaQUINCHOPARRILLERO1 = Renta(
             usuario = solari,
-            espacio = espacioCasa3,
+            espacio = QUINCHOPARRILLERO,
             fecha_desde = LocalDate.of(2023, 4, 10),
             fecha_hasta = LocalDate.of(2023, 4, 15),
 )
-var comentarioRentaUsuario3Casa4 = Comentario(
-    comentario = "Buena Casa",
+var comentariorentaQUINCHOPARRILLERO1 = Comentario(
+    renta = rentaQUINCHOPARRILLERO1,
+    comentario = "Excelente quincho para compartir con amigos y familia. Volvere!!",
     puntaje = 5,
     fechaPublicacion = LocalDate.of(2023, 4, 28),
+    tipoComentario = "renta"
 )
-val rentaUsuario3Casa4 = Renta(
+val rentaCoworkingUrquiza1 = Renta(
             usuario = michaelJackson,
-            espacio = espacioCasa4,
+            espacio = CoworkingUrquiza,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 21),
 )
-var comentarioRentaUsuario3Casa5 = Comentario(
-    comentario = "el inodoro estaba tapado",
+var comentarioRentaCoworkingUrquiza1 = Comentario(
+    renta= rentaCoworkingUrquiza1,
+    comentario = "No me gustó el ambiente del lugar, la gente medio mala onda",
     puntaje = 2,
     fechaPublicacion = LocalDate.of(2023, 4, 28),
+    tipoComentario = "renta"
 )
-val rentaUsuario3Casa5 = Renta(
+val rentaCoworkingUrquiza2 = Renta(
             usuario = michaelJackson,
-            espacio = espacioCasa5,
+            espacio = CoworkingUrquiza,
             fecha_desde = LocalDate.of(2023, 4, 23),
             fecha_hasta = LocalDate.of(2023, 4, 27),
 )
-var comentarioRentaUsuario4Casa6 = Comentario(
-    comentario = "me encanto",
+var comentarioRentaCoworkingUrquiza2 = Comentario(
+    renta= rentaCoworkingUrquiza2,
+    comentario = "Muy linda arquitectura del lugar!",
     puntaje = 4,
     fechaPublicacion = LocalDate.of(2023, 5, 5),
+    tipoComentario = "renta"
 )
-val rentaUsuario4Casa6 = Renta(
+val rentaCasaAmpliaCercaDelRio1 = Renta(
             usuario = karolg,
-            espacio = espacioCasa6,
+            espacio = CasaAmpliaCercaDelRio,
             fecha_desde = LocalDate.of(2023, 5, 1),
             fecha_hasta = LocalDate.of(2023, 5, 3),
 )
 
-val rentaUsuario4Casa7 = Renta(
+val rentaCasaAmpliaCercaDelRio2 = Renta(
             usuario = karolg,
-            espacio = espacioCasa7,
+            espacio = CasaAmpliaCercaDelRio,
             fecha_desde = LocalDate.of(2023, 6, 20),
             fecha_hasta = LocalDate.of(2023, 6, 21),
 )
 
-val rentaUsuario1Casa7 = Renta(
+val rentaCasaAmpliaCercaDelRio3 = Renta(
             usuario = eminem,
-            espacio = espacioCasa7,
+            espacio = CasaAmpliaCercaDelRio,
             fecha_desde = LocalDate.of(2022, 8, 20),
             fecha_hasta = LocalDate.of(2022, 8, 21),
 )
 
-val rentaUsuario1Casa8 = Renta(
+val rentaIglu1= Renta(
             usuario = eminem,
-            espacio = espacioCasa8,
+            espacio = Iglu,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 21),
 )
-var comentarioRentaUsuario4Casa1v1 = Comentario(
-    comentario = "Muy lindo lugar, tiene un patio hermoso",
+var comentarioRentaIglu1= Comentario(
+    renta = rentaIglu1,
+    comentario = "Muy lindo lugar, tiene uns vista al lago hermosa",
     puntaje = 4,
     fechaPublicacion = LocalDate.of(2023, 3, 2),
+    tipoComentario = "renta"
 )
-val rentaUsuario4Casa1v1 = Renta(
+val rentaDepositosLuis1 = Renta(
             usuario = karolg,
-            espacio = espacioCasa1,
+            espacio = DepositosLuis,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 25),
 )
-var comentarioRentaUsuario3Casa1 = Comentario(
+var comentarioRentaDepositosLuis1 = Comentario(
+    renta = rentaDepositosLuis1,
     comentario = "Todo estaba muy sucio",
     puntaje = 0,
     fechaPublicacion = LocalDate.of(2023, 1, 25),
+    tipoComentario = "renta"
 )
-val rentaUsuario3Casa1 = Renta(
+val rentaDepositosLuis2 = Renta(
             usuario = michaelJackson,
-            espacio = espacioCasa1,
+            espacio = DepositosLuis,
             fecha_desde = LocalDate.of(2023, 1, 20),
             fecha_hasta = LocalDate.of(2023, 1, 22),
 )
-var comentarioRentaUsuario4Casa1v2 = Comentario(
+var comentarioRentaDepositosLuis2 = Comentario(
+    renta = rentaDepositosLuis2,
     comentario = "Fui por segunda vez, lo recomiendo",
     puntaje = 5,
     fechaPublicacion = LocalDate.of(2023, 5, 3),
+    tipoComentario = "renta"
 )
-val rentaUsuario4Casa1v2 = Renta(
+val rentaUrquizaDental1 = Renta(
             usuario = karolg,
-            espacio = espacioCasa1,
+            espacio = UrquizaDental,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 29),
 )
