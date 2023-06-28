@@ -1,6 +1,7 @@
 package ar.edu.unsam.pds.bootstrap
 
 import ar.edu.unsam.pds.domains.Comentario
+import ar.edu.unsam.pds.domains.MetodoPago
 import ar.edu.unsam.pds.domains.Renta
 import java.time.LocalDate
 
@@ -10,6 +11,8 @@ val rentaVillaSerenity1 = Renta(
             espacio = VillaSerenity,
             fecha_desde = LocalDate.of(2023, 3, 20),
             fecha_hasta = LocalDate.of(2023, 3, 23),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 36000.0
 )
 var comentarioRentaVillaSerenity1 = Comentario(
     renta = rentaVillaSerenity1,
@@ -23,6 +26,8 @@ val rentaVillaSerenity2 = Renta(
             espacio = VillaSerenity,
             fecha_desde = LocalDate.of(2023, 4, 22),
             fecha_hasta = LocalDate.of(2023, 4, 29),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 84000.0
 )
 var comentarioRentaVillaSerenity2= Comentario(
     renta = rentaVillaSerenity2,
@@ -36,6 +41,8 @@ val rentaGarageEnPlenoCentro1 = Renta(
             espacio = GarageEnPlenoCentro,
             fecha_desde = LocalDate.of(2023, 5, 22),
             fecha_hasta = LocalDate.of(2023, 5, 29),
+            metodoDePago = MetodoPago.TRANSFERENCIA,
+            costoTotal = 285600.0
 )
 
 val rentaGarageEnPlenoCentro2 = Renta(
@@ -43,6 +50,8 @@ val rentaGarageEnPlenoCentro2 = Renta(
             espacio = GarageEnPlenoCentro,
             fecha_desde = LocalDate.of(2023, 4, 3),
             fecha_hasta = LocalDate.of(2023, 4, 5),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 81600.0
 )
 var comentarioRentaGarageEnPlenoCentro2 = Comentario(
     renta= rentaGarageEnPlenoCentro2,
@@ -63,6 +72,8 @@ var comentarioInquilinoUsuario2Casa2 = Comentario(
             espacio = QUINCHOPARRILLERO,
             fecha_desde = LocalDate.of(2023, 4, 10),
             fecha_hasta = LocalDate.of(2023, 4, 15),
+             metodoDePago = MetodoPago.TARJETA_CREDITO_DEBITO,
+             costoTotal = 16800.0
 )
 var comentariorentaQUINCHOPARRILLERO1 = Comentario(
     renta = rentaQUINCHOPARRILLERO1,
@@ -76,6 +87,8 @@ val rentaCoworkingUrquiza1 = Renta(
             espacio = CoworkingUrquiza,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 21),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 3120.0
 )
 var comentarioRentaCoworkingUrquiza1 = Comentario(
     renta= rentaCoworkingUrquiza1,
@@ -89,6 +102,8 @@ val rentaCoworkingUrquiza2 = Renta(
             espacio = CoworkingUrquiza,
             fecha_desde = LocalDate.of(2023, 4, 23),
             fecha_hasta = LocalDate.of(2023, 4, 27),
+            metodoDePago = MetodoPago.TARJETA_CREDITO_DEBITO,
+            costoTotal = 12480.0
 )
 var comentarioRentaCoworkingUrquiza2 = Comentario(
     renta= rentaCoworkingUrquiza2,
@@ -102,6 +117,8 @@ val rentaCasaAmpliaCercaDelRio1 = Renta(
             espacio = CasaAmpliaCercaDelRio,
             fecha_desde = LocalDate.of(2023, 5, 1),
             fecha_hasta = LocalDate.of(2023, 5, 3),
+            metodoDePago = MetodoPago.TRANSFERENCIA,
+            costoTotal = 6720.0
 )
 
 val rentaCasaAmpliaCercaDelRio2 = Renta(
@@ -109,6 +126,8 @@ val rentaCasaAmpliaCercaDelRio2 = Renta(
             espacio = CasaAmpliaCercaDelRio,
             fecha_desde = LocalDate.of(2023, 6, 20),
             fecha_hasta = LocalDate.of(2023, 6, 21),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 3360.0
 )
 
 val rentaCasaAmpliaCercaDelRio3 = Renta(
@@ -116,6 +135,8 @@ val rentaCasaAmpliaCercaDelRio3 = Renta(
             espacio = CasaAmpliaCercaDelRio,
             fecha_desde = LocalDate.of(2022, 8, 20),
             fecha_hasta = LocalDate.of(2022, 8, 21),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 3360.0
 )
 
 val rentaIglu1= Renta(
@@ -123,6 +144,8 @@ val rentaIglu1= Renta(
             espacio = Iglu,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 21),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 240.0
 )
 var comentarioRentaIglu1= Comentario(
     renta = rentaIglu1,
@@ -136,6 +159,8 @@ val rentaDepositosLuis1 = Renta(
             espacio = DepositosLuis,
             fecha_desde = LocalDate.of(2022, 9, 20),
             fecha_hasta = LocalDate.of(2022, 9, 25),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 16800.0
 )
 var comentarioRentaDepositosLuis1 = Comentario(
     renta = rentaDepositosLuis1,
@@ -149,6 +174,8 @@ val rentaDepositosLuis2 = Renta(
             espacio = DepositosLuis,
             fecha_desde = LocalDate.of(2023, 1, 20),
             fecha_hasta = LocalDate.of(2023, 1, 22),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 6720.0
 )
 var comentarioRentaDepositosLuis2 = Comentario(
     renta = rentaDepositosLuis2,
@@ -162,4 +189,6 @@ val rentaUrquizaDental1 = Renta(
             espacio = UrquizaDental,
             fecha_desde = LocalDate.of(2023, 4, 20),
             fecha_hasta = LocalDate.of(2023, 4, 29),
+            metodoDePago = MetodoPago.EFECTIVO,
+            costoTotal = 194400.0
 )
