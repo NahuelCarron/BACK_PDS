@@ -67,16 +67,16 @@ class UserController {
         // TODO: implementar
     }
 
-    @PostMapping("cambiarFechaNac/{userId}")
-    @Operation(summary = "Endpoint para carmbiar Fecha Nacimiento")
-    fun modificarFecha(@PathVariable userId: Long,@RequestBody nuevaFecha: LocalDate){
-        this.userService.actualizarFecha(userId,nuevaFecha)
+    @PostMapping("editarInformacion/{userId}")
+    @Operation(summary = "Endpoint para editar informacion del usuario")
+    fun modificarInfo(@PathVariable userId: Long,@RequestBody body: String){
+        val usuario = objectMapper.readValue(body, Usuario::class.java)
+        this.userService.actualizarInformacion(userId, usuario)
     }
-
-    @PostMapping("cambiarPais/{userId}")
-    @Operation(summary = "Endpoint para carmbiar Pais")
-    fun modificarPais(@PathVariable userId: Long,@RequestBody pais: String){
-        this.userService.actualizarPais(userId,pais)
+    @PostMapping("editarUsernamePassword/{userId}")
+    @Operation(summary = "Endpoint para editar informacion del usuario")
+    fun modificarUsernamePassword(@PathVariable userId: Long,@RequestBody userYContra: UsuarioYcontra){
+        this.userService.actualizarUsuarioYContrasenia(userId, userYContra.username, userYContra.password)
     }
 
     @PostMapping("crearUsuario")

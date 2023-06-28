@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
 class ErrorFechas(mensaje: String) : RuntimeException(mensaje) {}
-
+@ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+class ErrorUsernamePassword(mensaje: String) : RuntimeException(mensaje) {}
 @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
 class CantidadPasajerosIncorrecto(mensaje: String) : RuntimeException(mensaje) {}
 

@@ -2,6 +2,7 @@ package ar.edu.unsam.pds.bootstrap
 
 import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.repositories.*
+import ar.edu.unsam.pds.services.UserService
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -11,7 +12,8 @@ class Bootstrap: InitializingBean {
 
     @Autowired
     private lateinit var usuariosRepository: UsuarioRepositorio
-
+    @Autowired
+    private lateinit var usuarioService: UserService
     @Autowired
     private lateinit var espacioRepository: EspacioRepositorio
 
@@ -22,10 +24,10 @@ class Bootstrap: InitializingBean {
     private lateinit var comentarioRepository: ComentarioRepositorio
 
     fun iniciarUsuarios() {
-        usuariosRepository.save(eminem)
-        usuariosRepository.save(solari)
-        usuariosRepository.save(michaelJackson)
-        usuariosRepository.save(karolg)
+        this.usuarioService.crearUsuario(eminem)
+        this.usuarioService.crearUsuario(solari)
+        this.usuarioService.crearUsuario(michaelJackson)
+        this.usuarioService.crearUsuario(karolg)
     }
 
     fun iniciarEspacios() {

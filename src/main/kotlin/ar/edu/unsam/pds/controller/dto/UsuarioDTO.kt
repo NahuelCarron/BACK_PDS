@@ -21,3 +21,8 @@ data class UsuarioIdDTO(
 )
 
 fun Usuario.toIdDTO() = UsuarioIdDTO(id!!)
+
+data class UsuarioYcontra(
+    val username: String,
+    val password: String
+)
