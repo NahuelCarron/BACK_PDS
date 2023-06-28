@@ -6,6 +6,7 @@ import ar.edu.unsam.pds.services.UserService
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 @Service
 class Bootstrap: InitializingBean {
@@ -22,6 +23,10 @@ class Bootstrap: InitializingBean {
 
     @Autowired
     private lateinit var comentarioRepository: ComentarioRepositorio
+    @Autowired
+    private lateinit var qyaRepository: QyaRepositorio
+    @Autowired
+    private lateinit var UsuQyaEspRepository: UsuarioQyaEspacioRepositorio
 
     fun iniciarUsuarios() {
         this.usuarioService.crearUsuario(eminem)
@@ -96,10 +101,25 @@ class Bootstrap: InitializingBean {
         espacio.puntajePromedio = rentaRepository.obtenerPromedioComentarios(espacio.id!!)
         espacioRepository.save(espacio)
     }
+    fun iniciarQya(){
+        var qyaDepositosLuis = Qya("Quería saber si tienen seguridad 24 hrs?","Sisi! Tenemos seguridad las 24 horas", LocalDate.now())
+        var qyaRelac = UsuarioQyaEspacio(eminem, qyaDepositosLuis, DepositosLuis)
+        crearQYA(qyaDepositosLuis,qyaRelac)
+
+        var qyaDepositosLuis2 = Qya("Puedo pasar a verlo antes de reservarlo??","", LocalDate.now())
+        var qyaRelac2 = UsuarioQyaEspacio(solari, qyaDepositosLuis, DepositosLuis)
+        crearQYA(qyaDepositosLuis2,qyaRelac2)
+
+    }
+    fun crearQYA(qya: Qya, UsuQyaEsp: UsuarioQyaEspacio){
+        qyaRepository.save(qya)
+        UsuQyaEspRepository.save(UsuQyaEsp)
+    }
     override fun afterPropertiesSet() {
         iniciarUsuarios()
         iniciarEspacios()
         iniciarRentas()
         iniciarComentarios()
+        iniciarQya()
     }
 }
