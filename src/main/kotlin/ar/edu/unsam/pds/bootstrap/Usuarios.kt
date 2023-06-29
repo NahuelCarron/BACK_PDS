@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 val eminem = Usuario(
     username = "eminem",
-    contrasenia = "abcdef12",
+    contrasenia = "Argentina1",
     nombre = "Marshall Bruce",
     apellido = "Mathers III",
     fechaNacimiento = LocalDate.of(1972, 10, 17),
