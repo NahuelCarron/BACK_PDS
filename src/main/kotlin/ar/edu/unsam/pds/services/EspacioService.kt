@@ -25,7 +25,7 @@ class EspacioService {
     @Autowired
     lateinit var rentaRepository: RentasRepositorio
 
-    var cantidadPorPagina = 12
+    var cantidadPorPagina = 3
 
     @Transactional(Transactional.TxType.NEVER)
     fun obtenerEspacio(id : Long ) : EspacioDTO? {
