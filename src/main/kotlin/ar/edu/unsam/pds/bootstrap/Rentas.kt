@@ -165,7 +165,7 @@ val rentaDepositosLuis1 = Renta(
 var comentarioRentaDepositosLuis1 = Comentario(
     renta = rentaDepositosLuis1,
     comentario = "Todo estaba muy sucio",
-    puntaje = 0,
+    puntaje = 5,
     fechaPublicacion = LocalDate.of(2023, 1, 25),
     tipoComentario = "renta"
 )
