@@ -1,9 +1,6 @@
 package ar.edu.unsam.pds.services
 
-import ar.edu.unsam.pds.controller.dto.EspacioRentaDTO
-import ar.edu.unsam.pds.controller.dto.EspacioUsuarioDTO
-import ar.edu.unsam.pds.controller.dto.RentaDTO
-import ar.edu.unsam.pds.controller.dto.RentaUsuarioDTO
+import ar.edu.unsam.pds.controller.dto.*
 import ar.edu.unsam.pds.domains.*
 import ar.edu.unsam.pds.exceptions.BadRequestException
 import ar.edu.unsam.pds.exceptions.ErrorFechaNacimiento
@@ -35,6 +32,10 @@ class UserService {
     fun getUserComentarios(userId: Long): List<ComentarioEspacio> {
         var rentas = this.rentasRepositorio.obtenerComentariosPorUsuario(userId)
         return getComentarios(rentas)
+    }
+    @Transactional(Transactional.TxType.NEVER)
+    fun getUserReputacion(userId: Long): List<ReputacionUsuarioDTO> {
+        return this.rentasRepositorio.obtenerReputacionUsuario(userId)
     }
 
     fun getComentarios(rentas : List<Renta>): List<ComentarioEspacio>{

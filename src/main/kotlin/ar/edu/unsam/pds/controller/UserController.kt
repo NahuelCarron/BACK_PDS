@@ -86,4 +86,10 @@ class UserController {
         this.userService.crearUsuario(nuevo)
     }
 
+    @GetMapping("/reputacionUsuario/{userId}")
+    @Operation(summary = "Endpoint acceder a los espacios del usuario que fueron rentados por otros")
+    fun getReputacionUsuario(@PathVariable userId: Long): List<ReputacionUsuarioDTO>{
+        return this.userService.getUserReputacion(userId)
+    }
+
 }
