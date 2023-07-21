@@ -106,8 +106,8 @@ class Bootstrap: InitializingBean {
         var qyaRelac = UsuarioQyaEspacio(eminem, qyaDepositosLuis, DepositosLuis)
         crearQYA(qyaDepositosLuis,qyaRelac)
 
-        var qyaDepositosLuis2 = Qya("Puedo pasar a verlo antes de reservarlo??","", LocalDate.now())
-        var qyaRelac2 = UsuarioQyaEspacio(solari, qyaDepositosLuis, DepositosLuis)
+        var qyaDepositosLuis2 = Qya("Puedo pasar a verlo antes de reservarlo??","Si, obvio. En la publicación esta la dirección, vení cuando quieras de 8 a 21 hrs.", LocalDate.now())
+        var qyaRelac2 = UsuarioQyaEspacio(solari, qyaDepositosLuis2, DepositosLuis)
         crearQYA(qyaDepositosLuis2,qyaRelac2)
 
     }

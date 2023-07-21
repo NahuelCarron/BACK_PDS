@@ -91,7 +91,7 @@ val DepositosLuis = Espacio(
                         "Con un diseño inteligente y una distribución eficiente, este depósito ofrece una gran capacidad para almacenar una amplia variedad de artículos. Ya sea que necesites guardar muebles, equipos deportivos, suministros comerciales o cualquier otro tipo de mercancía, este espacio se adapta a tus necesidades.",
                 servicios = mutableListOf(Servicio.SEGURIDAD, Servicio.MANTENIMIENTO),
                 ubicacion = "Presidente Peron 123",
-                duenio = michaelJackson,
+                duenio = eminem,
                 costo_hora = 140.0,
                 dimensiones = 5.0,
                 pais = Pais.ARGENTINA,
